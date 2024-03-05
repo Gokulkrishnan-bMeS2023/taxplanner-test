@@ -1,5 +1,5 @@
-
 "use client";
+
 import {
   Flex,
   Heading,
@@ -11,7 +11,7 @@ import {
 import { FaCheck } from "react-icons/fa";
 
 interface FeatureProps {
-  title:string;
+  title: string;
   description?: string[];
   actions?: string[];
   estimate?: string;
@@ -23,28 +23,23 @@ interface FeatureProps {
   description2?: string;
 }
 interface PlanProps {
-    aboutContents: string[];
-    planContents: FeatureProps[];
-    title:string;
+  aboutContents: string[];
+  planContents: FeatureProps[];
+  title: string;
 }
 const AboutThisPlan: React.FC<PlanProps> = ({
   aboutContents,
   planContents,
-  title
+  title,
 }) => {
   return (
     <>
       <Flex direction="column" alignItems="center" textAlign="center" mb={6}>
-        <Heading
-          as={"h2"}
-          mb={4}
-        >
+        <Heading as={"h2"} mb={4}>
           {title}
         </Heading>
-        {aboutContents?.map((contents) => (
-          <Text mb={4}>
-            {contents}
-          </Text>
+        {aboutContents?.map((contents,index) => (
+          <Text key={index} mb={4}>{contents}</Text>
         ))}
       </Flex>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} spacingY={14}>
@@ -58,45 +53,34 @@ const AboutThisPlan: React.FC<PlanProps> = ({
             borderRadius={8}
             borderColor="#DFF4FD"
             borderWidth="1px"
-            _hover={{ backgroundColor: '#01ACF1', color: '#FFFFFF',"& svg": { color: "white" },"h2":{color:"white"},"h4":{color:"white"},"h5":{color:"white"}}} transition={"0.5s"}
+            _hover={{
+              backgroundColor: "#01ACF1",
+              color: "#FFFFFF",
+              "& svg": { color: "white" },
+              h2: { color: "white" },
+              h4: { color: "white" },
+              h5: { color: "white" },
+            }}
+            transition={"0.5s"}
           >
             <Flex align="center">
-              <Heading as={'h4'} mb={6}>
+              <Heading as={"h4"} mb={6}>
                 {feature.title}
               </Heading>
             </Flex>
-            {feature.description?.map((description) => (
-              <Text mb={0.5}>
+            {feature.description?.map((description, index) => (
+              <Text mb={0.5} key={index}>
                 {description}
               </Text>
             ))}
             <Box>
-              <Heading as={'h5'} my={3}>
+              <Heading as={"h5"} my={3}>
                 {feature.estimate}
               </Heading>
             </Box>
             <Box mb={2}>{feature.actionsHeading}</Box>
-            {feature.actions?.map((action) => (
-              <Flex alignItems={"baseline"} gap={5}>
-                <Box boxSize={3}>
-                  <IconButton
-                    icon={<FaCheck size={16} />}
-                    color="#01ACF1"
-                    variant="outline"
-                    border={"none"}
-                    aria-label={""}
-                    _hover={{ bg: "" }}
-                    size={"16"}
-                    />
-                </Box>
-                <Text mb={4} fontWeight="bolder">
-                  {action}
-                </Text>
-              </Flex>
-            ))}
-            <Box mb={3}>{feature.actionsHeading1}</Box>
-            {feature.actions1?.map((action) => (
-              <Flex alignItems={"baseline"} gap={5}>
+            {feature.actions?.map((action, index) => (
+              <Flex key={index} alignItems={"baseline"} gap={5}>
                 <Box boxSize={3}>
                   <IconButton
                     icon={<FaCheck size={16} />}
@@ -113,9 +97,28 @@ const AboutThisPlan: React.FC<PlanProps> = ({
                 </Text>
               </Flex>
             ))}
-             <Box mb={3}>{feature.actionsHeading2}</Box>
-            {feature.actions2?.map((action) => (
-              <Flex alignItems={"baseline"} gap={5}>
+            <Box mb={3}>{feature.actionsHeading1}</Box>
+            {feature.actions1?.map((action, index) => (
+              <Flex key={index} alignItems={"baseline"} gap={5}>
+                <Box boxSize={3}>
+                  <IconButton
+                    icon={<FaCheck size={16} />}
+                    color="#01ACF1"
+                    variant="outline"
+                    border={"none"}
+                    aria-label={""}
+                    _hover={{ bg: "" }}
+                    size={"16"}
+                  />
+                </Box>
+                <Text mb={4} fontWeight="bolder">
+                  {action}
+                </Text>
+              </Flex>
+            ))}
+            <Box mb={3}>{feature.actionsHeading2}</Box>
+            {feature.actions2?.map((action,index) => (
+              <Flex key={index} alignItems={"baseline"} gap={5}>
                 <Box boxSize={3}>
                   <IconButton
                     icon={<FaCheck size={16} />}
