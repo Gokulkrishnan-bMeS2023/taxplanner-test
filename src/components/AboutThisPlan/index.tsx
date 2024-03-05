@@ -38,8 +38,10 @@ const AboutThisPlan: React.FC<PlanProps> = ({
         <Heading as={"h2"} mb={4}>
           {title}
         </Heading>
-        {aboutContents?.map((contents,index) => (
-          <Text key={index} mb={4}>{contents}</Text>
+        {aboutContents?.map((contents, index) => (
+          <Text key={index} mb={4}>
+            {contents}
+          </Text>
         ))}
       </Flex>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} spacingY={14}>
@@ -117,7 +119,7 @@ const AboutThisPlan: React.FC<PlanProps> = ({
               </Flex>
             ))}
             <Box mb={3}>{feature.actionsHeading2}</Box>
-            {feature.actions2?.map((action,index) => (
+            {feature.actions2?.map((action, index) => (
               <Flex key={index} alignItems={"baseline"} gap={5}>
                 <Box boxSize={3}>
                   <IconButton

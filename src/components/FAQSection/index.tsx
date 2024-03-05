@@ -14,7 +14,6 @@ import { usePathname } from "next/navigation";
 interface ServicesDatas {
   id: number;
   title: string;
-  active: string;
   img?: string;
   paragraph?: string[];
   Fs?: string[];
