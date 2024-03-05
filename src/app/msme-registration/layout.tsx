@@ -1,3 +1,4 @@
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
 import type { Metadata } from "next";
 
@@ -13,6 +14,7 @@ export default function MEMSRegistrationLayout({
     <>
       <Header heading="MSME Registration" />
       {children}
+      <BGWithQueriesForm/>
     </>
   );
 }
