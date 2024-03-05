@@ -20,7 +20,7 @@ export default function GSTReturnsLiteYearly() {
           <ContentWithPriceCard contents={PriceDetails} />
         </Box>
         <Box my={{ base: 16, lg: 24 }}>
-          <AboutThisPlan
+          <AboutThisPlan title="About This Plan"
             aboutContents={PlanDescription}
             planContents={PlanDetails}
           />

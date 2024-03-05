@@ -15,7 +15,6 @@ export default function GSTRefund() {
       <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} /></Box>
       <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="Latest Update" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box>  
       <Box my={{ base: 16, lg: 24 }}><DocumentSubmitted 
-           titleContent="A GST Officer has to process the refund application within 60 days from the date of submission of application. If the amount of refund is admissible an order will be issued in RFD-06 electronically. The Refund Sanction Order contains the following details." 
            title="Gst Refund" documents={Documents} /></Box>
        <Box my={{ base: 16, lg: 24 }}><AboutThisPlan 
           title="RFD-07: Complete Adjustment/ Withholding of Refund" 

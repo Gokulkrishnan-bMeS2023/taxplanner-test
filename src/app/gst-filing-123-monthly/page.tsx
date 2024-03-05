@@ -20,8 +20,8 @@ export default function GSTFiling123Monthly() {
           <ContentWithPriceCard contents={PriceDetails} />
         </Box>
         <Box my={{ base: 16, lg: 24 }}>
-          <AboutThisPlan
-            aboutContents={PlanDescription}
+          <AboutThisPlan title="About This Plan"
+            aboutContents={PlanDescription} 
             planContents={PlanDetails}
           />
         </Box>
