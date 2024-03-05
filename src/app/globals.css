@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Jost", sans-serif !important;
+}
+
+h1{
+  font-size: calc(1.525rem + 3.3vw) !important;
+}
+
+h2 {
+  font-size: calc(1.425rem + 2.1vw) !important;
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw) !important;
+  font-weight: 600 !important;
+}
+
+h4 {
+  font-size: calc(1.275rem + 0.3vw) !important;
+  font-weight: 600 !important;
+}
+
+h5 {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+}
+
+@media (min-width: 96em) {
+  h1{
+    font-size: calc(1.525rem + 3.3vw) !important ;
+  }
+  h2 {
+    font-size: 2.8rem !important;
+  }
+  h3 {
+    font-size: 1.75rem !important;
+  }
+  h4 {
+    font-size: 1.5rem !important;
+  }
+}
