@@ -1,3 +1,4 @@
+"use client";
 import { Box, Container, Center, Text, Link } from "@chakra-ui/react";
 
 // CopyrightSection

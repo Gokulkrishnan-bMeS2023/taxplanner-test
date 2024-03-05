@@ -9,7 +9,7 @@ import {
 } from "@/component-contents/incorporation-partnership/AboutThisPlan";
 import { documents } from "@/component-contents/incorporation-partnership/DocumentSubmitted";
 import { FAQs } from "@/component-contents/incorporation-partnership/FAQSection";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
 const IncorporationPartnership = () => {
   return (
@@ -24,20 +24,28 @@ const IncorporationPartnership = () => {
         }}
         px={6}
       >
-        <ContentWithPriceCard contents={contentWithPriceCardContents} />
-        <AboutThisPlan
-          aboutContents={aboutPlanContent}
-          planContents={aboutPlanCardContent}
-          title="About this plan"
-        />
-        <DocumentComponent
-          title="Incorporation Company"
-          documents={documents}
-        />
-        <FAQsection
-          servicesDatas={FAQs}
-          heading={"Frequently Asked Questions"}
-        />
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard contents={contentWithPriceCardContents} />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            aboutContents={aboutPlanContent}
+            planContents={aboutPlanCardContent}
+            title="About this plan"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <DocumentComponent
+            title="Incorporation Partnership"
+            documents={documents}
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <FAQsection
+            servicesDatas={FAQs}
+            heading={"Frequently Asked Questions"}
+          />
+        </Box>
       </Container>
     </>
   );

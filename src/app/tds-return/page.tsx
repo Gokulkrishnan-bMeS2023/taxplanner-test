@@ -5,7 +5,7 @@ import {
   aboutPlanCardContent,
   aboutPlanContent,
 } from "@/component-contents/tds-return/AboutThisPlan";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
 const TDSReturn = () => {
   return (
@@ -20,12 +20,16 @@ const TDSReturn = () => {
         }}
         px={6}
       >
-        <ContentWithPriceCard contents={contentWithPriceCardContents} />
-        <AboutThisPlan
-          aboutContents={aboutPlanContent}
-          planContents={aboutPlanCardContent}
-          title="About this plan"
-        />
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard contents={contentWithPriceCardContents} />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            aboutContents={aboutPlanContent}
+            planContents={aboutPlanCardContent}
+            title="About this plan"
+          />
+        </Box>
       </Container>
     </>
   );

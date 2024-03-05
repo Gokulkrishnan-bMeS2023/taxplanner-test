@@ -239,7 +239,6 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                   w={"100%"}
                   bgColor={"#2d50d6"}
                   color={"#DFE4FD"}
-                  // color={"#2d50d6"}
                   _hover={{ bgColor: "#2d50d6", color: "#DFE4FD" }}
                 >
                   Submit Now

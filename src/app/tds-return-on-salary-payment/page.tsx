@@ -7,9 +7,9 @@ import {
   aboutPlanContent,
 } from "@/component-contents/roc-filing/AboutThisPlan";
 import { documents } from "@/component-contents/roc-filing/DocumentSubmitted";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
-const RocFiling = () => {
+const TDSReturnonSalaryPayment = () => {
   return (
     <>
       <Container
@@ -22,19 +22,25 @@ const RocFiling = () => {
         }}
         px={6}
       >
-        <ContentWithPriceCard contents={contentWithPriceCardContents} />
-        <AboutThisPlan
-          aboutContents={aboutPlanContent}
-          planContents={aboutPlanCardContent}
-          title="About this plan"
-        />
-        <DocumentComponent
-          title="TDS Return on Salary Payment (Form 24Q)"
-          documents={documents}
-        />
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard contents={contentWithPriceCardContents} />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            aboutContents={aboutPlanContent}
+            planContents={aboutPlanCardContent}
+            title="About this plan"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <DocumentComponent
+            title="TDS Return on Salary Payment (Form 24Q)"
+            documents={documents}
+          />
+        </Box>
       </Container>
     </>
   );
 };
 
-export default RocFiling;
+export default TDSReturnonSalaryPayment;

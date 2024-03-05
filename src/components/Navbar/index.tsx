@@ -1,7 +1,6 @@
-"use client"
-
+"use client";
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Box, Container, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Button } from '@chakra-ui/react';
 import { FaBars, FaAngleDown } from 'react-icons/fa';
 
@@ -120,8 +119,6 @@ const SubMenuItems: React.FC<SubMenuItemsProps> = ({ isOpen, onClose, items }) =
     </MenuList>
   );
 };
-
-
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
@@ -130,13 +127,13 @@ const Navbar: React.FC = () => {
   const menuItems: MenuItem[] = [
     {
       label: 'Income Tax',
-      href: '/income_tax',
+      href: '/income-tax',
       subItems: [
-        { label: 'Salaried and House Property Income', href: '/salary_house_property' },
-        { label: 'Capital Gain', href: '/capital_gain' },
+        { label: 'Salaried and House Property Income', href: '/salary-house-property' },
+        { label: 'Capital Gain', href: '/capital-gain' },
         { label: 'NRI', href: '/nri' },
         { label: 'Business Or Profession', href: '/business' },
-        { label: 'TDS/TCS', href: '/tds_tcs' }
+        { label: 'TDS/TCS', href: '/tds-tcs' }
       ]
     },
     {
@@ -144,30 +141,30 @@ const Navbar: React.FC = () => {
       href: '/gst',
       subItems: [
         { label: 'Registration', href: '/gst-registration' },
-        { label: 'Amendments', href: '/amendment' },
-        { label: 'GST Returns', href: '/gst_return_services' },
+        { label: 'Amendments', href: '/amendments' },
+        { label: 'GST Returns', href: '/gst-return-services' },
         { label: 'LUT', href: '/lut' },
-        { label: 'Refunds', href: '/gst_refund' }
+        { label: 'Refunds', href: '/gst-refund' }
       ]
     },
     {
       label: 'Incorporation',
       href: '/incorporation',
       subItems: [
-        { label: 'Company', href: '/registration' },
-        { label: 'LLP', href: '/Amendment' },
-        { label: 'Partnership', href: '/Gst_return' },
+        { label: 'Company', href: '/Incorporation-company' },
+        { label: 'LLP', href: '/incorporation-llp' },
+        { label: 'Partnership', href: '/incorporation-partnership' },
       ]
     },
     {
       label: 'Other Services',
-      href: '/other_services',
+      href: '/other-services',
       subItems: [
-        { label: 'MSME Registration', href: '/Registration' },
-        { label: 'IEC Registration / Renewal', href: '/Amendment' },
-        { label: 'DSC', href: '/Gst_return' },
-        { label: 'ROC Filling', href: '/lut' },
-        { label: 'SFT', href: '/Refund' }
+        { label: 'MSME Registration', href: '/msme-registration' },
+        { label: 'IEC Registration / Renewal', href: '/iec-registration-renewal' },
+        { label: 'DSC', href: '/dsc-services' },
+        { label: 'ROC Filling', href: '/roc-filling' },
+        { label: 'SFT', href: '/sft' }
       ]
     }
   ];
@@ -199,7 +196,7 @@ const Navbar: React.FC = () => {
       width="100%"
       zIndex="999"
     >
-      <Container maxW="container.xl">
+       <Container maxW="container.xl">
         <Flex justify="space-between" alignItems="center">
           <Box>
             <Link href="/">
@@ -224,9 +221,7 @@ const Navbar: React.FC = () => {
               </Flex>
             </Link>
           </Box>
-          <Box display={{ base: 'block', md: 'none' }} onClick={toggleMobileMenu}>
-            <FaBars size={24} />
-          </Box>
+          
           <Box display={{ base: 'none', md: 'block' }} fontFamily={"'Open Sans',sans-serif"}>
             <Flex align="center" color="#555555" fontWeight={500}>
               <Box ml={4}>
@@ -246,7 +241,7 @@ const Navbar: React.FC = () => {
               <Box>
                 <Link href="/contact">Contact</Link>
               </Box>
-              <Button ml={4} fontSize={16} fontWeight={500} display={{ base: 'none', md: 'inline-flex' }} color={'#DFE4FD'} py={5} px={5} bg={'#2d50d6'}>
+              <Button  ml={4} fontSize={16} fontWeight={500} display={{ base: 'none', md: 'inline-flex' }} color={'#DFE4FD'} py={5} px={5} bg={'#2d50d6'}>
                 Login
               </Button>
             </Flex>
