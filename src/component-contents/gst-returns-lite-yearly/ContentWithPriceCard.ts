@@ -5,7 +5,7 @@ export const PriceDetails = [
     descriptions: [
       "File your GST Return hassle free. The plan is specifically curated for small businesses and e-commerce sellers",
     ],
-    price: "8,999",
+    price: 8999,
     heading: "GST Filing",
     buttonLink: "",
     buttonname: "Buy Now",
