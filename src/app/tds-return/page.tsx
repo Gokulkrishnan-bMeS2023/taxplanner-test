@@ -9,29 +9,18 @@ import { Box, Container } from "@chakra-ui/react";
 
 const TDSReturn = () => {
   return (
-    <>
-      <Container
-        maxW={{
-          base: "540px",
-          md: "720px",
-          lg: "960px",
-          xl: "1140px",
-          "2xl": "1320px",
-        }}
-        px={6}
-      >
-        <Box my={{ base: 16, lg: 24 }}>
-          <ContentWithPriceCard contents={contentWithPriceCardContents} />
-        </Box>
-        <Box my={{ base: 16, lg: 24 }}>
-          <AboutThisPlan
-            aboutContents={aboutPlanContent}
-            planContents={aboutPlanCardContent}
-            title="About this plan"
-          />
-        </Box>
-      </Container>
-    </>
+    <Container>
+      <Box my={{ base: 16, lg: 24 }}>
+        <ContentWithPriceCard contents={contentWithPriceCardContents} />
+      </Box>
+      <Box my={{ base: 16, lg: 24 }}>
+        <AboutThisPlan
+          aboutContents={aboutPlanContent}
+          planContents={aboutPlanCardContent}
+          title="About this plan"
+        />
+      </Box>
+    </Container>
   );
 };
 

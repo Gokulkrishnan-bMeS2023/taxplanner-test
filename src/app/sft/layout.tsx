@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,9 +6,12 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function SFTLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function SFTLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
+      <Header heading="SFT – Statement of Financial Transaction" />
       {children}
     </>
   );

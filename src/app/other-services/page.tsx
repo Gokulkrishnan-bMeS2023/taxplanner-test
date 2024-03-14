@@ -1,21 +1,16 @@
 import ServicesSubContainer from "@/components/ServicesSubContainer";
 import {
-  other_ServicesCard1,other_ServicesCard2,other_ServicesCard3,other_ServicesCard4,other_ServicesCard5
+  other_ServicesCard1,
+  other_ServicesCard2,
+  other_ServicesCard3,
+  other_ServicesCard4,
+  other_ServicesCard5,
 } from "@/component-contents/otherservices";
 import { Container, Heading, Flex } from "@chakra-ui/react";
 
 const OtherServices = () => {
   return (
-    <Container
-      maxW={{
-        base: "540px",
-        md: "720px",
-        lg: "960px",
-        xl: "1140px",
-        "2xl": "1320px",
-      }}
-      px={6}
-    >
+    <Container>
       <Flex
         align={{ base: "left", lg: "center" }}
         direction={{ base: "column", lg: "row" }}
@@ -24,7 +19,7 @@ const OtherServices = () => {
       >
         <Flex grow={1}>
           <Heading as={"h2"} mb={4}>
-            Income Tax
+            Other Services
           </Heading>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>

@@ -1,9 +1,7 @@
 import { Providers } from "./providers";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import ScrollToTopButton from "@/components/BackToTopButton";
 
 export const metadata: Metadata = {
   title: "taxplanner",
@@ -15,11 +13,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const Footer = dynamic(() => import("@/components/Footer"));
+  const ScrollToTopButton = dynamic(
+    () => import("@/components/BackToTopButton")
+  );
+
   return (
     <html lang="en">
       <body>
         <Providers>
-          {children}
+          <main>{children}</main>
           <Footer />
           <ScrollToTopButton />
         </Providers>

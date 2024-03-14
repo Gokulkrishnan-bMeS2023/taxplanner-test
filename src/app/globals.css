@@ -5,11 +5,16 @@
   font-family: "Open Sans", sans-serif !important;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Jost", sans-serif !important;
 }
 
-h1{
+h1 {
   font-size: calc(1.525rem + 3.3vw) !important;
 }
 
@@ -32,9 +37,13 @@ h5 {
   font-weight: 500 !important;
 }
 
-@media (min-width: 96em) {
-  h1{
-    font-size: calc(1.525rem + 3.3vw) !important ;
+.css-70qvj9 {
+  flex-wrap: wrap !important;
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 4rem !important ;
   }
   h2 {
     font-size: 2.8rem !important;

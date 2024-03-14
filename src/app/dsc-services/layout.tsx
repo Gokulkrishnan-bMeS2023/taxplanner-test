@@ -1,3 +1,5 @@
+import Header from "@/components/Header";
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,10 +7,14 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function DSCServicesLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function DSCServicesLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
+      <Header heading="DSC Services" />
       {children}
+      <BGWithQueriesForm />
     </>
   );
 }

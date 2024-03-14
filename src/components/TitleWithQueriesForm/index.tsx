@@ -1,5 +1,6 @@
 import QueriesForm from "@/components/Form/QueriesForm";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import Animation from "../Animation/Scroll-Animation";
 
 interface ContentsType {
   id: number;
@@ -10,9 +11,11 @@ interface TitleWithQueriesFormProps {
   contents: ContentsType[];
 }
 
-export default function TitleWithQueriesForm({ contents }: TitleWithQueriesFormProps) {
+export default function TitleWithQueriesForm({
+  contents,
+}: TitleWithQueriesFormProps) {
   return (
-    <>
+    <Animation>
       <Flex direction={{ base: "column", lg: "row" }} align={"center"}>
         {contents.map((content) => (
           <Box w={{ lg: "50%" }} key={content.id}>
@@ -33,9 +36,9 @@ export default function TitleWithQueriesForm({ contents }: TitleWithQueriesFormP
           border={"1px solid #DFE4FD"}
           borderRadius={"8px"}
         >
-          <QueriesForm getInTouchLabel={false}/>
+          <QueriesForm getInTouchLabel={false} />
         </Box>
       </Flex>
-    </>
+    </Animation>
   );
 }

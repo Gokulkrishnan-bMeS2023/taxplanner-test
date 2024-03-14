@@ -10,19 +10,12 @@ import { Container, Heading, Flex } from "@chakra-ui/react";
 
 const Incometax = () => {
   return (
-    <Container
-      maxW={{
-        base: "540px",
-        md: "720px",
-        lg: "960px",
-        xl: "1140px",
-        "2xl": "1320px",
-      }}
-      px={6}
-    >
+    <Container>
       <Flex
         align={{ base: "left", lg: "center" }}
         direction={{ base: "column", lg: "row" }}
+        justify={"center"}
+        alignItems={"center"}
         mb={20}
         mt={20}
       >

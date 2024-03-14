@@ -26,82 +26,81 @@ const Header = ({ heading }: headerProps) => {
   return (
     <>
       <Navbar />
-      {pathname === "/" || (
-        <Box
-          backgroundImage="url('/assets/header.jpg')"
-          backgroundSize="cover"
-          backgroundPosition="top left"
-          bgRepeat="no-repeat"
-          pt={"6rem"}
-          pb={"3rem"}
+      <Box
+        backgroundImage="url('/assets/header.jpg')"
+        backgroundSize="cover"
+        backgroundPosition="top left"
+        bgRepeat="no-repeat"
+        pt="6rem"
+        pb="3rem"
+        mb={"3rem"}
+        px={"0.75rem"}
+        mx={"auto"}
+        width={"100%"}
+      >
+        <Container
+          className="header_container"
+          maxW={{
+            base: "540px",
+            md: "720px",
+            lg: "960px",
+            xl: "1140px",
+            "2xl": "1345px",
+          }}
+          px={"1.5rem"}
+          width={"100%"}
+          mx={"auto"}
         >
-          <Container
-            maxW={{
-              base: "540px",
-              md: "720px",
-              lg: "960px",
-              xl: "1140px",
-              "2xl": "1320px",
-            }}
-            px={6}
-          >
-            <AnimatedText>
-              <Heading
-                as="h1"
-                fontSize={{ base: "4xl", lg: "6xl", xl: "6xl" }}
-                mt="4"
-                mb="6"
-                fontWeight="700"
-                line-height={1.2}
-                color="#011A41"
-              >
-                {heading}
-              </Heading>
-            </AnimatedText>
-            <Box display={"flex"} flexWrap={"wrap"}>
-              <Breadcrumb
-                mb={0}
-                display={"flex"}
-                flexWrap={"wrap"}
-                flexDirection={"column"}
-              >
+          <AnimatedText>
+            <Heading
+              as="h1"
+              mt={0}
+              mb={"0.5rem"}
+              fontWeight="700"
+              line-height={1.1}
+              color="#011A41"
+            >
+              {heading}
+            </Heading>
+          </AnimatedText>
+          <AnimatedText>
+            <Breadcrumb mb={"1.5rem"}>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  style={{ fontWeight: "500", color: "#01acf1" }}
+                  _hover={{ textDecoration: "none", color: "#DFE4FD" }}
+                  href="/"
+                >
+                  Home
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              {pathname === "/contact" || (
                 <BreadcrumbItem>
                   <BreadcrumbLink
-                    style={{ fontWeight: "500", color: "#01acf1" }}
+                    style={{ fontWeight: "500" }}
                     _hover={{ textDecoration: "none" }}
-                    href="/"
+                    onClick={handleBack}
                   >
-                    Home
+                    Services
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                {pathname === "/contact" || (
-                  <BreadcrumbItem>
-                    <BreadcrumbLink
-                      style={{ fontWeight: "500" }}
-                      _hover={{ textDecoration: "none" }}
-                      onClick={handleBack}
-                    >
-                      Services
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                )}
-                <BreadcrumbItem>
-                  <BreadcrumbLink
-                    style={{
-                      fontWeight: "500",
-                      color: "#6c757d",
-                      textWrap: "nowrap",
-                    }}
-                    aria-current="page"
-                  >
-                    {heading}
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-              </Breadcrumb>
-            </Box>
-          </Container>
-        </Box>
-      )}
+              )}
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  style={{
+                    fontWeight: "500",
+                    color: "#6c757d",
+                  }}
+                  isCurrentPage
+                  aria-current="page"
+                >
+                  {heading}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
+          </AnimatedText>
+        </Container>
+      </Box>
     </>
   );
 };

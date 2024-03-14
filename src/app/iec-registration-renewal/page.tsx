@@ -14,16 +14,7 @@ import { Box, Container } from "@chakra-ui/react";
 const IecRegistrationRenewal = () => {
   return (
     <>
-      <Container
-        maxW={{
-          base: "540px",
-          md: "720px",
-          lg: "960px",
-          xl: "1140px",
-          "2xl": "1320px",
-        }}
-        px={6}
-      >
+      <Container>
         <Box my={{ base: 16, lg: 24 }}>
           <ContentWithPriceCard contents={contentWithPriceCardContents} />
         </Box>

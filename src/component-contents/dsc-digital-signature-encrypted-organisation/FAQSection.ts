@@ -3,8 +3,6 @@ export const FAQs = [
     id: 1,
     title:
       "What are the different types of Digital Signature for DGFTs and their uses?",
-    active: "tab-pane-1",
-    img: "",
     paragraph: ["There are three types of DSCs"],
     Fs: [
       "Class I type is used only for securing email communication",
@@ -18,8 +16,6 @@ export const FAQs = [
     id: 2,
     title:
       "I purchased my DSC in 2015. What will be the validity of theDigital Signature for DGFT?",
-    active: "tab-pane-2",
-    img: "",
     paragraph: [
       "Digital Signatures usually come with a validity of one or two years.",
     ],
@@ -32,8 +28,6 @@ export const FAQs = [
     id: 3,
     title:
       "My DSC expired last year. Will my DSC be renewed under the same plan?",
-    active: "tab-pane-3",
-    img: "",
     paragraph: [
       "Renewal of DSC is not part of the plan. For that, you will need to buy the DSC plan at the applicable rates.",
     ],

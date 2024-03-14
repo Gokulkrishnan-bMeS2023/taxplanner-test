@@ -267,10 +267,14 @@ export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
             py={"1.7rem"}
             px={"3rem"}
             fontWeight={"500"}
+            colorScheme="blue"
             bgColor={"#2d50d6"}
             color={"#DFE4FD"}
-            style={{transition:".5s"}}
-            _hover={{ bgColor: "#2d50d6", color: "#DFE4FD", }}
+            style={{ transition: ".5s" }}
+            _hover={{
+              bgColor: "#2d50d6",
+              color: "#DFE4FD",
+            }}
           >
             Send Message
           </Button>

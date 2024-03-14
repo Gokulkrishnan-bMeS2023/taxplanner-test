@@ -4,7 +4,7 @@ export const contentWithPriceCardContents = [
     title: "ROC filing",
     descriptions: ["ROC filing Package (Company / LLP) made easy."],
     heading: "ROC filing",
-    price: 999,
+    price: "999",
     content: "*filing fee extra",
     buttonLink: "",
     buttonname: "Buy Now",

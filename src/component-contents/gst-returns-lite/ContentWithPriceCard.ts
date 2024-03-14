@@ -5,7 +5,7 @@ export const PriceDetails = [
     descriptions: [
       "This is one platform to generate all your GST returns. With a centralized view of the platform, you can manage unlimited B2C invoices, and up to 10 B2B invoices. Generate GSTR 1 and 3B with a click of a button.",
     ],
-    price: 999,
+    price: "999",
     heading: "GST Returns (Lite)",
     buttonLink: "",
     buttonname: "Buy Now",

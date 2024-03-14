@@ -1,41 +1,29 @@
-"use client";
-import { Box, Container, Center, Text, Link } from "@chakra-ui/react";
+import { Box, Center, Flex } from "@chakra-ui/react";
+import Link from "next/link";
 
-// CopyrightSection
-
-const Footer = () => {
+export default function Footer() {
   return (
-    <Box as="div" bg={"#000B1C"} color={"#DFE4FD"} py={"1.5rem"}>
-      <Container>
-        <Center>
-          <Box as="div" className="row">
-            <Box
-              as="div"
-              textAlign={{ base: "center", md: "start" }}
-              mb={{ base: 3, md: 0 }}
-            >
-              <Center>
-                <Text textAlign={"center"}>
-                  Copyright © Tax Planner <br />
-                  Powered by{" "}
-                  <Link
-                    as="b"
-                    target="_blank"
-                    _hover={{ color: "#01acf1" }}
-                    borderBottom={"1px solid #DFE4FD"}
-                    href="https://www.bmesolutions.in/"
-                  >
-                    BM e-Solutions
-                  </Link>
-                  .
-                </Text>
-              </Center>
+    <>
+      <Box p={7} color={"#DFE4FD"} bgColor={"#000B1C"}>
+        <Flex justify={"center"} align={"center"}>
+          <Box>
+            <Center>Copyright &#169; Tax Planner</Center>
+            <Box mt={1}>
+              Powered by&nbsp;
+              <Box
+                as={Link}
+                href={"https://www.bmesolutions.in/"}
+                target="_blank"
+                borderBottom={"1px solid #DFE4FD"}
+                fontWeight={"bold"}
+                _hover={{ color: "#01acf1" }}
+              >
+                BM e-Solutions
+              </Box>
             </Box>
           </Box>
-        </Center>
-      </Container>
-    </Box>
+        </Flex>
+      </Box>
+    </>
   );
-};
-
-export default Footer;
+}

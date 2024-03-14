@@ -1,6 +1,18 @@
-"use client"
+"use client";
 
-import { Box, Button, Center, Flex, FormLabel, Heading, Input, Text, FormControl, FormErrorMessage, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  FormLabel,
+  Heading,
+  Input,
+  Text,
+  FormControl,
+  FormErrorMessage,
+  useToast,
+} from "@chakra-ui/react";
 import { Formik, Form, Field, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
@@ -16,7 +28,9 @@ interface InputValueTypes {
 
 const queriesFormValidationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
   mobile: Yup.string().required("Mobile is required").length(10),
 });
 
@@ -47,9 +61,16 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
   };
   return (
     <>
-      <Box bgColor={"white"} border={"1px solid #DFE4FD"} borderRadius={"8px"}>
+      <Box
+        bgColor={"white"}
+        border={"1px solid #DFE4FD"}
+        borderRadius={"8px"}
+        style={{
+          boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        }}
+      >
         <Box p={{ base: 6, md: 12 }}>
-          {getInTouchLabel &&
+          {getInTouchLabel && (
             <Center>
               <Box
                 border={"1px solid #DFE4FD"}
@@ -62,17 +83,23 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                 Get In Touch
               </Box>
             </Center>
-          }
+          )}
           <Center>
             <Box mb={12} textAlign={"center"}>
-              <Heading fontWeight={"600"}>Have queries?</Heading>
-              <Heading fontWeight={"600"}>Talk to an expert</Heading>
+              <Heading fontWeight={"600"}>
+                Have queries? Talk to an expert
+              </Heading>
+              {/* <Heading fontWeight={"600"}>Talk to an expert</Heading> */}
             </Box>
           </Center>
           <Formik
             initialValues={{ name: "", email: "", mobile: "" }}
             validationSchema={queriesFormValidationSchema}
-            onSubmit={(values, actions) => handleSubmitNowButton(values, actions, { resetForm: actions.resetForm })}
+            onSubmit={(values, actions) =>
+              handleSubmitNowButton(values, actions, {
+                resetForm: actions.resetForm,
+              })
+            }
           >
             {(props) => (
               <Form>
@@ -235,6 +262,7 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                   variant={"outline"}
                   border={"2px solid #2d50d6"}
                   isLoading={props.isSubmitting}
+                  colorScheme="blue"
                   py={7}
                   w={"100%"}
                   bgColor={"#2d50d6"}
