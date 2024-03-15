@@ -11,29 +11,31 @@ import {
 } from "@chakra-ui/react";
 import { FaBars, FaAngleDown } from "react-icons/fa";
 import Link from "next/link";
+
 interface SubMenuItem {
   label: string;
   href: string;
   id: number;
 }
+
 interface MenuItem {
   label: string;
   href: string;
   subItems?: SubMenuItem[];
 }
+
 interface SubMenuItem {
   label: string;
   href: string;
-  subItems1?: MenuItem[]; // Corrected type definition
+  subItems1?: MenuItem[];
 }
+
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
-  const [navid, setNavid] = useState(0);
-
-  console.log(navid);
+  const [selectedSubMenu, setSelectedSubMenu] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
@@ -47,26 +49,37 @@ const Navbar: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   const handleToggleServiceMenu = () =>
     setIsServiceMenuOpen(!isServiceMenuOpen);
+
   const handleServiceLinkClick = () => {
     if (isMobileView) {
       setIsMobileMenuOpen(false); // Close mobile menu
       setIsServiceMenuOpen(!isServiceMenuOpen); // Toggle service submenu
     }
   };
+
   const handleServicesMouseEnter = () => {
     setIsServiceMenuOpen(true);
   };
+
   const handleServicesMouseLeave = () => {
     setIsServiceMenuOpen(false);
   };
+
   const handleServicesClick = () => {
     if (isMobileView) {
       setIsServiceMenuOpen(!isServiceMenuOpen); // Toggle service submenu
     }
   };
+
+  const handleSubMenuItemClick = (id: number) => {
+    setSelectedSubMenu(id === selectedSubMenu ? null : id);
+  };
+
   const menuItems: MenuItem[] = [
     {
       label: "Home",
@@ -110,23 +123,23 @@ const Navbar: React.FC = () => {
           subItems1: [
             {
               label: "Registration",
-              href: "/gst-registration",
+              href: "/registration",
             },
             {
               label: "Amendments",
-              href: "/gst/amendments",
+              href: "/amendments",
             },
             {
               label: "GST Returns",
-              href: "/gst/gst-return-services",
+              href: "/gst-return-services",
             },
             {
               label: "LUT",
-              href: "/gst/lut",
+              href: "/lut",
             },
             {
               label: "Refunds",
-              href: "/gst/gst-refund",
+              href: "/gst-refund",
             },
           ],
         },
@@ -137,15 +150,15 @@ const Navbar: React.FC = () => {
           subItems1: [
             {
               label: "Company",
-              href: "/incorporation/company",
+              href: "/incorporation-company",
             },
             {
               label: "LLP",
-              href: "/incorporation/llp",
+              href: "/incorporation-llp",
             },
             {
               label: "Partnership",
-              href: "/incorporation/partnership",
+              href: "/incorporation-partnership",
             },
           ],
         },
@@ -156,23 +169,23 @@ const Navbar: React.FC = () => {
           subItems1: [
             {
               label: "MSME Registration",
-              href: "/other-services/msme-registration",
+              href: "/msme-registration",
             },
             {
               label: "IEC Registration / Renewal",
-              href: "/other-services/iec-registration-renewal",
+              href: "/iec-registration-renewal",
             },
             {
               label: "DSC",
-              href: "/other-services/dsc-services",
+              href: "/dsc-services",
             },
             {
               label: "ROC Filling",
-              href: "/other-services/roc-filling",
+              href: "/roc-filling",
             },
             {
               label: "SFT",
-              href: "/other-services/sft",
+              href: "/sft",
             },
           ],
         },
@@ -183,6 +196,7 @@ const Navbar: React.FC = () => {
       href: "/contact",
     },
   ];
+
   return (
     <Box
       bg={isMobileView ? "white" : isScrolled ? "white" : "transparent"}
@@ -192,8 +206,9 @@ const Navbar: React.FC = () => {
       zIndex="999"
       boxShadow={isScrolled ? "sm" : "none"}
     >
-      <Container maxW="container.xl">
+      <Container maxW="container.xxl" px={{ base: 2, lg: 12 }}>
         <Flex justify="space-between" alignItems="center">
+          {/* Logo */}
           <Box>
             <Link href="/">
               <Flex align="center">
@@ -216,6 +231,8 @@ const Navbar: React.FC = () => {
               </Flex>
             </Link>
           </Box>
+
+          {/* Mobile menu button */}
           <IconButton
             borderColor="#DFE4FD"
             padding="1rem"
@@ -224,11 +241,19 @@ const Navbar: React.FC = () => {
             aria-label="Open Menu"
             display={{ base: "block", md: "none" }}
             onClick={handleToggleMobileMenu}
-            icon={<FaBars size={20} color="#555555" />}
+            icon={
+              <FaBars
+                size={24}
+                color="#0000008C"
+                style={{ marginTop: "-8px" }}
+              />
+            }
             bg="white"
             _hover={{ bg: "transparent" }}
             _active={{ bg: "transparent" }}
           />
+
+          {/* Mobile menu */}
           <Box
             display={{ base: isMobileMenuOpen ? "block" : "none", md: "none" }}
             position="absolute"
@@ -257,16 +282,17 @@ const Navbar: React.FC = () => {
                           {menuItem.label}
                           {menuItem.label === "Services" && (
                             <FaAngleDown
-                              size={16}
+                              size={24}
                               color="#555555"
-                              style={{ marginLeft: "2" }}
+                              style={{ marginLeft: "3" }}
                             />
                           )}
                         </Link>
                         {isServiceMenuOpen && menuItem.label === "Services" && (
                           <Box
                             mt="2"
-                            minWidth="200px"
+                            width={"100%"}
+                            minWidth={{ base: "200px", sm: "300px" }}
                             py="4"
                             bg="white"
                             borderColor="#DFE4FD"
@@ -276,97 +302,59 @@ const Navbar: React.FC = () => {
                             {menuItem.subItems.map((subItem, subIndex) => (
                               <Box
                                 key={subIndex}
-                                // ml="2"
                                 mt="1"
-                                py="2"
                                 px={"2"}
                                 style={{
                                   display: "flex",
                                   alignItems: "center",
                                 }}
                                 width={"100%"}
-                                onClick={() => setNavid(subItem.id)}
+                                onClick={() =>
+                                  handleSubMenuItemClick(subItem.id)
+                                }
                                 position={"relative"}
                                 flexDirection={"column"}
                               >
-                                <Flex width={"100%"} _hover={{ bg: "#F0F0F0" }}>
+                                <Flex
+                                  width={"100%"}
+                                  padding="5"
+                                  _hover={{ bg: "#F0F0F0" }}
+                                >
                                   <Link href={subItem.href}>
                                     {subItem.label}
                                   </Link>
                                   <FaAngleDown
-                                    size={16}
+                                    size={24}
                                     color="#555555"
-                                    style={{ marginLeft: "4" }}
-                                    
+                                    style={{ position: "absolute", right: 20 }}
                                   />
                                 </Flex>
-                                <Box>
-                                  {menuItem.subItems?.map((items, index) => {
-                                    if (items.id === navid) {
-                                      return (
-                                        <Box key={index}>
-                                          {items.subItems1?.map((sub) => (
-                                            <Box
-                                              display={"flex"}
-                                              flexDirection={"column"}
-                                              key={index}
-                                            >
-                                              <Link href={sub.href}>
-                                                {sub.label}
-                                              </Link>
-                                            </Box>
-                                          ))}
-                                        </Box>
-                                      );
-                                    }
-                                  })}
-                                </Box>
-                                {/* {subItem.subItems1?.map((sub, index) => (
+                                {selectedSubMenu === subItem.id && (
                                   <Box
-                                    display={"flex"}
-                                    flexDirection={"column"}
-                                    key={index}
-                                  >
-                                    <Link href={sub.href}>{sub.label}</Link>
-                                  </Box>
-                                ))} */}
-                              </Box>
-                            ))}
-
-                            {/* {menuItem.subItems?.map((item, subIndex) => {
-                              if (item.id === navid) {
-                                return (
-                                  <Box
-                                    key={subIndex}
-                                    mt="1"
-                                    p={2}
-                                    bg={"#fff"}
-                                    width={"200px"}
-                                    display="flex"
-                                    // position={"absolute"}
-                                    // left={"240px"}
-                                    // top={navid}
-                                    flexDirection={"column"}
+                                    mt="4"
+                                    padding={2}
+                                    minWidth="300px"
+                                    borderColor="#DFE4FD"
+                                    borderWidth="1px"
                                     rounded={"8px"}
-                                    border={"1px solid #F0F0F0"}
-                                    onMouseLeave={() => setNavid(0)}
                                   >
-                                    {item.subItems1?.map((sub, index) => (
-                                      <Flex
+                                    {subItem.subItems1?.map((item, index) => (
+                                      <Box
+                                        p="3"
                                         key={index}
-                                        p={2}
-                                        mt={"1"}
+                                        display={"flex"}
+                                        flexDirection={"column"}
                                         _hover={{ bg: "#F0F0F0" }}
-                                        width={"100%"}
                                       >
-                                        <Link href={sub.href}>{sub.label}</Link>
-                                      </Flex>
+                                        <Link href={item.href}>
+                                          {item.label}
+                                        </Link>
+                                      </Box>
                                     ))}
                                   </Box>
-                                );
-                              }
-                              return null;
-                            })} */}
+                                )}
+                              </Box>
+                            ))}
                           </Box>
                         )}
                       </Box>
@@ -382,6 +370,7 @@ const Navbar: React.FC = () => {
                   py="3"
                   px="5"
                   bg="#2D50D6"
+                  _hover={{ bg: "#2D50D6" }}
                 >
                   Login
                 </Button>
@@ -389,7 +378,7 @@ const Navbar: React.FC = () => {
             </Box>
           </Box>
 
-          {/* desktop */}
+          {/* Desktop menu */}
           <Box
             display={{ base: "none", md: "block" }}
             fontFamily="'Open Sans', sans-serif"
@@ -399,7 +388,7 @@ const Navbar: React.FC = () => {
                 <Box
                   key={index}
                   ml="4"
-                  paddingY="2"
+                  padding="2"
                   position="relative"
                   onMouseEnter={
                     menuItem.label === "Services"
@@ -422,7 +411,7 @@ const Navbar: React.FC = () => {
                       <FaAngleDown
                         size={16}
                         color="#555555"
-                        style={{ marginLeft: "3" }}
+                        style={{ marginLeft: "3", marginTop: "4px" }}
                       />
                     )}
                   </Link>
@@ -445,11 +434,14 @@ const Navbar: React.FC = () => {
                           <Box
                             key={subIndex}
                             mt="1"
-                            p={2}
+                            py={3}
+                            px="5"
                             _hover={{ bg: "#F0F0F0" }}
                             display="flex"
                             alignItems="center"
-                            onMouseEnter={() => setNavid(subItem.id)}
+                            onMouseEnter={() =>
+                              handleSubMenuItemClick(subItem.id)
+                            }
                             position={"relative"}
                           >
                             <Link href={subItem.href}>{subItem.label}</Link>
@@ -457,31 +449,26 @@ const Navbar: React.FC = () => {
                               <FaAngleDown
                                 size={16}
                                 color="#555555"
-                                style={{ marginLeft: "4" }}
+                                style={{ marginLeft: "5", marginTop: "4px" }}
                               />
                             </Box>
-                          </Box>
-                        ))}
-                        {menuItem.subItems?.map((item, subIndex) => {
-                          if (item.id === navid) {
-                            return (
+                            {selectedSubMenu === subItem.id && (
                               <Box
-                                key={subIndex}
                                 mt="1"
                                 p={2}
                                 bg={"#fff"}
-                                width={"200px"}
+                                width={"170px"}
                                 display="flex"
                                 position={"absolute"}
                                 right={"100%"}
-                                top={navid}
+                                top={"0"}
                                 flexDirection={"column"}
                                 rounded={"8px"}
                                 border={"1px solid #F0F0F0"}
-                                onMouseLeave={() => setNavid(0)}
+                                onMouseLeave={() => setSelectedSubMenu(null)}
                                 transition={"0.5s"}
                               >
-                                {item.subItems1?.map((sub, index) => (
+                                {subItem.subItems1?.map((item, index) => (
                                   <Flex
                                     key={index}
                                     p={2}
@@ -489,14 +476,13 @@ const Navbar: React.FC = () => {
                                     _hover={{ bg: "#F0F0F0" }}
                                     width={"100%"}
                                   >
-                                    <Link href={sub.href}>{sub.label}</Link>
+                                    <Link href={item.href}>{item.label}</Link>
                                   </Flex>
                                 ))}
                               </Box>
-                            );
-                          }
-                          return null;
-                        })}
+                            )}
+                          </Box>
+                        ))}
                       </Box>
                     )}
                 </Box>
@@ -510,6 +496,7 @@ const Navbar: React.FC = () => {
                 py="5"
                 px="5"
                 bg="#2D50D6"
+                _hover={{ bg: "#2D50D6" }}
               >
                 Login
               </Button>
@@ -520,4 +507,5 @@ const Navbar: React.FC = () => {
     </Box>
   );
 };
+
 export default Navbar;

@@ -6,10 +6,12 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function IncomeTaxLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function IncomeTaxLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-    <Header heading="Income Tax"/>
+      <Header heading="Income Tax" />
       {children}
     </>
   );

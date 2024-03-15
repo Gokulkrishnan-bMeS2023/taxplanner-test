@@ -1,3 +1,5 @@
+"use client";
+
 import ServicesSubContainer from "@/components/ServicesSubContainer";
 import {
   other_ServicesCard1,
@@ -7,6 +9,7 @@ import {
   other_ServicesCard5,
 } from "@/component-contents/otherservices";
 import { Container, Heading, Flex } from "@chakra-ui/react";
+import Animation from "@/components/Animation/Scroll-Animation";
 
 const OtherServices = () => {
   return (
@@ -18,9 +21,11 @@ const OtherServices = () => {
         mt={20}
       >
         <Flex grow={1}>
-          <Heading as={"h2"} mb={4}>
-            Other Services
-          </Heading>
+          <Animation>
+            <Heading as={"h2"} mb={4}>
+              Other Services
+            </Heading>
+          </Animation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction={{ base: "column", lg: "column" }} gap={6} grow={1}>

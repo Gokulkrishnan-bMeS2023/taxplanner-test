@@ -264,6 +264,7 @@ export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
           <Button
             type="submit"
             isLoading={props.isSubmitting}
+            loadingText="Submitting"
             py={"1.7rem"}
             px={"3rem"}
             fontWeight={"500"}

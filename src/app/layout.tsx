@@ -1,5 +1,6 @@
 import { Providers } from "./providers";
 import type { Metadata } from "next";
+// import ErrorBoundary from "./ErrorBoundary";
 import dynamic from "next/dynamic";
 import "./globals.css";
 
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <main>{children}</main>
+          {/* <ErrorBoundary> */}
+            <main>{children}</main>
+          {/* </ErrorBoundary> */}
           <Footer />
           <ScrollToTopButton />
         </Providers>

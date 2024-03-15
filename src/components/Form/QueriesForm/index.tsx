@@ -262,6 +262,7 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                   variant={"outline"}
                   border={"2px solid #2d50d6"}
                   isLoading={props.isSubmitting}
+                  loadingText="Submitting"
                   colorScheme="blue"
                   py={7}
                   w={"100%"}

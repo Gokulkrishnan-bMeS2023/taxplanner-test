@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaCheck } from "react-icons/fa";
 import Animation from "../Animation/Scroll-Animation";
+import ScrollAnimation from "../Animation/Scroll-Animation2";
 
 interface FeatureProps {
   title: string;
@@ -48,17 +49,17 @@ const AboutThisPlan: React.FC<PlanProps> = ({
           ))}
         </Animation>
       </Flex>
-      <Animation>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} spacingY={8}>
-          {planContents?.map((feature, index) => (
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} spacingY={8}>
+        {planContents?.map((feature, index) => (
+          <ScrollAnimation key={index}>
             <Box
-              key={index}
               pr={5}
               pl={6}
               pb={10}
               pt={8}
               borderRadius={8}
               borderColor="#DFF4FD"
+              height={"100%"}
               borderWidth="1px"
               _hover={{
                 backgroundColor: "#01ACF1",
@@ -148,9 +149,9 @@ const AboutThisPlan: React.FC<PlanProps> = ({
               ))}
               <Box>{feature.description2}</Box>
             </Box>
-          ))}
-        </SimpleGrid>
-      </Animation>
+          </ScrollAnimation>
+        ))}
+      </SimpleGrid>
     </>
   );
 };

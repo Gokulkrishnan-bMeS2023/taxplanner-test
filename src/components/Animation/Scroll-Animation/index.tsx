@@ -17,19 +17,16 @@ export default function Animation({ children }: AnimationProps) {
   };
 
   return (
-    <>
-      <div ref={containerRef}>
-        <div ref={skillRef}>
-          <motion.div
-            initial="hidden"
-            animate={isSkillRefInView ? "visible" : {}}
-            variants={containerVariants}
-          >
-            {children}
-          </motion.div>
-        </div>
-      </div>
-    </>
+    <motion.div ref={containerRef}>
+      <motion.div ref={skillRef}>
+        <motion.div
+          initial="hidden"
+          animate={isSkillRefInView ? "visible" : {}}
+          variants={containerVariants}
+        >
+          {children}
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
-

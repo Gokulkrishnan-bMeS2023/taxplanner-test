@@ -12,16 +12,7 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <Center background={"#f9f9f9"} height={"100vh"} position={"relative"}>
-        <Box
-          bg={"#fff"}
-          height={"97px"}
-          content=""
-          width={"100%"}
-          position={"fixed"}
-          left={0}
-          top={0}
-        ></Box>
+      <Center background={"#f9f9f9"} height={"100vh"}>
         <Flex direction={"column"}>
           <Heading as={"h1"} textAlign={"center"} color="#01acf1">
             404
@@ -29,7 +20,11 @@ export default function NotFound() {
           <Heading as={"h6"} my={6} textAlign={"center"}>
             Page Not Found
           </Heading>
-          <Text color={"gray.500"} mb={6}>
+          <Text
+            color={"gray.500"}
+            mb={6}
+            fontSize={{ base: "small", md: "medium", lg: "large" }}
+          >
             The page you&apos;re looking for does not seem to exist
           </Text>
           <Button
@@ -50,6 +45,8 @@ export default function NotFound() {
               border: "1px solid #01acf1",
               color: "#01acf1",
               bg: "#e5f6fd",
+              transform: "translateY(-2px)",
+              boxShadow: "lg",
             }}
           >
             Back to home

@@ -34,7 +34,7 @@ const Header = ({ heading }: headerProps) => {
         pt="6rem"
         pb="3rem"
         mb={"3rem"}
-        px={"0.75rem"}
+        px={{ base: "", md: "0.75rem", lg: "0.75rem" }}
         mx={"auto"}
         width={"100%"}
       >

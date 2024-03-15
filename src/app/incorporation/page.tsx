@@ -1,3 +1,5 @@
+"use client";
+
 import ServicesSubContainer from "@/components/ServicesSubContainer";
 import {
   incorporation_Card1,
@@ -5,6 +7,7 @@ import {
   incorporation_Card3,
 } from "@/component-contents/incorporation";
 import { Container, Heading, Flex } from "@chakra-ui/react";
+import Animation from "@/components/Animation/Scroll-Animation";
 
 const Incorporation = () => {
   return (
@@ -16,9 +19,11 @@ const Incorporation = () => {
         mt={20}
       >
         <Flex grow={1}>
-          <Heading as={"h2"} mb={4}>
-            Incorporation
-          </Heading>
+          <Animation>
+            <Heading as={"h2"} mb={4}>
+              Incorporation
+            </Heading>
+          </Animation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction={{ base: "column", lg: "column" }} gap={6} grow={1}>

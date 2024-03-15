@@ -1,25 +1,20 @@
 "use client";
-import {
-  Image,
-  Heading,
-  Text,
-  Link,
-  Center,
-  Card,
-  Box,
-} from "@chakra-ui/react";
+import { Heading, Text, Link, Center, Card, Box } from "@chakra-ui/react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import "./services.css";
 import { Fragment } from "react";
 import Animation from "../Animation/Scroll-Animation";
+import dynamic from "next/dynamic";
+const Images = dynamic(() => import("../Images"));
 
 interface ServiceProps {
   title: string;
   startingFrom: string;
   description: string;
-  knowMoreLink: any;
+  knowMoreLink: string;
   imgSrc?: any;
-  buyNowLink: any;
+  content?: string;
+  buyNowLink: string;
 }
 interface ServicesCardProps {
   cartcontents: ServiceProps[];
@@ -41,16 +36,18 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
           h5: { color: "white" },
         }}
         className="Wrapper"
+        style={{
+          boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        }}
       >
         {cartcontents?.map((content, index) => (
           <Fragment key={index}>
             <Box className="StyledBox1">
-              <Image
+              <Images
                 src={content.imgSrc}
                 alt={"img"}
-                height={
-                  content.title === "MSME REGISTRATION" ? "120px" : "124px"
-                }
+                width={120}
+                height={120}
               />
               <Heading
                 as={"h5"}
@@ -69,6 +66,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
               <Heading as="h5" mb={3}>
                 Starting From : ₹ {content.startingFrom}
               </Heading>
+              <Text mb={3}>{content?.content}</Text>
               <Text mb={3}>{content.description}</Text>
               <Link
                 mb={2}

@@ -93,50 +93,51 @@ const FAQSection: FC<ServicesProps> = ({
           <Box width={{ base: "100%", lg: "32%" }}>
             <Flex flexDir="column" alignItems={"stretch"}>
               {servicesDatas?.map((data: ServicesDatas) => (
-                <Button
-                  key={data.id}
-                  w="100%"
-                  display="flex"
-                  justifyContent="flex-start"
-                  p={6}
-                  mb={4}
-                  borderWidth="1px"
-                  borderRadius="md"
-                  borderColor="#DFE4FD"
-                  _hover={{ color: "#fff" }}
-                  _active={{ color: "#011A41" }}
-                  bgColor={activeTab === data.id ? "#01ACF1" : "white"}
-                  style={{
-                    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-                  }}
-                  transition={"1s"}
-                  onClick={() => {
-                    handleTabChange(data.id);
-                    isTrue
-                      ? handleScroll("center", "FAQSlider")
-                      : handleScroll("start", "FAQSlider1");
-                  }}
-                  height="auto"
-                >
-                  <Flex alignItems={"baseline"}>
-                    <Box mr={5} me={3}>
-                      <FaBars
-                        color={activeTab === data.id ? "white" : "#01ACF1"}
-                      />
-                    </Box>
-                    <Heading
-                      as={"h5"}
-                      lineHeight={1.9}
-                      textAlign={"left"}
-                      whiteSpace="break-spaces"
-                      style={{
-                        color: activeTab === data.id ? "white" : "#011A41",
-                      }}
-                    >
-                      {data?.title}
-                    </Heading>
-                  </Flex>
-                </Button>
+                <Animation key={data.id}>
+                  <Button
+                    w="100%"
+                    display="flex"
+                    justifyContent="flex-start"
+                    p={6}
+                    mb={4}
+                    borderWidth="1px"
+                    borderRadius="md"
+                    borderColor="#DFE4FD"
+                    _hover={{ color: "#fff" }}
+                    _active={{ color: "#011A41" }}
+                    bgColor={activeTab === data.id ? "#01ACF1" : "white"}
+                    style={{
+                      boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                    }}
+                    transition={"1s"}
+                    onClick={() => {
+                      handleTabChange(data.id);
+                      isTrue
+                        ? handleScroll("center", "FAQSlider")
+                        : handleScroll("start", "FAQSlider1");
+                    }}
+                    height="auto"
+                  >
+                    <Flex alignItems={"baseline"}>
+                      <Box mr={5} me={3}>
+                        <FaBars
+                          color={activeTab === data.id ? "white" : "#01ACF1"}
+                        />
+                      </Box>
+                      <Heading
+                        as={"h5"}
+                        lineHeight={1.9}
+                        textAlign={"left"}
+                        whiteSpace="break-spaces"
+                        style={{
+                          color: activeTab === data.id ? "white" : "#011A41",
+                        }}
+                      >
+                        {data?.title}
+                      </Heading>
+                    </Flex>
+                  </Button>
+                </Animation>
               ))}
             </Flex>
           </Box>

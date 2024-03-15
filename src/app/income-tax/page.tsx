@@ -1,3 +1,5 @@
+"use client"
+
 import ServicesSubContainer from "@/components/ServicesSubContainer";
 import {
   income_taxCard1,
@@ -7,6 +9,7 @@ import {
   income_taxCard5,
 } from "@/component-contents/incometax";
 import { Container, Heading, Flex } from "@chakra-ui/react";
+import Animation from "@/components/Animation/Scroll-Animation";
 
 const Incometax = () => {
   return (
@@ -20,9 +23,11 @@ const Incometax = () => {
         mt={20}
       >
         <Flex grow={1}>
-          <Heading as={"h2"} mb={4}>
-            Income Tax
-          </Heading>
+          <Animation>
+            <Heading as={"h2"} mb={4}>
+              Income Tax
+            </Heading>
+          </Animation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction={{ base: "column", lg: "column" }} gap={6} grow={1}>
