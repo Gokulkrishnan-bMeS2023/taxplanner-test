@@ -8,7 +8,8 @@ export const DigitalSignatureForIndividualSigning = [
       "Purchase of DSC USB E-token",
     ],
     amount: "1,200",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSC",
     card2Content: [
       "A lot of documentation today is in the electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation etc.",
     ],
@@ -26,7 +27,8 @@ export const DigitalSignatureForEncryptedIndividual = [
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-encrypted-individual",
     amount: "3,000",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCIndividual",
     card2Content: [
       "A lot of documentation today is in the electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation etc.",
     ],
@@ -44,7 +46,8 @@ export const DigitalSignatureForEncryptedOrganisation = [
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-encrypted-organisation",
     amount: "3,000",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCOrganisation",
     card2Content: [
       "A lot of documentation today is in the electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation etc.",
     ],
@@ -62,7 +65,8 @@ export const DigitalSignatureForDGFTOf1IndividualAnd1Organisation = [
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-dgft",
     amount: "2,500",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCDGFT",
     card2Content: [
       "A lot of documentation today is in electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation, etc are validated using DSC.",
     ],
@@ -80,7 +84,8 @@ export const DigitalSignatureEncryptedOrganisation = [
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature",
     amount: "3,000",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCICEGATE",
     card2Content: [
       "A lot of documentation today is in the electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation etc.",
     ],
@@ -98,7 +103,8 @@ export const DigitalSignatureForForeignCitizensAndNRIClass3 = [
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-nri",
     amount: "3,000",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCNRI",
     card2Content: [
       "A lot of documentation today is in the electronic format and Digital Signatures help to establish the identity of the sender. Online transactions such as Income Tax E-Filing, Company or LLP Incorporation etc.",
     ],

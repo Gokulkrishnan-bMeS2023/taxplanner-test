@@ -43,7 +43,7 @@ export const income_taxCard3 = [
 export const income_taxCard4 = [
   {
     id: 4,
-    imgSrc: "/assets/income-tax/bill.png",
+    imgSrc: "/assets/income-tax/client-company.png",
     title: "BUSINESS OR PROFESSION",
     startingFrom: "3,999",
     description:

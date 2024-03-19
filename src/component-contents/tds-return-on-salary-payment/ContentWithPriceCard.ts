@@ -6,7 +6,8 @@ export const contentWithPriceCardContents = [
     heading: "TDS Return on Salary Payment",
     price: "2,999",
     content: "",
-    buttonLink: "",
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     buttonname: "Buy Now",
     showCheckIcon: false,
   },

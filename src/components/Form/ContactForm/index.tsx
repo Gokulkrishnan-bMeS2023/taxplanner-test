@@ -12,10 +12,6 @@ import {
 import { Formik, Form, Field, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-interface QueriesFormProps {
-  getInTouchLabel: boolean;
-}
-
 interface InputValueTypes {
   name: string;
   email: string;
@@ -32,7 +28,7 @@ const queriesFormValidationSchema = Yup.object({
   message: Yup.string().required("Message is required"),
 });
 
-export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
+export default function ContactForm() {
   const Toast = useToast();
   const showToast = () => {
     Toast({
@@ -85,6 +81,7 @@ export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
                       border={"1px solid #dfe4fd"}
                       border-radius={"8px"}
                       outline={"none"}
+                      autoComplete="name"
                       css={{
                         "&::placeholder": {
                           color: "transparent",
@@ -135,6 +132,7 @@ export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
                       border={"1px solid #dfe4fd"}
                       border-radius={"8px"}
                       outline={"none"}
+                      autoComplete="email"
                       css={{
                         "&::placeholder": {
                           color: "transparent",
@@ -276,6 +274,7 @@ export default function ContactForm({ getInTouchLabel }: QueriesFormProps) {
               bgColor: "#2d50d6",
               color: "#DFE4FD",
             }}
+            _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
           >
             Send Message
           </Button>

@@ -36,6 +36,7 @@ export default function BackToTopButton() {
       transition="opacity 0.3s"
       _hover={{ bgColor: "#2d50d6" }}
       aria-label={"back-to-top-button"}
+      _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
     />
   );
 }

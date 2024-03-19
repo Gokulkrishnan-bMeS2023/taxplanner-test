@@ -6,7 +6,7 @@ export const contentWithPriceCardContents = [
     heading: "ROC filing",
     price: "999",
     content: "*filing fee extra",
-    buttonLink: "",
+    buttonLink: "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=ROCFiling",
     buttonname: "Buy Now",
     showCheckIcon: false,
   },

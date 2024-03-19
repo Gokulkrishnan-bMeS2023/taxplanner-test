@@ -7,7 +7,8 @@ export const PriceDetails = [
     ],
     price: "999",
     heading: "GST Returns (Lite)",
-    buttonLink: "",
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     buttonname: "Buy Now",
   },
 ];

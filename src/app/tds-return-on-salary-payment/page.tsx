@@ -1,12 +1,12 @@
 import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import AboutThisPlan from "@/components/AboutThisPlan";
 import DocumentComponent from "@/components/DocumentSubmitted";
-import { contentWithPriceCardContents } from "@/component-contents/roc-filing/ContentWithPriceCard";
+import { contentWithPriceCardContents } from "@/component-contents/tds-return-on-salary-payment/ContentWithPriceCard";
 import {
   aboutPlanCardContent,
   aboutPlanContent,
-} from "@/component-contents/roc-filing/AboutThisPlan";
-import { documents } from "@/component-contents/roc-filing/DocumentSubmitted";
+} from "@/component-contents/tds-return-on-salary-payment/AboutThisPlan";
+import { documents } from "@/component-contents/tds-return-on-salary-payment/DocumentSubmitted";
 import { Box, Container } from "@chakra-ui/react";
 
 const TDSReturnonSalaryPayment = () => {

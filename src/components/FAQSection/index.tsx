@@ -233,6 +233,10 @@ const FAQSection: FC<ServicesProps> = ({
                                 color: "#DFE4FD",
                               }}
                               href={subdata?.href}
+                              _focus={{
+                                boxShadow:
+                                  "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                              }}
                             >
                               Read More
                             </Button>

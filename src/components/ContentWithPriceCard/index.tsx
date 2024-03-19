@@ -118,6 +118,9 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({ contents }) => {
                         rounded={"8px"}
                         onClick={handleButtonClick(buttonLink)}
                         href={buttonLink}
+                        _focus={{
+                          boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                        }}
                       >
                         {buttonname}
                       </Link>

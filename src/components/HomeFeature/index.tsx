@@ -56,7 +56,7 @@ const Features: React.FC = () => (
         flexDirection={{ base: 'column', lg: 'row' }} 
         gap={{ base: '10', md: '10' }}>
       <Flex flex="1">
-        <Heading marginLeft={{ base: '0', md: '10' }}>Popular Services</Heading>
+        <Heading marginLeft={{ base: '0', md: '10',lg: "0" }}>Popular Services</Heading>
       </Flex>
       <Flex  flex="1" maxW="100%">
         <Flex 
@@ -66,7 +66,7 @@ const Features: React.FC = () => (
           <Flex 
             direction={{ base: 'column', md: 'row' }} 
             alignItems="center">
-            <Flex direction="column" gap="5" alignItems="center">
+            <Flex direction="column" gap="6" alignItems="center">
               <FeatureBox 
                  icon={FaCheck} 
                  title="Salaried & House Property Income" 

@@ -1,0 +1,64 @@
+.StyledBox1 {
+  display: block !important;
+  width: 350px !important;
+}
+.StyledBox2 {
+  display: none !important;
+  width: 350px !important;
+}
+
+@media (max-width: 500px) {
+  .StyledBox1 {
+    width: 100% !important;
+  }
+  .StyledBox2 {
+    width: 100% !important;
+  }
+}
+@media (max-width: 768px) {
+  .StyledBox1 {
+    width: 100% !important;
+  }
+  .StyledBox2 {
+    width: 100% !important;
+  }
+  .Wrapper {
+    min-width: 300px !important;
+    height: 350px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .StyledBox1 {
+    width: 280px !important;
+  }
+  .StyledBox2 {
+    width: 280px !important;
+  }
+  .Wrapper {
+    height: 350px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .StyledBox1 {
+    width: 400px !important;
+  }
+  .StyledBox2 {
+    width: 400px !important;
+  }
+}
+.Wrapper {
+  width: 100% !important;
+  display: inline-block !important;
+  height: 320px;
+}
+.Wrapper:hover .StyledBox1 {
+  display: none !important;
+}
+.Wrapper:hover .StyledBox2 {
+  display: block !important;
+}
+.Wrapper:hover {
+  background-color: #01acf1 !important;
+  transition: 0.5s !important;
+  color: #fff !important;
+}

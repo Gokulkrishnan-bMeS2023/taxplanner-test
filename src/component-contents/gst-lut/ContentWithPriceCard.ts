@@ -8,7 +8,7 @@ export const ContentWithPriceCardContents = [
     heading:"GST LUT",
     price: "999",
     content: '',
-    buttonLink:"",
+    buttonLink:"https://services.taxplanner.co.in",
     buttonname: 'Buy Now',
     showCheckIcon: false
   },

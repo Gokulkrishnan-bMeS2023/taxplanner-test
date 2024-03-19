@@ -7,7 +7,8 @@ export const PriceDetails = [
     ],
     price: "3,000",
     heading: "Package Rate",
-    buttonLink: "",
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCNRI",
     buttonname: "Buy Now",
   },
 ];

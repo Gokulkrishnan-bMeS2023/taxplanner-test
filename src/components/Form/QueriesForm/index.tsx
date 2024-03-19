@@ -8,7 +8,6 @@ import {
   FormLabel,
   Heading,
   Input,
-  Text,
   FormControl,
   FormErrorMessage,
   useToast,
@@ -269,6 +268,7 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                   bgColor={"#2d50d6"}
                   color={"#DFE4FD"}
                   _hover={{ bgColor: "#2d50d6", color: "#DFE4FD" }}
+                  _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
                 >
                   Submit Now
                 </Button>

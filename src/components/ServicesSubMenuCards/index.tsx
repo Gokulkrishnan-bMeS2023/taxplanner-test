@@ -26,9 +26,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
     <Animation>
       <Card
         p={"24px"}
-        border={"1px"}
-        borderStyle={"solid"}
-        borderColor={"#DFE4FD"}
+        border={"1px solid #DFE4FD"}
         _hover={{
           bg: "#01ACF1",
           transition: "0.5s",
@@ -36,9 +34,6 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
           h5: { color: "white" },
         }}
         className="Wrapper"
-        style={{
-          boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-        }}
       >
         {cartcontents?.map((content, index) => (
           <Fragment key={index}>
@@ -76,6 +71,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
                 display={"flex"}
                 alignItems={"center"}
                 _hover={{ textDecoration: "none" }}
+                width={"fit-content"}
               >
                 Know More <BiRightArrowAlt size={24} />
               </Link>
@@ -94,6 +90,9 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
                     href={content.buyNowLink}
                     textDecoration="none"
                     _hover={{ textDecoration: "none", bg: "" }}
+                    _focus={{
+                      boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                    }}
                   >
                     Buy Now
                   </Link>

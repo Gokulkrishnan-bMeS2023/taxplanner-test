@@ -2,7 +2,7 @@ export const incorporation_Card1 = [
   {
     is: 1,
     imgSrc: "/assets/incorporation/organization.png",
-    title: "COMPANY",
+    title: "INCORPORATION COMPANY",
     startingFrom: "14,999",
     description:
       "Incorporation is the broad term to describe a business registered with a state to become a separate legal entity.",

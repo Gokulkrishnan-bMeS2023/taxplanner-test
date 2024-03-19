@@ -9,7 +9,7 @@ export const ContentWithPriceCardContents = [
       price: "999",
       content: 'For persons having income from salary, house property and other income',
       buttonname: 'Buy Now',
-      buttonLink:"",
+      buttonLink:"https://services.taxplanner.co.in",
       showCheckIcon: false
     },
   ];

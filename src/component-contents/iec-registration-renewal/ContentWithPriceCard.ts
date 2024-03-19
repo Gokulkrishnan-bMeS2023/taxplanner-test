@@ -8,7 +8,8 @@ export const contentWithPriceCardContents = [
     heading: "Incorporation Company",
     price: "2,499",
     content: "",
-    buttonLink: "",
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=IECRegistration",
     buttonname: "Buy Now",
     showCheckIcon: false,
   },

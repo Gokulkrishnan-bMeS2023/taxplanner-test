@@ -11,7 +11,8 @@ export const GSTR1 = [
     viewDetailsButton: true,
     viewDetailsLink: "/gst-filing-123-monthly",
     amount: "2,999",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
       "Want to file GST-1 returns and get your business GST-compliant? This comprehensive plan covers both! Opt now.",
     ],
@@ -25,7 +26,8 @@ export const GSTR3B = [
     viewDetailsButton: true,
     viewDetailsLink: "/gst-filing-gstr3b",
     amount: "2,999",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
       "Filing monthly GST-3B returns is now super easy. Buy this plan, all your returns filed for a quarter and get.",
     ],
@@ -43,7 +45,8 @@ export const GSTReturnsLite = [
     viewDetailsButton: true,
     viewDetailsLink: "/gst-returns-lite",
     amount: "999",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
       "This is one platform to generate all your GST returns. With a centralized view of the platform, you can manage.",
     ],
@@ -64,7 +67,8 @@ export const GSTReturnsLite1Year = [
     viewDetailsButton: true,
     viewDetailsLink: "/gst-returns-lite-yearly",
     amount: "8,999",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
       "This is one platform to generate all your GST returns. With a centralized view of the platform, you can manage",
     ],

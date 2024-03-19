@@ -34,7 +34,7 @@ export const gst_Card3 = [
     startingFrom: "999",
     description:
       "Want to file GST-1 returns and get your business GST-compliant? This comprehensive plan covers both! Opt now",
-    knowMoreLink: "/gst-retun-services",
+    knowMoreLink: "/gst-retrun-services",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
   },

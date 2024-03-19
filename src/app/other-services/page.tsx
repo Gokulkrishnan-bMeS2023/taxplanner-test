@@ -1,6 +1,6 @@
 "use client";
 
-import ServicesSubContainer from "@/components/ServicesSubContainer";
+import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
   other_ServicesCard1,
   other_ServicesCard2,
@@ -28,7 +28,7 @@ const OtherServices = () => {
           </Animation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
-          <Flex direction={{ base: "column", lg: "column" }} gap={6} grow={1}>
+          <Flex direction="column" gap={6} grow={1}>
             <ServicesSubContainer cartcontents={other_ServicesCard1} />
             <ServicesSubContainer cartcontents={other_ServicesCard2} />
             <ServicesSubContainer cartcontents={other_ServicesCard3} />

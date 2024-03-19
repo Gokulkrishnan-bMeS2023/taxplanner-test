@@ -1,17 +1,10 @@
 "use client";
 import { carouselItems } from '@/component-contents/carousel-slide/CarouselSlide';
-import { Box, Button, Container, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, Text, VStack,Image } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import dynamic from "next/dynamic";
-const Images = dynamic(() => import("../Images"));
 
-interface CarouselItem {
-  imageSrc: string;
-  description: string;
-  buttonname: string;
-  link: string;
-}
+
 
 const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -36,11 +29,11 @@ const Carousel: React.FC = () => {
   return (
     <Box mb={5}>
       <Container maxW="container.xxl" p={0} zIndex={1}>
-        <Box pos="relative" zIndex={0}>
+        <Box pos="relative">
           {carouselItems.map((item, index) => (
-            <Box key={index} pos="relative" display={index === activeIndex ? 'block' : 'none'}>
-             <Images src={item.imageSrc} alt={"img"} 
-              layout='responsive' width={100}  height={100}/>
+            <Box key={index} pos="relative" display={index === activeIndex ? 'block' : 'none'} transition={"0.5s"}>
+             <Image src={item.imageSrc} alt={"img"} transition={"0.5s"}
+              />
               <Box
                 pos="absolute" 
                 top="0" 
@@ -58,6 +51,7 @@ const Carousel: React.FC = () => {
                   left="9%"
                   color="#fff"
                   py="1.25rem"
+                  
                   >
                   <VStack spacing={{base:"3",lg:"3.5"}} align="start">
                     <Text 
@@ -65,14 +59,16 @@ const Carousel: React.FC = () => {
                       borderRadius="8px" 
                       backgroundColor= "#B4d234" 
                       color="#fff" 
-                      padding="0.25rem 1rem">
+                      padding="0.25rem 1rem"
+                      transition={"0.5s"}>
                         Tax Planning made simple
                     </Text>
                     <Heading 
                        as="h6"
                        color="#01ACF1" 
                        lineHeight="1.2" 
-                       textAlign="left">
+                       textAlign="left"
+                       transition={"0.5s"}>
                       {item.description}
                     </Heading>
                     <Button 
@@ -82,7 +78,8 @@ const Carousel: React.FC = () => {
                        color="#dfe4fd" 
                        textDecoration= "none" 
                        borderRadius="8px"
-                       _hover={{backgroundColor: "#2D50D6"}}>
+                       _hover={{backgroundColor: "#2D50D6"}}
+                       _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}>
                        <Link href={item.link}>
                          <Text>{item.buttonname}</Text>
                        </Link>
@@ -104,7 +101,7 @@ const Carousel: React.FC = () => {
               borderWidth="1px" color="white" 
               cursor="pointer" size={"0"} 
               _hover={{backgroundColor:"#01acf1"}}>
-              <Box><Images src="./assets/Symbol2.svg" alt={"img"} width={15} height={30} /></Box>
+              <Box><Image src={"./assets/Symbol2.svg"} alt={"img"} width={15} height={30} /></Box>
             </Button>
             <Button 
               onClick={handleNext} 
@@ -119,7 +116,7 @@ const Carousel: React.FC = () => {
               cursor="pointer" 
               size={"0"} 
               _hover={{backgroundColor:"#01acf1"}}>
-                <Box><Images src="./assets/Symbol1.svg" alt={"img"} width={15} height={30} /></Box>
+                <Box><Image src={"./assets/Symbol1.svg"} alt={"img"} width={15} height={30} /></Box>
             </Button>
         </Box>
       </Container>

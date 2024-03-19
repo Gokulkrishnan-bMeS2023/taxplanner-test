@@ -8,7 +8,8 @@ export const contentWithPriceCardContents = [
     heading: "GST Returns",
     price: "2999",
     content: "",
-    buttonLink: "",
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     buttonname: "Buy Now",
     showCheckIcon: false,
   },

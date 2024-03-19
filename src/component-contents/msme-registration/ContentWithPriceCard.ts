@@ -6,7 +6,7 @@ export const contentWithPriceCardContents = [
     heading: "Starting from",
     price: "799",
     content: "",
-    buttonLink: "",
+    buttonLink: "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=MSMERegistration",
     buttonname: "Buy Now",
     showCheckIcon: false,
   },

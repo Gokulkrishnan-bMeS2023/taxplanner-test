@@ -8,7 +8,7 @@ export const ContentWithPriceCardContents = [
     heading:"Starting From",
     price: "999",
     content: '',
-    buttonLink:"",
+    buttonLink:"https://services.taxplanner.co.in",
     buttonname: 'Buy Now',
     showCheckIcon: false
   },
