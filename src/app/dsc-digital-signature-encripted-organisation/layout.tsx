@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tax Planner - Digital Signature for Encrypted Organisation",
+  title: "Tax Planner - Digital Signature for Encripted Organisation",
   description: "",
 };
 

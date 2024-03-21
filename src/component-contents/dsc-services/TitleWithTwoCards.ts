@@ -15,17 +15,17 @@ export const DigitalSignatureForIndividualSigning = [
     ],
   },
 ];
-export const DigitalSignatureForEncryptedIndividual = [
+export const DigitalSignatureForEncriptedIndividual = [
   {
     id: 2,
-    title: "Digital Signature for Encrypted Individual",
+    title: "Digital Signature for Encripted Individual",
     card1List: [
       "Digital Signature Certificate (1 No.)",
       "Request for Class 3 DSC having 2 years validity",
       "Purchase of DSC USB E-token",
     ],
     viewDetailsButton: true,
-    viewDetailsLink: "/dsc-digital-signature-encrypted-individual",
+    viewDetailsLink: "/dsc-digital-signature-encripted-individual",
     amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCIndividual",
@@ -34,17 +34,17 @@ export const DigitalSignatureForEncryptedIndividual = [
     ],
   },
 ];
-export const DigitalSignatureForEncryptedOrganisation = [
+export const DigitalSignatureForEncriptedOrganisation = [
   {
     id: 3,
-    title: "Digital Signature for Encrypted Organisation",
+    title: "Digital Signature for Encripted Organisation",
     card1List: [
       "Digital Signature Certificate (1 No.)",
       "Request for Class 3 DSC having 2 years validity",
       "Purchase of DSC USB E-token",
     ],
     viewDetailsButton: true,
-    viewDetailsLink: "/dsc-digital-signature-encrypted-organisation",
+    viewDetailsLink: "/dsc-digital-signature-encripted-organisation",
     amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCOrganisation",
@@ -72,10 +72,10 @@ export const DigitalSignatureForDGFTOf1IndividualAnd1Organisation = [
     ],
   },
 ];
-export const DigitalSignatureEncryptedOrganisation = [
+export const DigitalSignatureEncriptedOrganisation = [
   {
     id: 5,
-    title: "Digital Signature for Encrypted Organisation",
+    title: "Digital Signature for Encripted Organisation",
     card1List: [
       "Digital Signature Certificate (1 No.)",
       "Request for Class 3 DSC having 2 years validity",

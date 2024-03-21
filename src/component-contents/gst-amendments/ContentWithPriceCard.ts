@@ -1,17 +1,13 @@
 export const ContentWithPriceCardContents = [
   {
     id: 1,
-    title: 'GST Amendments',
-    descriptions: [
-     'Get amendment for your existing GST registration',
-    ],
-    heading:"Starting From",
+    title: "GST Amendments",
+    descriptions: ["Get amendment for your existing GST registration"],
+    heading: "Starting From",
     price: "999",
-    content: '',
-    buttonLink:"https://services.taxplanner.co.in",
-    buttonname: 'Buy Now',
-    showCheckIcon: false
+    buttonLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=Amendments",
+    buttonname: "Buy Now",
+    showCheckIcon: false,
   },
-
-  ];
-  
+];

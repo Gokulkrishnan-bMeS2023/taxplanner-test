@@ -18,13 +18,14 @@ const Incometax = () => {
         align={{ base: "left", lg: "center" }}
         direction={{ base: "column", lg: "row" }}
         justify={"center"}
-        alignItems={"center"}
+        alignItems={{ base: "start", lg: "center" }}
         mb={20}
         mt={20}
+        gap={{ base: "3rem" }}
       >
         <Flex grow={1}>
           <Animation>
-            <Heading as={"h2"} mb={4}>
+            <Heading as={"h2"} mb={4} textAlign={{ base: "start" }}>
               Income Tax
             </Heading>
           </Animation>

@@ -48,8 +48,9 @@
 }
 .Wrapper {
   width: 100% !important;
-  display: inline-block !important;
+  display: flex !important;
   height: 320px;
+  justify-content: center !important;
 }
 .Wrapper:hover .StyledBox1 {
   display: none !important;

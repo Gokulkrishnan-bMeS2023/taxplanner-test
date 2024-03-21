@@ -2,7 +2,6 @@
 import { Heading, Text, Link, Center, Card, Box } from "@chakra-ui/react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import "./services.css";
-import { Fragment } from "react";
 import Animation from "../Animation/Scroll-Animation";
 import dynamic from "next/dynamic";
 const Images = dynamic(() => import("../Images"));
@@ -36,7 +35,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
         className="Wrapper"
       >
         {cartcontents?.map((content, index) => (
-          <Fragment key={index}>
+          <Box key={index}>
             <Box className="StyledBox1">
               <Images
                 src={content.imgSrc}
@@ -99,7 +98,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
                 </Center>
               )}
             </Box>
-          </Fragment>
+          </Box>
         ))}
       </Card>
     </Animation>

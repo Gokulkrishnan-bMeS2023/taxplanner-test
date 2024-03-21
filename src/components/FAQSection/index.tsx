@@ -1,9 +1,16 @@
 "use client";
-import { Flex, Box, Button, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Button,
+  Heading,
+  Image,
+  Text,
+  Link,
+} from "@chakra-ui/react";
 import { FaBars, FaCheck } from "react-icons/fa";
 import { FC, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 import Animation from "../Animation/Scroll-Animation";
 
 interface ServicesDatas {
@@ -106,9 +113,9 @@ const FAQSection: FC<ServicesProps> = ({
                     _hover={{ color: "#fff" }}
                     _active={{ color: "#011A41" }}
                     bgColor={activeTab === data.id ? "#01ACF1" : "white"}
-                    style={{
-                      boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-                    }}
+                    // style={{
+                    //   boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                    // }}
                     transition={"1s"}
                     onClick={() => {
                       handleTabChange(data.id);
@@ -221,25 +228,28 @@ const FAQSection: FC<ServicesProps> = ({
                             <Box>{subdata?.description}</Box>
                           )}
                           {subdata?.href && (
-                            <Button
-                              as={Link}
-                              bgColor="#2D50D6"
-                              color="#DFE4FD"
-                              padding="16px 48px"
-                              py="1.5rem"
-                              mt={3}
-                              _hover={{
-                                bgColor: "#2D50D6",
-                                color: "#DFE4FD",
-                              }}
+                            <Link
+                              _hover={{ textDecoration: "none" }}
                               href={subdata?.href}
-                              _focus={{
-                                boxShadow:
-                                  "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
-                              }}
                             >
-                              Read More
-                            </Button>
+                              <Button
+                                bgColor="#2D50D6"
+                                color="#DFE4FD"
+                                padding="16px 48px"
+                                py="1.8rem"
+                                mt={3}
+                                _hover={{
+                                  bgColor: "#2D50D6",
+                                  color: "#DFE4FD",
+                                }}
+                                _focus={{
+                                  boxShadow:
+                                    "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                                }}
+                              >
+                                Read More
+                              </Button>
+                            </Link>
                           )}
                         </Box>
                       </Box>

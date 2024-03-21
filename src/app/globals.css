@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
@@ -5,19 +6,12 @@
   font-family: "Open Sans", sans-serif !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Jost", sans-serif !important;
 }
-
-h1 {
-  font-size: calc(1.525rem + 3.3vw) !important;
+h1{
+  font-size: calc(1.525rem+3.3vw)!important;
 }
-
 h2 {
   font-size: calc(1.425rem + 2.1vw) !important;
 }
@@ -37,13 +31,14 @@ h5 {
   font-weight: 500 !important;
 }
 
-.css-70qvj9 {
-  flex-wrap: wrap !important;
+h6{
+  font-size: calc(1.625rem + 1.5vw);
+  font-weight: 600 !important;
 }
 
 @media (min-width: 1200px) {
-  h1 {
-    font-size: 4rem !important ;
+  h1{
+    font-size:4rem !important;
   }
   h2 {
     font-size: 2.8rem !important;
@@ -54,4 +49,30 @@ h5 {
   h4 {
     font-size: 1.5rem !important;
   }
+  h6{
+    font-size: 4rem !important;
+  }
 }
+
+  @media (max-width: 991px) {
+    h6{
+      font-size: 24px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h6{
+      font-size: 18px !important;
+    }
+  }
+  @media (max-width: 350px) {
+    h6{
+      font-size: 16px !important;
+    }
+  }
+  
+  .css-70qvj9 {
+    flex-wrap: wrap !important;
+  }
+
+  

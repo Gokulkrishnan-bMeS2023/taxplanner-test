@@ -2,10 +2,10 @@
 
 import {
   DigitalSignatureForIndividualSigning,
-  DigitalSignatureForEncryptedIndividual,
-  DigitalSignatureForEncryptedOrganisation,
+  DigitalSignatureForEncriptedIndividual,
+  DigitalSignatureForEncriptedOrganisation,
   DigitalSignatureForDGFTOf1IndividualAnd1Organisation,
-  DigitalSignatureEncryptedOrganisation,
+  DigitalSignatureEncriptedOrganisation,
   DigitalSignatureForForeignCitizensAndNRIClass3,
 } from "@/component-contents/dsc-services/TitleWithTwoCards";
 import TitleWithTwoCards from "@/components/TitleWithTwoCards";
@@ -27,11 +27,11 @@ export default function DSCServices() {
         <TitleWithTwoCards contents={DigitalSignatureForIndividualSigning} />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={DigitalSignatureForEncryptedIndividual} />
+        <TitleWithTwoCards contents={DigitalSignatureForEncriptedIndividual} />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards
-          contents={DigitalSignatureForEncryptedOrganisation}
+          contents={DigitalSignatureForEncriptedOrganisation}
         />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
@@ -40,7 +40,7 @@ export default function DSCServices() {
         />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={DigitalSignatureEncryptedOrganisation} />
+        <TitleWithTwoCards contents={DigitalSignatureEncriptedOrganisation} />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards

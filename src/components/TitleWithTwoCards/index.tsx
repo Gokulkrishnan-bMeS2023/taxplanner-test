@@ -72,6 +72,7 @@ export default function TitleWithTwoCards({
                   color={"#DFE4FD"}
                   bgColor={"#2d50d6"}
                   _hover={{ bgColor: "#2d50d6" }}
+                  _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
                 >
                   View Details
                 </Button>
@@ -107,6 +108,7 @@ export default function TitleWithTwoCards({
                 color={"#DFE4FD"}
                 bgColor={"#2d50d6"}
                 _hover={{ bgColor: "#2d50d6" }}
+                _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
               >
                 Buy Now
               </Button>

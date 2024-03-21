@@ -1,7 +1,7 @@
 export const PriceDetails = [
   {
     id: 1,
-    title: "Digital Signature for Encrypted Organisation",
+    title: "Digital Signature for Encripted Organisation",
     descriptions: [
       "Obtain Class 3 Digital Signature Certificate (DSC) for DGFT within 5 business days",
     ],

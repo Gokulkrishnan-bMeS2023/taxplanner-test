@@ -67,8 +67,8 @@ const Header = ({ heading }: headerProps) => {
             <Breadcrumb mb={"1.5rem"}>
               <BreadcrumbItem>
                 <BreadcrumbLink
-                  style={{ fontWeight: "500", color: "#01acf1" }}
-                  _hover={{ textDecoration: "none", color: "#DFE4FD" }}
+                  style={{ fontWeight: "500" }}
+                  _hover={{ textDecoration: "none", color: "blue" }}
                   href="/"
                 >
                   Home
@@ -78,7 +78,7 @@ const Header = ({ heading }: headerProps) => {
                 <BreadcrumbItem>
                   <BreadcrumbLink
                     style={{ fontWeight: "500" }}
-                    _hover={{ textDecoration: "none" }}
+                    _hover={{ textDecoration: "none", color: "blue" }}
                     onClick={handleBack}
                   >
                     Services
@@ -89,7 +89,7 @@ const Header = ({ heading }: headerProps) => {
                 <BreadcrumbLink
                   style={{
                     fontWeight: "500",
-                    color: "#6c757d",
+                    color: "#01acf1",
                   }}
                   isCurrentPage
                   aria-current="page"

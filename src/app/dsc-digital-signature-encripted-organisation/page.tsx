@@ -3,10 +3,10 @@
 import {
   PlanDescription,
   PlanDetails,
-} from "@/component-contents/dsc-digital-signature-encrypted-organisation/AboutThisPlan";
-import { PriceDetails } from "@/component-contents/dsc-digital-signature-encrypted-organisation/ContentWithPriceCard";
-import { Documents } from "@/component-contents/dsc-digital-signature-encrypted-organisation/DocumentsToBeSubmitted";
-import { FAQs } from "@/component-contents/dsc-digital-signature-encrypted-organisation/FAQSection";
+} from "@/component-contents/dsc-digital-signature-encripted-organisation/AboutThisPlan";
+import { PriceDetails } from "@/component-contents/dsc-digital-signature-encripted-organisation/ContentWithPriceCard";
+import { Documents } from "@/component-contents/dsc-digital-signature-encripted-organisation/DocumentsToBeSubmitted";
+import { FAQs } from "@/component-contents/dsc-digital-signature-encripted-organisation/FAQSection";
 import DocumentsToBeSubmitted from "@/components/DocumentsToBeSubmitted";
 import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import AboutThisPlan from "@/components/AboutThisPlan";
