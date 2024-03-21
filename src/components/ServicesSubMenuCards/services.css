@@ -23,7 +23,7 @@
     width: 100% !important;
   }
   .Wrapper {
-    min-width: 300px !important;
+    min-width: 270px !important;
     height: 350px !important;
   }
 }
@@ -49,7 +49,7 @@
 .Wrapper {
   width: 100% !important;
   display: flex !important;
-  height: 320px;
+  height: 320px !important;
   justify-content: center !important;
 }
 .Wrapper:hover .StyledBox1 {
