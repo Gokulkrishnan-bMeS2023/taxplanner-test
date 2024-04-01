@@ -4,10 +4,9 @@ import { FaBars, FaCheck } from "react-icons/fa";
 import { FC, useState } from "react";
 import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
-import dynamic from "next/dynamic";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SideAnimation from "../Animation/Side-Animation";
-const Images = dynamic(() => import("../Images"));
+import Images from "../Images";
 
 interface ServicesDatas {
   id: number;

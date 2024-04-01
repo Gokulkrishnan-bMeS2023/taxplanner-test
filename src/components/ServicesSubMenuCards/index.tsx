@@ -9,12 +9,11 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { BiRightArrowAlt } from "react-icons/bi";
-import "./services.css";
 import Animation from "../Animation/Scroll-Animation";
-import dynamic from "next/dynamic";
-const Images = dynamic(() => import("../Images"));
+import Images from "../Images";
 import { useUserContext } from "../../utils/hooks/index";
 import { FaRupeeSign } from "react-icons/fa";
+import "./services.css";
 
 interface ServiceProps {
   title: string;
