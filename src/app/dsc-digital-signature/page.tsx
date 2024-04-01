@@ -17,7 +17,7 @@ export default function DSCDigitalSignature() {
   return (
     <Container>
       <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard contents={PriceDetails} />
+        <ContentWithPriceCard contents={PriceDetails} FilingType="DSCICEGATE"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <AboutThisPlan

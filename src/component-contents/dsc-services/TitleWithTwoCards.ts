@@ -7,7 +7,6 @@ export const DigitalSignatureForIndividualSigning = [
       "Request for Class 3 DSC having 2 years validity",
       "Purchase of DSC USB E-token",
     ],
-    amount: "1,200",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSC",
     card2Content: [
@@ -26,7 +25,6 @@ export const DigitalSignatureForEncriptedIndividual = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-encripted-individual",
-    amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCIndividual",
     card2Content: [
@@ -45,7 +43,6 @@ export const DigitalSignatureForEncriptedOrganisation = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-encripted-organisation",
-    amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCOrganisation",
     card2Content: [
@@ -64,7 +61,6 @@ export const DigitalSignatureForDGFTOf1IndividualAnd1Organisation = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-dgft",
-    amount: "2,500",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCDGFT",
     card2Content: [
@@ -83,7 +79,6 @@ export const DigitalSignatureEncriptedOrganisation = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature",
-    amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCICEGATE",
     card2Content: [
@@ -102,7 +97,6 @@ export const DigitalSignatureForForeignCitizensAndNRIClass3 = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/dsc-digital-signature-nri",
-    amount: "3,000",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/dsc/list.aspx?Type=DSCNRI",
     card2Content: [

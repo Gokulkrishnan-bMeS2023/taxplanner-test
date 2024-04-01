@@ -5,6 +5,7 @@
 .StyledBox2 {
   display: none !important;
   width: 350px !important;
+  height: 100%;
 }
 
 @media (max-width: 500px) {
@@ -50,7 +51,6 @@
   width: 100% !important;
   display: flex !important;
   height: 320px !important;
-  justify-content: center !important;
 }
 .Wrapper:hover .StyledBox1 {
   display: none !important;

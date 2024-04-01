@@ -6,17 +6,34 @@ import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import { ContentWithPriceCardContents } from "@/component-contents/itr-u-updated-income-tax-return/ContentWithPriceCard";
 import { FAQs } from "@/component-contents/itr-u-updated-income-tax-return/FAQSection";
-import { AboutThisPlanCardContent, AboutThisPlanContent } from "@/component-contents/itr-u-updated-income-tax-return/AboutThisPlan";
+import {
+  AboutThisPlanCardContent,
+  AboutThisPlanContent,
+} from "@/component-contents/itr-u-updated-income-tax-return/AboutThisPlan";
 
 export default function ItrIncomeTax() {
   return (
     <>
       <Container>
-      <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} /></Box>
-      <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="About This Plan" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box> 
-      <Box my={{ base: 16, lg: 24 }}><FAQSection
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard
+            contents={ContentWithPriceCardContents}
+            FilingType="ITR"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            title="About This Plan"
+            planContents={AboutThisPlanCardContent}
+            aboutContents={AboutThisPlanContent}
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <FAQSection
             heading="Frequently Asked Questions"
-            servicesDatas={FAQs}/></Box>
+            servicesDatas={FAQs}
+          />
+        </Box>
       </Container>
       <BGWithQueriesForm />
     </>

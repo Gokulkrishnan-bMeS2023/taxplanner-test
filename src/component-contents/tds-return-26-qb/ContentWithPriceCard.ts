@@ -6,7 +6,6 @@ export const contentWithPriceCardContents = [
       "TDS return filing is mandatory on sale of house property. File your form 26QB under expert guidance.",
     ],
     heading: "Starting From",
-    price: "2,999",
     content:
       "TDS return filing is mandatory on sale of house property. File your form 26QB under expert guidance.",
     buttonLink:

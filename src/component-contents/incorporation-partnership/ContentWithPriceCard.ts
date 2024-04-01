@@ -6,7 +6,6 @@ export const contentWithPriceCardContents = [
       "Running your Business as Joint Owners ? Register as a Partnership Firm with Tax Planner",
     ],
     heading: "Starting from",
-    price: "1,999",
     content: "",
     buttonname: "Get Quote",
     showCheckIcon: false,

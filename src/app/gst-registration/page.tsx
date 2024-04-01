@@ -15,7 +15,7 @@ export default function GSTRegistration() {
   return (
     <>
       <Container>
-      <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} /></Box>
+      <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} FilingType="GSTRegistration"/></Box>
       <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="About This Plan" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box> 
       <Box my={{ base: 16, lg: 24 }}><DocumentSubmitted title="Goods And Services Tax (GST) Registration" documents={Documents}  /></Box> 
       <Box my={{ base: 16, lg: 24 }}><FAQSection

@@ -1,17 +1,13 @@
 "use client";
-import {
-  Flex,
-  Box,
-  Button,
-  Heading,
-  Image,
-  Text,
-  Link,
-} from "@chakra-ui/react";
+import { Flex, Box, Button, Heading, Text } from "@chakra-ui/react";
 import { FaBars, FaCheck } from "react-icons/fa";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
+import dynamic from "next/dynamic";
+import PrimaryButton from "../Buttons/PrimaryButton";
+import SideAnimation from "../Animation/Side-Animation";
+const Images = dynamic(() => import("../Images"));
 
 interface ServicesDatas {
   id: number;
@@ -36,15 +32,7 @@ const FAQSection: FC<ServicesProps> = ({
   heading,
 }): JSX.Element => {
   const [activeTab, setActiveTab] = useState<number>(1);
-  const [isTrue, setIsTrue] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    window.addEventListener("resize", updateStateBasedOnViewport);
-    return () => {
-      window.removeEventListener("resize", updateStateBasedOnViewport);
-    };
-  }, []);
 
   const handleTabChange = (tabId: number) => {
     setActiveTab(tabId);
@@ -54,14 +42,6 @@ const FAQSection: FC<ServicesProps> = ({
     document
       .getElementById(id)
       ?.scrollIntoView({ block: start, behavior: "smooth" });
-  };
-
-  const updateStateBasedOnViewport = () => {
-    if (window.innerWidth <= 1000) {
-      setIsTrue(true);
-    } else {
-      setIsTrue(false);
-    }
   };
 
   return (
@@ -113,15 +93,13 @@ const FAQSection: FC<ServicesProps> = ({
                     _hover={{ color: "#fff" }}
                     _active={{ color: "#011A41" }}
                     bgColor={activeTab === data.id ? "#01ACF1" : "white"}
-                    // style={{
-                    //   boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-                    // }}
                     transition={"1s"}
                     onClick={() => {
                       handleTabChange(data.id);
-                      isTrue
-                        ? handleScroll("center", "FAQSlider")
-                        : handleScroll("start", "FAQSlider1");
+                      window.innerWidth <= 1000
+                        ? handleScroll("start", "FAQSlider")
+                        : pathname === "/" ||
+                          handleScroll("start", "FAQSlider1");
                     }}
                     height="auto"
                   >
@@ -148,113 +126,114 @@ const FAQSection: FC<ServicesProps> = ({
               ))}
             </Flex>
           </Box>
-          <Box width={{ base: "100%", lg: "65%" }} id="FAQSlider">
+          <Box
+            borderBottom={"5px dotted #01ACF1"}
+            borderStyle={""}
+            width={{ base: "100%", md: "100%", lg: "0%" }}
+            pt={{ base: 8, md: 12, lg: 1 }}
+            id="FAQSlider"
+          ></Box>
+          <Box width={{ base: "100%", lg: "65%" }}>
             {servicesDatas?.map((subdata) => {
               if (subdata.id === activeTab) {
                 return (
-                  <Box key={subdata.id} id="tab-pane-1">
-                    <Flex flexWrap="wrap" gridGap="10">
-                      <Box
-                        flex="1 1 100%"
-                        display="flex"
-                        alignItems="flex-start"
-                        flexDirection={{ base: "column", md: "row" }}
-                      >
-                        {subdata?.img && (
-                          <Box maxW="100%" maxH="100%">
-                            <Image
-                              src={subdata?.img}
-                              alt=""
-                              width={"600px"}
-                              h="400px"
-                            />
-                          </Box>
-                        )}
-                        <Box maxW="100%" maxH="100%">
-                          <Heading
-                            as={"h3"}
-                            lineHeight={1.9}
-                            fontWeight={600}
-                            mb="6"
-                          >
-                            {subdata?.title}
-                          </Heading>
-                          <Box mb="5" mt="5" color="#555555">
-                            {subdata.paragraph?.map(
-                              (data: string, index: number) => (
-                                <Box key={index} mb={4}>
-                                  {data}
-                                </Box>
-                              )
-                            )}
-                            <Box mb={4} fontWeight={"bold"}>
-                              {subdata?.keypointers}
-                            </Box>
-                            {subdata.Fs?.map((data: string, index: number) => (
-                              <Box
-                                key={index}
-                                display="flex"
-                                alignItems={"baseline"}
-                                mb={4}
-                              >
-                                <Box>
-                                  <FaCheck size={16} color="#01ACF1" />
-                                </Box>
-                                <Box ml={3} lineHeight={1.6}>
-                                  {data}
-                                </Box>
-                              </Box>
-                            ))}
-                            {subdata.FsHeading && (
-                              <Box mb={4}>{subdata.FsHeading}</Box>
-                            )}
-                            {subdata.Fs1?.map((data: string, index: number) => (
-                              <Box
-                                key={index}
-                                display="flex"
-                                alignItems={"baseline"}
-                                mb={4}
-                              >
-                                <Box>
-                                  <FaCheck size={16} color="#01ACF1" />
-                                </Box>
-                                <Box ml={3} lineHeight={1.6}>
-                                  {data}
-                                </Box>
-                              </Box>
-                            ))}
-                          </Box>
-                          {subdata.description && (
-                            <Box>{subdata?.description}</Box>
-                          )}
-                          {subdata?.href && (
-                            <Link
-                              _hover={{ textDecoration: "none" }}
-                              href={subdata?.href}
+                  <SideAnimation key={subdata.id}>
+                    <Box id="tab-pane-1">
+                      <Flex flexWrap="wrap" gridGap="10">
+                        <Box
+                          flex="1 1 100%"
+                          display="flex"
+                          alignItems="flex-start"
+                          flexDirection={{ base: "column", md: "row" }}
+                        >
+                          {subdata?.img && (
+                            <Box
+                              overflow={"hidden"}
+                              mt={6}
+                              display={"flex"}
+                              height={{ base: "100%", lg: "450px" }}
                             >
-                              <Button
-                                bgColor="#2D50D6"
-                                color="#DFE4FD"
-                                padding="16px 48px"
-                                py="1.8rem"
-                                mt={3}
-                                _hover={{
-                                  bgColor: "#2D50D6",
-                                  color: "#DFE4FD",
-                                }}
-                                _focus={{
-                                  boxShadow:
-                                    "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
-                                }}
-                              >
-                                Read More
-                              </Button>
-                            </Link>
+                              <Images
+                                src={subdata?.img}
+                                alt="#"
+                                width={600}
+                                height={400}
+                              />
+                            </Box>
                           )}
+                          <Box maxW="100%" maxH="100%">
+                            <Heading
+                              as={"h3"}
+                              lineHeight={1.9}
+                              fontWeight={600}
+                              mb="6"
+                              mt={{ base: 10, lg: 1 }}
+                            >
+                              {subdata?.title}
+                            </Heading>
+                            <Box mb="5" mt="5" color="#555555">
+                              {subdata.paragraph?.map(
+                                (data: string, index: number) => (
+                                  <Box key={index} mb={4}>
+                                    {data}
+                                  </Box>
+                                )
+                              )}
+                              <Box mb={4} fontWeight={"bold"}>
+                                {subdata?.keypointers}
+                              </Box>
+                              {subdata.Fs?.map(
+                                (data: string, index: number) => (
+                                  <Box
+                                    key={index}
+                                    display="flex"
+                                    alignItems={"baseline"}
+                                    mb={4}
+                                  >
+                                    <Box>
+                                      <FaCheck size={16} color="#01ACF1" />
+                                    </Box>
+                                    <Box ml={3} lineHeight={1.6}>
+                                      {data}
+                                    </Box>
+                                  </Box>
+                                )
+                              )}
+                              {subdata.FsHeading && (
+                                <Box mb={4}>{subdata.FsHeading}</Box>
+                              )}
+                              {subdata.Fs1?.map(
+                                (data: string, index: number) => (
+                                  <Box
+                                    key={index}
+                                    display="flex"
+                                    alignItems={"baseline"}
+                                    mb={4}
+                                  >
+                                    <Box>
+                                      <FaCheck size={16} color="#01ACF1" />
+                                    </Box>
+                                    <Box ml={3} lineHeight={1.6}>
+                                      {data}
+                                    </Box>
+                                  </Box>
+                                )
+                              )}
+                            </Box>
+                            {subdata.description && (
+                              <Box>{subdata?.description}</Box>
+                            )}
+                            {subdata?.href && (
+                              <PrimaryButton
+                                Name="Read More"
+                                hrefLink={subdata?.href}
+                              />
+                            )}
+                          </Box>
                         </Box>
-                      </Box>
-                    </Flex>
-                  </Box>
+                      </Flex>
+                    </Box>
+                  </SideAnimation>
                 );
               }
               return null;

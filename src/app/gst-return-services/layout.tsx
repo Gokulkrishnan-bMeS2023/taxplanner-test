@@ -1,6 +1,9 @@
-import BGWithQueriesForm from "@/components/BGWithQueriesForm";
-import Header from "@/components/Header";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("@/components/Header"));
+const BGWithQueriesForm = dynamic(
+  () => import("@/components/BGWithQueriesForm")
+);
 
 export const metadata: Metadata = {
   title: "Tax Planner - GST Return Services",
@@ -14,7 +17,7 @@ export default function GSTReturnServicesLayout({
     <>
       <Header heading="GST Services" />
       {children}
-      <BGWithQueriesForm />
+      <BGWithQueriesForm heading="All Services" />
     </>
   );
 }

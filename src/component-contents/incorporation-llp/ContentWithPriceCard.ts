@@ -6,7 +6,6 @@ export const contentWithPriceCardContents = [
       "Running your business with partners? Limit your liability by registering as Limited Liability Partnership. Purchase plan through Tax Planner and get started right away!",
     ],
     heading: "Starting from",
-    price: " 8,999",
     content: "",
     buttonname: "Get Quote",
     showCheckIcon: false,

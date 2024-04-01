@@ -17,7 +17,10 @@ export default function GSTReturnsLite() {
   return (
     <Container>
       <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard contents={PriceDetails} />
+        <ContentWithPriceCard
+          contents={PriceDetails}
+          FilingType="GSTReturnsLite"
+        />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <AboutThisPlan

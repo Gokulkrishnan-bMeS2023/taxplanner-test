@@ -2,11 +2,11 @@
 
 import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
-  gst_Card1,
-  gst_Card2,
-  gst_Card3,
-  gst_Card4,
-  gst_Card5,
+  GSTRegistration,
+  GSTAmendments,
+  GSTReturns,
+  GSTLUT,
+  GSTRefunds,
 } from "@/component-contents/gst";
 import { Container, Heading, Flex } from "@chakra-ui/react";
 import Animation from "@/components/Animation/Scroll-Animation";
@@ -32,13 +32,25 @@ const GST = () => {
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={gst_Card1} />
-            <ServicesSubContainer cartcontents={gst_Card2} />
-            <ServicesSubContainer cartcontents={gst_Card3} />
+            <ServicesSubContainer
+              cartcontents={GSTRegistration}
+              FilingType="GSTRegistration"
+            />
+            <ServicesSubContainer
+              cartcontents={GSTAmendments}
+              FilingType="Amendments"
+            />
+            <ServicesSubContainer
+              cartcontents={GSTReturns}
+              FilingType="GSTReturns"
+            />
           </Flex>
           <Flex direction="column" justifyContent="center" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={gst_Card4} />
-            <ServicesSubContainer cartcontents={gst_Card5} />
+            <ServicesSubContainer cartcontents={GSTLUT} FilingType="LUT" />
+            <ServicesSubContainer
+              cartcontents={GSTRefunds}
+              FilingType="Refunds"
+            />
           </Flex>
         </Flex>
       </Flex>

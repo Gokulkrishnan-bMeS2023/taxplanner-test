@@ -32,13 +32,13 @@ const OtherServices = () => {
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={other_ServicesCard1} />
-            <ServicesSubContainer cartcontents={other_ServicesCard2} />
-            <ServicesSubContainer cartcontents={other_ServicesCard3} />
+            <ServicesSubContainer cartcontents={other_ServicesCard1} FilingType="MSMERegistration"/>
+            <ServicesSubContainer cartcontents={other_ServicesCard2} FilingType="IECRegistration"/>
+            <ServicesSubContainer cartcontents={other_ServicesCard3} FilingType="DSC"/>
           </Flex>
           <Flex direction="column" justifyContent="center" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={other_ServicesCard4} />
-            <ServicesSubContainer cartcontents={other_ServicesCard5} />
+            <ServicesSubContainer cartcontents={other_ServicesCard4} FilingType="ROCFiling"/>
+            <ServicesSubContainer cartcontents={other_ServicesCard5} FilingType=""/>
           </Flex>
         </Flex>
       </Flex>

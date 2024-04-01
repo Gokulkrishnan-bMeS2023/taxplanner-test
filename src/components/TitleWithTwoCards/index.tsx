@@ -1,7 +1,17 @@
-import { Box, Flex, Heading, Button, Icon, Text } from "@chakra-ui/react";
-import { FaCheck } from "react-icons/fa";
+import {
+  Box,
+  Flex,
+  Heading,
+  Button,
+  Icon,
+  Text,
+  Spinner,
+} from "@chakra-ui/react";
+import { FaCheck, FaRupeeSign } from "react-icons/fa";
 import Link from "next/link";
 import Animation from "../Animation/Scroll-Animation";
+import { useUserContext } from "../../utils/hooks/index";
+import PrimaryButton from "../Buttons/PrimaryButton";
 
 interface ContentsType {
   id: number;
@@ -9,18 +19,23 @@ interface ContentsType {
   card1List?: string[];
   viewDetailsButton?: boolean;
   viewDetailsLink?: string;
-  amount: string;
   buyNowLink: string;
   card2Content?: string[];
 }
 
 interface TitleWithTwoCardsProps {
   contents: ContentsType[];
+  FilingType: string;
 }
 
 export default function TitleWithTwoCards({
   contents,
+  FilingType,
 }: TitleWithTwoCardsProps) {
+  const { data } = useUserContext();
+  const datas = data?.find(
+    (data: { FilingType: any }) => data?.FilingType === FilingType
+  );
   return (
     <Animation>
       {contents.map((content) => (
@@ -63,19 +78,10 @@ export default function TitleWithTwoCards({
                 ))}
               </Box>
               {content.viewDetailsButton && (
-                <Button
-                  as={Link}
-                  href={content.viewDetailsLink}
-                  mb={6}
-                  px={12}
-                  py={7}
-                  color={"#DFE4FD"}
-                  bgColor={"#2d50d6"}
-                  _hover={{ bgColor: "#2d50d6" }}
-                  _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
-                >
-                  View Details
-                </Button>
+                <PrimaryButton
+                  Name={"View Details"}
+                  hrefLink={content.viewDetailsLink}
+                />
               )}
             </Box>
             <Box
@@ -96,22 +102,20 @@ export default function TitleWithTwoCards({
                 boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
               }}
             >
-              <Heading as={"h4"} mb={4}>
-                &#8377; {content.amount}
+              <Heading as={"h4"} mb={4} display="flex">
+                {data ? (
+                  <>
+                    <FaRupeeSign /> {datas?.Amount.toLocaleString()}
+                  </>
+                ) : (
+                  <Spinner
+                    color="#01acf1"
+                    size="lg"
+                    thickness="4px"
+                  />
+                )}
               </Heading>
-              <Button
-                as={Link}
-                href={content.buyNowLink}
-                mb={4}
-                px={12}
-                py={7}
-                color={"#DFE4FD"}
-                bgColor={"#2d50d6"}
-                _hover={{ bgColor: "#2d50d6" }}
-                _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
-              >
-                Buy Now
-              </Button>
+              <PrimaryButton Name={" Buy Now"} hrefLink={content?.buyNowLink} />
               <Box>
                 {content.card2Content?.map((item, index) => (
                   <Box mb={4} key={index}>

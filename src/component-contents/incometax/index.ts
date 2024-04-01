@@ -1,11 +1,9 @@
 //income-tax page//
-
-export const income_taxCard1 = [
+export const incomeTaxSalariedPerson = [
   {
     id: 1,
     imgSrc: "/assets/income-tax/administrator-male.png",
     title: "SALARIED & HOUSE PROPERTY INCOME",
-    startingFrom: "999",
     description: "For persons having income from salary.",
     knowMoreLink: "/salary-house-property",
     buyNowLink:
@@ -13,12 +11,11 @@ export const income_taxCard1 = [
   },
 ];
 
-export const income_taxCard2 = [
+export const incomeTaxCapitalGain = [
   {
     id: 2,
     imgSrc: "/assets/income-tax/mortgage.png",
     title: "CAPITAL GAIN",
-    startingFrom: "2,999",
     description:
       "Where total income includes gain/loss on sale of house property, land, Investment in shares, etc.",
     knowMoreLink: "/capital-gain",
@@ -27,12 +24,11 @@ export const income_taxCard2 = [
   },
 ];
 
-export const income_taxCard3 = [
+export const incomeTaxNRI = [
   {
     id: 3,
     imgSrc: "/assets/income-tax/airport-building.png",
     title: "NRI",
-    startingFrom: "1,999",
     description: "For Non Resident Indian/Non Resident having Indian income.",
     knowMoreLink: "/nri",
     buyNowLink:
@@ -40,12 +36,11 @@ export const income_taxCard3 = [
   },
 ];
 
-export const income_taxCard4 = [
+export const incomeTaxBusiness = [
   {
     id: 4,
     imgSrc: "/assets/income-tax/client-company.png",
     title: "BUSINESS OR PROFESSION",
-    startingFrom: "3,999",
     description:
       "Businesses having annual turnover under Rs. 2cr or Professionals having annual gross receipts under Rs. 50 lakh.",
     knowMoreLink: "/business",
@@ -53,12 +48,11 @@ export const income_taxCard4 = [
   },
 ];
 
-export const income_taxCard5 = [
+export const incomeTaxTDS = [
   {
     id: 5,
     imgSrc: "/assets/income-tax/bill.png",
     title: "TDS/TCS",
-    startingFrom: "2,999",
     description: "For other package details click here.",
     knowMoreLink: "/tds-tcs",
     buyNowLink: "#",

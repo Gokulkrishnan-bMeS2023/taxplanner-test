@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Button,
@@ -17,6 +16,7 @@ import * as Yup from "yup";
 
 interface QueriesFormProps {
   getInTouchLabel: boolean;
+  heading?: string;
 }
 
 interface InputValueTypes {
@@ -33,7 +33,10 @@ const queriesFormValidationSchema = Yup.object({
   mobile: Yup.string().required("Mobile is required").length(10),
 });
 
-export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
+export default function QueriesForm({
+  getInTouchLabel,
+  heading,
+}: QueriesFormProps) {
   const Toast = useToast();
   const showToast = () => {
     Toast({
@@ -68,7 +71,7 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
           boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         }}
       >
-        <Box p={{ base: 6, md: 12 }}>
+        <Box p={{ base: 4, md: 12 }}>
           {getInTouchLabel && (
             <Center>
               <Box
@@ -86,9 +89,12 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
           <Center>
             <Box mb={12} textAlign={"center"}>
               <Heading fontWeight={"600"}>
-                Have queries? Talk to an expert
+                {heading ? (
+                  <>{heading}</>
+                ) : (
+                  <>Have queries? Talk to an expert</>
+                )}
               </Heading>
-              {/* <Heading fontWeight={"600"}>Talk to an expert</Heading> */}
             </Box>
           </Center>
           <Formik
@@ -247,8 +253,9 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                         </FormLabel>
                         <FormErrorMessage
                           position={"absolute"}
-                          bottom={-6}
+                          bottom={-7}
                           left={1}
+                          width={"100%"}
                         >
                           {form.errors.mobile}
                         </FormErrorMessage>
@@ -258,7 +265,6 @@ export default function QueriesForm({ getInTouchLabel }: QueriesFormProps) {
                 </Box>
                 <Button
                   type="submit"
-                  variant={"outline"}
                   border={"2px solid #2d50d6"}
                   isLoading={props.isSubmitting}
                   loadingText="Submitting"

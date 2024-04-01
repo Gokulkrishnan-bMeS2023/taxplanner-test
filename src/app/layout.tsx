@@ -1,13 +1,7 @@
 import { Providers } from "./providers";
-import type { Metadata } from "next";
-// import ErrorBoundary from "./ErrorBoundary";
 import dynamic from "next/dynamic";
+import UserContextProvider from "../utils/context/index";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "taxplanner",
-  description: "",
-};
 
 export default function RootLayout({
   children,
@@ -22,13 +16,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          {/* <ErrorBoundary> */}
+        <UserContextProvider>
+          <Providers>
             <main>{children}</main>
-          {/* </ErrorBoundary> */}
-          <Footer />
-          <ScrollToTopButton />
-        </Providers>
+            <Footer />
+            <ScrollToTopButton />
+          </Providers>
+        </UserContextProvider>
       </body>
     </html>
   );

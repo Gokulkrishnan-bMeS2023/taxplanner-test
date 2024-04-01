@@ -1,13 +1,21 @@
 "use client";
-
-import { Box, Heading, Text, Button, Icon, Flex, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  Icon,
+  Flex,
+  Link,
+  Spinner,
+} from "@chakra-ui/react";
 import { FaRupeeSign, FaCheck } from "react-icons/fa";
+import { useUserContext } from "../../utils/hooks/index";
 
 interface PriceProps {
   id: number;
   title: string;
   descriptions: string[];
-  price: string;
   heading?: string;
   content?: string;
   buttonLink?: string;
@@ -17,9 +25,18 @@ interface PriceProps {
 
 interface PriceCardProps {
   contents: PriceProps[];
+  FilingType: string;
 }
 
-const ContentWithPriceCard: React.FC<PriceCardProps> = ({ contents }) => {
+const ContentWithPriceCard: React.FC<PriceCardProps> = ({
+  contents,
+  FilingType,
+}) => {
+  const { data } = useUserContext();
+  const datas = data?.find(
+    (data: { FilingType: any }) => data?.FilingType === FilingType
+  );
+
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -41,7 +58,6 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({ contents }) => {
           title,
           descriptions,
           heading,
-          price,
           content,
           buttonLink,
           buttonname,
@@ -97,7 +113,19 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({ contents }) => {
                       {heading}
                     </Heading>
                     <Heading mb={5} display="inline-flex">
-                      <FaRupeeSign /> {price}
+                      {data ? (
+                        <>
+                          <FaRupeeSign /> {datas?.Amount.toLocaleString()}
+                        </>
+                      ) : (
+                        <Spinner
+                          mt={3}
+                          mb={3}
+                          color="#01acf1"
+                          size="lg"
+                          thickness="4px"
+                        />
+                      )}
                     </Heading>
                     <Text>{content}</Text>
                     <Link

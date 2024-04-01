@@ -1,5 +1,4 @@
 "use client";
-
 import {
   PlanDescription,
   PlanDetails,
@@ -17,7 +16,7 @@ export default function DSCDigitalSignatureEncryptedOrganisation() {
   return (
     <Container>
       <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard contents={PriceDetails} />
+        <ContentWithPriceCard contents={PriceDetails} FilingType="DSCOrganisation"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <AboutThisPlan

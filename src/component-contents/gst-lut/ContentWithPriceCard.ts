@@ -6,7 +6,6 @@ export const ContentWithPriceCardContents = [
       "Letter of Undertaking (LUT) is required in case of export without payment of IGST. A LUT has a validity of one financial year.",
     ],
     heading: "GST LUT",
-    price: "999",
     content: "",
     buttonLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=LUT",

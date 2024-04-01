@@ -14,7 +14,7 @@ export default function NRI() {
   return (
     <>
       <Container>
-       <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} /></Box>
+       <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} FilingType="NRI"/></Box>
        <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="About This Plan" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box> 
        <Box my={{ base: 16, lg: 24 }}><DocumentSubmitted title="NRI" documents={Documents} /></Box> 
        <Box my={{ base: 16, lg: 24 }}><FAQSection

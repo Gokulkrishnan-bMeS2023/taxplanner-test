@@ -3,8 +3,10 @@
 import Animation from "../Animation/Scroll-Animation";
 import QueriesForm from "../Form/QueriesForm";
 import { Box } from "@chakra-ui/react";
-
-export default function BGWithQueriesForm() {
+interface BGWFProps {
+  heading?: string;
+}
+export default function BGWithQueriesForm({ heading }: BGWFProps) {
   return (
     <Box
       position={"relative"}
@@ -27,9 +29,9 @@ export default function BGWithQueriesForm() {
           boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         }}
       ></Box>
-      <Box w={{ base: "80%", md: "70%", lg: "48%" }} pt={"5.5rem"} mb={"3rem"}>
+      <Box w={{ base: "90%", md: "70%", lg: "48%" }} pt={"5.5rem"} mb={"3rem"}>
         <Animation>
-          <QueriesForm getInTouchLabel={true} />
+          <QueriesForm getInTouchLabel={true} heading={heading} />
         </Animation>
       </Box>
     </Box>

@@ -2,7 +2,7 @@ export const FAQs = [
     {
       id: 1,
       title: "Income Tax",
-      img: "assets/Taxplanner4.png",
+      img: "/assets/Taxplanner4.png",
       paragraph: [
         "For salaried, self-employed individuals, Partnership firms, LLPs, Companies.",
       ],
@@ -18,7 +18,7 @@ export const FAQs = [
     {
       id: 2,
       title: "GST",
-      img: "assets/Taxplanner1.png",
+      img: "/assets/Taxplanner1.png",
       paragraph: [
         "Get your GST Registration, File GST returns, Reply to GST notices, LUT.",
       ],
@@ -28,7 +28,7 @@ export const FAQs = [
     {
       id: 3,
       title: "Incorporation",
-      img: "assets/Taxplanner3.png",
+      img: "/assets/Taxplanner3.png",
       paragraph: ["For incorporating Company's, LLPs and Partnership Firms."],
       Fs: ["Company", "LLP", "Partnership"],
       href: "incorporation",
@@ -36,7 +36,7 @@ export const FAQs = [
     {
       id: 4,
       title: "Other Services",
-      img: "assets/Taxplanner2.png",
+      img: "/assets/Taxplanner2.png",
       paragraph: [
         "TDS Returns, Digital Signature, MSME Registration, ROC filing, SFT.",
       ],

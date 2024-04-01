@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
           subItems1: [
             {
               label: "Registration",
-              href: "/registration",
+              href: "/gst-registration",
             },
             {
               label: "Amendments",
@@ -174,8 +174,8 @@ const Navbar: React.FC = () => {
               href: "/dsc-services",
             },
             {
-              label: "ROC Filling",
-              href: "/roc-filling",
+              label: "ROC Filing",
+              href: "/roc-filing",
             },
             {
               label: "SFT",

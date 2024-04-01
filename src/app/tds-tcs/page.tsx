@@ -6,8 +6,11 @@ import {
   TDSReturnOnSaleOfPropertyForm26QB,
   TDSReturnsPaymentsOutsideIndiaForm27Q,
 } from "@/component-contents/tds-tcs/TitleWithTwoCards";
-import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import { Box, Container, Heading } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+const TitleWithTwoCards = dynamic(
+  () => import("@/components/TitleWithTwoCards")
+);
 
 export default function TDSTCS() {
   return (
@@ -16,16 +19,28 @@ export default function TDSTCS() {
         <Heading>All Services</Heading>
       </Box>
       <Box mb={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={TDSReturnOnSaleOfPropertyForm26Q} />
+        <TitleWithTwoCards
+          contents={TDSReturnOnSaleOfPropertyForm26Q}
+          FilingType="TDSForm26Q"
+        />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={TDSReturnOnSalaryPaymentForm24Q} />
+        <TitleWithTwoCards
+          contents={TDSReturnOnSalaryPaymentForm24Q}
+          FilingType="TDSForm24Q"
+        />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={TDSReturnOnSaleOfPropertyForm26QB} />
+        <TitleWithTwoCards
+          contents={TDSReturnOnSaleOfPropertyForm26QB}
+          FilingType="TDSForm26QB"
+        />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={TDSReturnsPaymentsOutsideIndiaForm27Q} />
+        <TitleWithTwoCards
+          contents={TDSReturnsPaymentsOutsideIndiaForm27Q}
+          FilingType="TDSForm27Q"
+        />
       </Box>
     </Container>
   );

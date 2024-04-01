@@ -10,7 +10,6 @@ export const GSTR1 = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/gst-filing-123-monthly",
-    amount: "2,999",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
@@ -25,7 +24,6 @@ export const GSTR3B = [
     card1List: ["Filing of 3B return for 3 months"],
     viewDetailsButton: true,
     viewDetailsLink: "/gst-filing-gstr3b",
-    amount: "2,999",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
@@ -44,7 +42,6 @@ export const GSTReturnsLite = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/gst-returns-lite",
-    amount: "999",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [
@@ -66,7 +63,6 @@ export const GSTReturnsLite1Year = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/gst-returns-lite-yearly",
-    amount: "8,999",
     buyNowLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=GSTReturns",
     card2Content: [

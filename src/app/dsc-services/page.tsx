@@ -24,27 +24,29 @@ export default function DSCServices() {
         </Text>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={DigitalSignatureForIndividualSigning} />
+        <TitleWithTwoCards contents={DigitalSignatureForIndividualSigning} FilingType="DSC"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={DigitalSignatureForEncriptedIndividual} />
+        <TitleWithTwoCards contents={DigitalSignatureForEncriptedIndividual} FilingType="DSCIndividual"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards
           contents={DigitalSignatureForEncriptedOrganisation}
+          FilingType="DSCOrganisation"
         />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards
           contents={DigitalSignatureForDGFTOf1IndividualAnd1Organisation}
+          FilingType="DSCDGFT"
         />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={DigitalSignatureEncriptedOrganisation} />
+        <TitleWithTwoCards contents={DigitalSignatureEncriptedOrganisation} FilingType="DSCICEGATE"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards
-          contents={DigitalSignatureForForeignCitizensAndNRIClass3}
+          contents={DigitalSignatureForForeignCitizensAndNRIClass3} FilingType="DSCNRI"
         />
       </Box>
     </Container>

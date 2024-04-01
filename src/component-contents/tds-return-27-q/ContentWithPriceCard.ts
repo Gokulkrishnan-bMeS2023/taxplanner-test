@@ -6,7 +6,6 @@ export const contentWithPriceCardContents = [
       "Foriegn payments on your mind? Make sure TDS form 27Q is filled when applicable. Buy this plan from us and leave the filing to us.",
     ],
     heading: "Starting From",
-    price: "2,999",
     content:
       "Foriegn payments on your mind? Make sure TDS form 27Q is filled when applicable. Buy this plan from us and leave the filing to us.",
     buttonLink:

@@ -16,7 +16,7 @@ const IecRegistrationRenewal = () => {
   return (
     <Container>
       <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard contents={contentWithPriceCardContents} />
+        <ContentWithPriceCard contents={contentWithPriceCardContents} FilingType="IECRegistration"/>
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
         <AboutThisPlan

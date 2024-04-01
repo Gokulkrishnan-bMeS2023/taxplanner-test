@@ -6,7 +6,6 @@ export const contentWithPriceCardContents = [
       "TDS return filing is mandatory on sale of house property. File your form 26QB under expert guidance.",
     ],
     heading: "GST Returns",
-    price: "2999",
     content: "",
     buttonLink:
       "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",

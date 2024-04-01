@@ -1,15 +1,14 @@
 "use client";
-
-import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
-  income_taxCard1,
-  income_taxCard2,
-  income_taxCard3,
-  income_taxCard4,
-  income_taxCard5,
+  incomeTaxSalariedPerson,
+  incomeTaxCapitalGain,
+  incomeTaxNRI,
+  incomeTaxBusiness,
+  incomeTaxTDS,
 } from "@/component-contents/incometax";
 import { Container, Heading, Flex } from "@chakra-ui/react";
 import Animation from "@/components/Animation/Scroll-Animation";
+import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 
 const Incometax = () => {
   return (
@@ -32,13 +31,28 @@ const Incometax = () => {
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={income_taxCard1} />
-            <ServicesSubContainer cartcontents={income_taxCard2} />
-            <ServicesSubContainer cartcontents={income_taxCard3} />
+            <ServicesSubContainer
+              cartcontents={incomeTaxSalariedPerson}
+              FilingType="SalariedPerson"
+            />
+            <ServicesSubContainer
+              cartcontents={incomeTaxCapitalGain}
+              FilingType="CapitalGain"
+            />
+            <ServicesSubContainer
+              cartcontents={incomeTaxNRI}
+              FilingType="NRI"
+            />
           </Flex>
           <Flex direction="column" justifyContent="center" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={income_taxCard4} />
-            <ServicesSubContainer cartcontents={income_taxCard5} />
+            <ServicesSubContainer
+              cartcontents={incomeTaxBusiness}
+              FilingType="Business"
+            />
+            <ServicesSubContainer
+              cartcontents={incomeTaxTDS}
+              FilingType="TDS"
+            />
           </Flex>
         </Flex>
       </Flex>

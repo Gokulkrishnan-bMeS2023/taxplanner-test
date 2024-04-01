@@ -16,16 +16,22 @@ export default function GSTReturnServices() {
         <Heading>All Services</Heading>
       </Box>
       <Box mb={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={GSTR1} />
+        <TitleWithTwoCards contents={GSTR1} FilingType="GSTReturns" />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={GSTR3B} />
+        <TitleWithTwoCards contents={GSTR3B} FilingType="GSTReturns3B" />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={GSTReturnsLite} />
+        <TitleWithTwoCards
+          contents={GSTReturnsLite}
+          FilingType="GSTReturnsLite"
+        />
       </Box>
       <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards contents={GSTReturnsLite1Year} />
+        <TitleWithTwoCards
+          contents={GSTReturnsLite1Year}
+          FilingType="GSTReturnsLiteOne"
+        />
       </Box>
     </Container>
   );
