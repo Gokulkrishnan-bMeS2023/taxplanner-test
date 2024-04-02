@@ -6,7 +6,7 @@ import {
   incorporationPartnership,
 } from "@/component-contents/incorporation";
 import { Container, Heading, Flex } from "@chakra-ui/react";
-import Animation from "@/components/Animation/Scroll-Animation";
+import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 
 const Incorporation = () => {
   return (
@@ -19,14 +19,13 @@ const Incorporation = () => {
         mb={20}
         mt={20}
         gap={{ base: "3rem" }}
-        minH={"100vh"}
       >
         <Flex grow={1}>
-          <Animation>
+          <SlideTextAnimation>
             <Heading as={"h2"} mb={4} textAlign={{ base: "start" }}>
               Incorporation
             </Heading>
-          </Animation>
+          </SlideTextAnimation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>

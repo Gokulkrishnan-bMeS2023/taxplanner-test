@@ -45,9 +45,9 @@ export default function TitleWithTwoCards({
             {content.title}
           </Heading>
           <Flex mt={12} pb={12} direction={{ base: "column", lg: "row" }}>
-            <AnimationBox>
+            <ViewAnimation duration={2}>
               <Box
-                w={{ lg: "90%" }}
+                w={{ lg: "88%" }}
                 ms={{ lg: 16 }}
                 me={{ lg: 4 }}
                 p={6}
@@ -78,44 +78,48 @@ export default function TitleWithTwoCards({
                   />
                 )}
               </Box>
-            </AnimationBox>
-
-            <Box
-              w={{ lg: "50%" }}
-              ms={{ lg: 4 }}
-              mt={{ base: 8, lg: 0 }}
-              me={{ lg: 16 }}
-              p={6}
-              border={"1px solid #DFE4FD"}
-              borderRadius={"8px"}
-              _hover={{
-                bgColor: "#01acf1",
-                color: "white",
-                "& svg, h4": { color: "white" },
-              }}
-              transition={"0.5s"}
-              style={{
-                boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-              }}
-            >
-              <Heading as={"h4"} mb={4} display="flex">
-                {data ? (
-                  <>
-                    <FaRupeeSign /> {datas?.Amount.toLocaleString()}
-                  </>
-                ) : (
-                  <Spinner color="#01acf1" size="lg" thickness="4px" />
-                )}
-              </Heading>
-              <PrimaryButton Name={" Buy Now"} hrefLink={content?.buyNowLink} />
-              <Box>
-                {content.card2Content?.map((item, index) => (
-                  <Box mb={4} key={index}>
-                    {item}
-                  </Box>
-                ))}
+            </ViewAnimation>
+            <ViewAnimation duration={3}>
+              <Box
+                w={{ lg: "88%" }}
+                ms={{ lg: 4 }}
+                mt={{ base: 8, lg: 0 }}
+                me={{ lg: 16 }}
+                p={6}
+                border={"1px solid #DFE4FD"}
+                borderRadius={"8px"}
+                _hover={{
+                  bgColor: "#01acf1",
+                  color: "white",
+                  "& svg, h4": { color: "white" },
+                }}
+                transition={"0.5s"}
+                style={{
+                  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                }}
+              >
+                <Heading as={"h4"} mb={4} display="flex">
+                  {data ? (
+                    <>
+                      <FaRupeeSign /> {datas?.Amount.toLocaleString()}
+                    </>
+                  ) : (
+                    <Spinner color="#01acf1" size="lg" thickness="4px" />
+                  )}
+                </Heading>
+                <PrimaryButton
+                  Name={" Buy Now"}
+                  hrefLink={content?.buyNowLink}
+                />
+                <Box>
+                  {content.card2Content?.map((item, index) => (
+                    <Box mb={4} key={index}>
+                      {item}
+                    </Box>
+                  ))}
+                </Box>
               </Box>
-            </Box>
+            </ViewAnimation>
           </Flex>
         </Box>
       ))}

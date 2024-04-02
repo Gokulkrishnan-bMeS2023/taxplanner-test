@@ -1,5 +1,4 @@
 "use client";
-
 import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
   other_ServicesCard1,
@@ -9,7 +8,7 @@ import {
   other_ServicesCard5,
 } from "@/component-contents/otherservices";
 import { Container, Heading, Flex } from "@chakra-ui/react";
-import Animation from "@/components/Animation/Scroll-Animation";
+import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 
 const OtherServices = () => {
   return (
@@ -24,21 +23,36 @@ const OtherServices = () => {
         gap={{ base: "3rem" }}
       >
         <Flex grow={1}>
-          <Animation>
+          <SlideTextAnimation>
             <Heading as={"h2"} mb={4} textAlign={{ base: "start" }}>
               Other Services
             </Heading>
-          </Animation>
+          </SlideTextAnimation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={other_ServicesCard1} FilingType="MSMERegistration"/>
-            <ServicesSubContainer cartcontents={other_ServicesCard2} FilingType="IECRegistration"/>
-            <ServicesSubContainer cartcontents={other_ServicesCard3} FilingType="DSC"/>
+            <ServicesSubContainer
+              cartcontents={other_ServicesCard1}
+              FilingType="MSMERegistration"
+            />
+            <ServicesSubContainer
+              cartcontents={other_ServicesCard2}
+              FilingType="IECRegistration"
+            />
+            <ServicesSubContainer
+              cartcontents={other_ServicesCard3}
+              FilingType="DSC"
+            />
           </Flex>
           <Flex direction="column" justifyContent="center" gap={6} grow={1}>
-            <ServicesSubContainer cartcontents={other_ServicesCard4} FilingType="ROCFiling"/>
-            <ServicesSubContainer cartcontents={other_ServicesCard5} FilingType=""/>
+            <ServicesSubContainer
+              cartcontents={other_ServicesCard4}
+              FilingType="ROCFiling"
+            />
+            <ServicesSubContainer
+              cartcontents={other_ServicesCard5}
+              FilingType=""
+            />
           </Flex>
         </Flex>
       </Flex>

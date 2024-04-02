@@ -5,6 +5,7 @@ import { FaArrowAltCircleRight, FaCheck } from "react-icons/fa";
 import { FC } from "react";
 import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
+import SlideTextAnimation from "../Animation/Text-Animation2";
 
 interface Document {
   id: number;
@@ -37,7 +38,7 @@ const DocumentSubmitted: FC<DocumentProps> = ({
         mx="auto"
         mb={10}
       >
-        <Animation>
+        <SlideTextAnimation>
           <Text
             border="1px"
             color="#01ACF1"
@@ -62,7 +63,7 @@ const DocumentSubmitted: FC<DocumentProps> = ({
               Documents To Be Submitted
             </Heading>
           )}
-        </Animation>
+        </SlideTextAnimation>
       </Flex>
       <Animation>
         <Box

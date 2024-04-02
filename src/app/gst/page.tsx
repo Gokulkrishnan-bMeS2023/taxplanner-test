@@ -1,5 +1,4 @@
 "use client";
-
 import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
   GSTRegistration,
@@ -9,7 +8,7 @@ import {
   GSTRefunds,
 } from "@/component-contents/gst";
 import { Container, Heading, Flex } from "@chakra-ui/react";
-import Animation from "@/components/Animation/Scroll-Animation";
+import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 
 const GST = () => {
   return (
@@ -24,11 +23,11 @@ const GST = () => {
         gap={{ base: "3rem" }}
       >
         <Flex grow={1}>
-          <Animation>
+          <SlideTextAnimation>
             <Heading as={"h2"} mb={4} textAlign={{ base: "start" }}>
               GST
             </Heading>
-          </Animation>
+          </SlideTextAnimation>
         </Flex>
         <Flex flexWrap={{ base: "wrap", md: "nowrap" }} gap={5} grow={1}>
           <Flex direction="column" gap={6} grow={1}>

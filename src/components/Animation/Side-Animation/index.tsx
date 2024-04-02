@@ -14,8 +14,8 @@ export default function SideAnimation({ children }: AnimationProps) {
   };
   return (
     <>
-      <div ref={containerRef}>
-        <div ref={skillRef}>
+      <motion.div ref={containerRef}>
+        <motion.div ref={skillRef}>
           <motion.div
             initial="hidden"
             animate={isSkillRefInView ? "visible" : {}}
@@ -23,8 +23,8 @@ export default function SideAnimation({ children }: AnimationProps) {
           >
             {children}
           </motion.div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 }

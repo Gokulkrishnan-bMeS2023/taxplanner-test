@@ -12,6 +12,7 @@ import {
 import { FaCheck } from "react-icons/fa";
 import Animation from "../Animation/Scroll-Animation";
 import ScrollAnimation from "../Animation/Scroll-Animation2";
+import SlideTextAnimation from "../Animation/Text-Animation2";
 
 interface FeatureProps {
   title: string;
@@ -38,16 +39,16 @@ const AboutThisPlan: React.FC<PlanProps> = ({
   return (
     <>
       <Flex direction="column" alignItems="center" textAlign="center" mb={6}>
-        <Animation>
+        <SlideTextAnimation>
           <Heading as={"h2"} mb={4}>
             {title}
           </Heading>
-          {aboutContents?.map((contents, index) => (
-            <Text key={index} mb={4}>
-              {contents}
-            </Text>
-          ))}
-        </Animation>
+        </SlideTextAnimation>
+        {aboutContents?.map((contents, index) => (
+          <Animation key={index}>
+            <Text mb={4}>{contents}</Text>
+          </Animation>
+        ))}
       </Flex>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} spacingY={8}>
         {planContents?.map((feature, index) => (

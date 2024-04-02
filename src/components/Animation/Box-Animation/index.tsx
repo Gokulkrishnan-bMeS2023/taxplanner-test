@@ -8,7 +8,7 @@ type AnimatedTextProp = {
 const AnimationBox = ({ children }: AnimatedTextProp) => {
   const containerVariants = {
     hidden: { opacity: 0, y: "25%" },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.50 } },
   };
 
   return (
