@@ -57,11 +57,15 @@ const Navbar: React.FC = () => {
     setIsServiceMenuOpen(!isServiceMenuOpen);
 
   const handleServicesMouseEnter = () => {
-    setIsServiceMenuOpen(true);
+    if (!isMobileView) {
+      setIsServiceMenuOpen(true);
+    }
   };
 
   const handleServicesMouseLeave = () => {
-    setIsServiceMenuOpen(false);
+    if (!isMobileView) {
+      setIsServiceMenuOpen(false);
+    }
   };
 
   const handleServicesClick = () => {
@@ -117,7 +121,7 @@ const Navbar: React.FC = () => {
           subItems1: [
             {
               label: "Registration",
-              href: "/gst-registration",
+              href: "/registration",
             },
             {
               label: "Amendments",
@@ -174,8 +178,8 @@ const Navbar: React.FC = () => {
               href: "/dsc-services",
             },
             {
-              label: "ROC Filing",
-              href: "/roc-filing",
+              label: "ROC Filling",
+              href: "/roc-filling",
             },
             {
               label: "SFT",
@@ -214,7 +218,6 @@ const Navbar: React.FC = () => {
       >
         <Container maxW="container.xxl" py={0} px={{ base: 2, lg: 12 }}>
           <Flex justify="space-between" alignItems="center">
-            {/* Logo */}
             <Box>
               <Link href="/">
                 <Flex align="center">
@@ -238,7 +241,7 @@ const Navbar: React.FC = () => {
               </Link>
             </Box>
 
-            {/* Mobile menu button */}
+            {/* Mobile View MenuIcon */}
             <IconButton
               borderColor="#DFE4FD"
               padding="1rem"
@@ -259,7 +262,7 @@ const Navbar: React.FC = () => {
               _active={{ bg: "transparent" }}
             />
 
-            {/* Mobile menu */}
+            {/* Mobile View */}
             <Box
               display={{
                 base: isMobileMenuOpen ? "block" : "none",
@@ -378,13 +381,19 @@ const Navbar: React.FC = () => {
                     </Box>
                   ))}
                   <Button
+                    as={Link}
+                    href={"https://services.taxplanner.co.in"}
+                    ml="4"
                     fontSize="16px"
                     fontWeight="500"
                     color="#DFE4FD"
-                    py="3"
+                    py="5"
                     px="5"
                     bg="#2D50D6"
-                    _hover={{ bg: "#2D50D6" }}
+                    _hover={{ bg: "#2D50D6", textDecoration: "none" }}
+                    _focus={{
+                      boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                    }}
                   >
                     Login
                   </Button>
@@ -392,7 +401,7 @@ const Navbar: React.FC = () => {
               </Box>
             </Box>
 
-            {/* Desktop menu */}
+            {/* Desktop View */}
             <Box display={{ base: "none", md: "none", lg: "block" }}>
               <Flex
                 align="center"
@@ -406,6 +415,7 @@ const Navbar: React.FC = () => {
                     ml="4"
                     padding="2"
                     position="relative"
+                    color={pathname === menuItem.href ? "#01acf1" : "#555555"}
                     onMouseEnter={
                       menuItem.label === "Services"
                         ? handleServicesMouseEnter
@@ -418,30 +428,16 @@ const Navbar: React.FC = () => {
                     }
                   >
                     {menuItem.label !== "Services" ? (
-                      <Link href={menuItem.href}>
-                        <Box
-                          width="100%"
-                          style={{ display: "flex", alignItems: "center" }}
-                          _hover={{ color: "#01acf1" }}
-                        >
-                          {menuItem.label}
-                        </Box>
-                      </Link>
+                      <Link href={menuItem.href}>{menuItem.label}</Link>
                     ) : (
-                      <Box
-                        style={{ display: "flex", alignItems: "center" }}
-                        _hover={{
-                          color: "#01acf1",
-                          "& svg": { color: "#01acf1" },
-                        }}
-                      >
+                      <Flex alignItems="center">
                         {menuItem.label}
                         <FaAngleDown
                           size={16}
                           color="#555555"
-                          style={{ marginLeft: "3", marginTop: "4px" }}
+                          style={{ marginLeft: "3px", marginTop: "3px" }}
                         />
-                      </Box>
+                      </Flex>
                     )}
                     {menuItem.subItems &&
                       isServiceMenuOpen &&
@@ -459,23 +455,27 @@ const Navbar: React.FC = () => {
                           transition={"0.5s"}
                         >
                           {menuItem.subItems.map((subItem, subIndex) => (
-                            <Link key={subIndex} href={subItem.href}>
-                              <Box
+                            <Box key={subIndex}>
+                              <Flex
                                 p="4"
-                                _hover={{ bg: "#F0F0F0" }}
+                                position={"relative"}
                                 _active={{
                                   bg: "#01ACF1",
                                   color: "#fff",
                                   svg: { color: "#fff" },
                                 }}
-                                display="flex"
+                                _hover={{
+                                  bg:
+                                    pathname === subItem.href
+                                      ? "#01acf1"
+                                      : "#F0F0F0",
+                                }}
                                 alignItems="center"
                                 onMouseEnter={() =>
                                   handleSubMenuItemClick(subItem.id)
                                 }
-                                position={"relative"}
                               >
-                                {subItem.label}
+                                <Link href={subItem.href}>{subItem.label}</Link>
                                 <Box _active={{ svg: { color: "white" } }}>
                                   <FaAngleDown
                                     size={16}
@@ -508,7 +508,22 @@ const Navbar: React.FC = () => {
                                         <Flex
                                           px={3}
                                           py="2"
-                                          _hover={{ bg: "#F0F0F0" }}
+                                          color={
+                                            pathname === item.href
+                                              ? "white"
+                                              : "#555555"
+                                          }
+                                          bg={
+                                            pathname === item.href
+                                              ? "#01acf1"
+                                              : "#fff"
+                                          }
+                                          _hover={{
+                                            bg:
+                                              pathname === item.href
+                                                ? "#01ACF1"
+                                                : "#F0F0F0",
+                                          }}
                                           _active={{
                                             bg: "#01ACF1",
                                             color: "#fff",
@@ -520,30 +535,30 @@ const Navbar: React.FC = () => {
                                     ))}
                                   </Box>
                                 )}
-                              </Box>
-                            </Link>
+                              </Flex>
+                            </Box>
                           ))}
                         </Box>
                       )}
                   </Box>
                 ))}
-                <Link href={"https://services.taxplanner.co.in"}>
-                  <Button
-                    ml="4"
-                    fontSize="16px"
-                    fontWeight="500"
-                    color="#DFE4FD"
-                    py="5"
-                    px="5"
-                    bg="#2D50D6"
-                    _hover={{ bg: "#2D50D6", textDecoration: "none" }}
-                    _focus={{
-                      boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
-                    }}
-                  >
-                    Login
-                  </Button>
-                </Link>
+                <Button
+                  as={Link}
+                  href={"https://services.taxplanner.co.in"}
+                  ml="4"
+                  fontSize="16px"
+                  fontWeight="500"
+                  color="#DFE4FD"
+                  py="5"
+                  px="5"
+                  bg="#2D50D6"
+                  _hover={{ bg: "#2D50D6", textDecoration: "none" }}
+                  _focus={{
+                    boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                  }}
+                >
+                  Login
+                </Button>
               </Flex>
             </Box>
           </Flex>

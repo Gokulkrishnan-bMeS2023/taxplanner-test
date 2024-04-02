@@ -12,6 +12,7 @@ import Link from "next/link";
 import Animation from "../Animation/Scroll-Animation";
 import { useUserContext } from "../../utils/hooks/index";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import ViewAnimation from "../Animation/View-Animation";
 
 interface ContentsType {
   id: number;
@@ -52,38 +53,41 @@ export default function TitleWithTwoCards({
             {content.title}
           </Heading>
           <Flex mt={12} pb={12} direction={{ base: "column", lg: "row" }}>
-            <Box
-              w={{ lg: "50%" }}
-              ms={{ lg: 16 }}
-              me={{ lg: 4 }}
-              p={6}
-              border={"1px solid #DFE4FD"}
-              borderRadius={"8px"}
-              _hover={{
-                bgColor: "#01acf1",
-                color: "white",
-                "& svg": { color: "white" },
-              }}
-              transition={"0.5s"}
-              style={{
-                boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-              }}
-            >
-              <Box fontWeight={"bolder"}>
-                {content.card1List?.map((item, index) => (
-                  <Flex mb={5} key={index}>
-                    <Icon mt={1} as={FaCheck} color={"#01acf1"} />
-                    <Text ms={4}>{item}</Text>
-                  </Flex>
-                ))}
+            <ViewAnimation>
+              <Box
+                w={{ lg: "50%" }}
+                ms={{ lg: 16 }}
+                me={{ lg: 4 }}
+                p={6}
+                border={"1px solid #DFE4FD"}
+                borderRadius={"8px"}
+                _hover={{
+                  bgColor: "#01acf1",
+                  color: "white",
+                  "& svg": { color: "white" },
+                }}
+                transition={"0.5s"}
+                style={{
+                  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                }}
+              >
+                <Box fontWeight={"bolder"}>
+                  {content.card1List?.map((item, index) => (
+                    <Flex mb={5} key={index}>
+                      <Icon mt={1} as={FaCheck} color={"#01acf1"} />
+                      <Text ms={4}>{item}</Text>
+                    </Flex>
+                  ))}
+                </Box>
+                {content.viewDetailsButton && (
+                  <PrimaryButton
+                    Name={"View Details"}
+                    hrefLink={content.viewDetailsLink}
+                  />
+                )}
               </Box>
-              {content.viewDetailsButton && (
-                <PrimaryButton
-                  Name={"View Details"}
-                  hrefLink={content.viewDetailsLink}
-                />
-              )}
-            </Box>
+            </ViewAnimation>
+
             <Box
               w={{ lg: "50%" }}
               ms={{ lg: 4 }}
@@ -108,11 +112,7 @@ export default function TitleWithTwoCards({
                     <FaRupeeSign /> {datas?.Amount.toLocaleString()}
                   </>
                 ) : (
-                  <Spinner
-                    color="#01acf1"
-                    size="lg"
-                    thickness="4px"
-                  />
+                  <Spinner color="#01acf1" size="lg" thickness="4px" />
                 )}
               </Heading>
               <PrimaryButton Name={" Buy Now"} hrefLink={content?.buyNowLink} />
