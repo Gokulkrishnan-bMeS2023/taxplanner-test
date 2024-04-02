@@ -262,7 +262,7 @@ export default function ContactForm() {
           <Button
             type="submit"
             isLoading={props.isSubmitting}
-            loadingText="Submitting"
+            loadingText="Send Message"
             py={"1.7rem"}
             px={"3rem"}
             fontWeight={"500"}

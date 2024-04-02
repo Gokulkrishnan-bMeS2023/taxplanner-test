@@ -2,6 +2,8 @@ import { Providers } from "./providers";
 import dynamic from "next/dynamic";
 import UserContextProvider from "../utils/context/index";
 import "./globals.css";
+import { useUserContext } from "@/utils/hooks";
+import Loading from "./loading";
 
 export default function RootLayout({
   children,
@@ -13,15 +15,23 @@ export default function RootLayout({
     () => import("@/components/BackToTopButton")
   );
 
+  const { data } = useUserContext();
+
   return (
     <html lang="en">
       <body>
         <UserContextProvider>
-          <Providers>
-            <main>{children}</main>
-            <Footer />
-            <ScrollToTopButton />
-          </Providers>
+          {data ? (
+            <>
+              <Providers>
+                <main>{children}</main>
+                <Footer />
+                <ScrollToTopButton />
+              </Providers>
+            </>
+          ) : (
+            Loading
+          )}
         </UserContextProvider>
       </body>
     </html>
