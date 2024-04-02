@@ -3,9 +3,10 @@ import { useRef, ReactNode } from "react";
 
 interface AnimationProps {
   children: ReactNode;
+  duration?: number;
 }
 
-export default function ViewAnimation({ children }: AnimationProps) {
+export default function ViewAnimation({ children ,duration}: AnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ container: containerRef });
   const skillRef = useRef<HTMLDivElement>(null);
@@ -13,17 +14,17 @@ export default function ViewAnimation({ children }: AnimationProps) {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.75 } },
+    visible: { opacity: 1, transition: { duration: duration} },
   };
 
   return (
-    <motion.div ref={containerRef} style={{width:"50%"}}>
-      <motion.div ref={skillRef} style={{width:"100%"}}> 
+    <motion.div ref={containerRef} style={{ width: "50%" }}>
+      <motion.div ref={skillRef} style={{ width: "100%" }}>
         <motion.div
           initial="hidden"
           animate={isSkillRefInView ? "visible" : {}}
           variants={containerVariants}
-          style={{width:"100%"}}
+          style={{ width: "100%" }}
         >
           {children}
         </motion.div>

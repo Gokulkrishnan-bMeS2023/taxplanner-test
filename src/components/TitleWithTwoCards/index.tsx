@@ -1,18 +1,10 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Button,
-  Icon,
-  Text,
-  Spinner,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Icon, Text, Spinner } from "@chakra-ui/react";
 import { FaCheck, FaRupeeSign } from "react-icons/fa";
-import Link from "next/link";
 import Animation from "../Animation/Scroll-Animation";
 import { useUserContext } from "../../utils/hooks/index";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import ViewAnimation from "../Animation/View-Animation";
+import AnimationBox from "../Animation/Box-Animation";
 
 interface ContentsType {
   id: number;
@@ -53,9 +45,9 @@ export default function TitleWithTwoCards({
             {content.title}
           </Heading>
           <Flex mt={12} pb={12} direction={{ base: "column", lg: "row" }}>
-            <ViewAnimation>
+            <AnimationBox>
               <Box
-                w={{ lg: "50%" }}
+                w={{ lg: "90%" }}
                 ms={{ lg: 16 }}
                 me={{ lg: 4 }}
                 p={6}
@@ -86,7 +78,7 @@ export default function TitleWithTwoCards({
                   />
                 )}
               </Box>
-            </ViewAnimation>
+            </AnimationBox>
 
             <Box
               w={{ lg: "50%" }}

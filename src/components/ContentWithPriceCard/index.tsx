@@ -11,7 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { FaRupeeSign, FaCheck } from "react-icons/fa";
 import { useUserContext } from "../../utils/hooks/index";
-
+import AnimationBox from "../Animation/Box-Animation";
+import Animation from "../Animation/Scroll-Animation";
 interface PriceProps {
   id: number;
   title: string;
@@ -22,12 +23,10 @@ interface PriceProps {
   buttonname: string;
   showCheckIcon?: boolean;
 }
-
 interface PriceCardProps {
   contents: PriceProps[];
   FilingType: string;
 }
-
 const ContentWithPriceCard: React.FC<PriceCardProps> = ({
   contents,
   FilingType,
@@ -36,7 +35,6 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
   const datas = data?.find(
     (data: { FilingType: any }) => data?.FilingType === FilingType
   );
-
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -71,6 +69,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
               justify="space-between"
             >
               <Box flex={1}>
+              <Animation>
                 <Heading mb={2} as="h2">
                   {title}
                 </Heading>
@@ -79,19 +78,21 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                     {description}
                   </Text>
                 ))}
+                </Animation>
               </Box>
               <Box flex={1} width={{ base: "100%", md: "100%", lg: "auto" }}>
+                <AnimationBox>
                 <Box paddingRight={{ base: "0", md: "28", lg: "16", xl: "24" }}>
                   <Box
                     padding="1.5rem"
                     border={"1px"}
-                    borderColor={"#dfe4fd"}
+                    borderColor={"#DFE4FD"}
                     borderRadius={"8px"}
                     textAlign={"center"}
                     width="100%"
                     _hover={{
-                      backgroundColor: "#01acf1",
-                      color: "#ffffff",
+                      backgroundColor: "#01ACF1",
+                      color: "#FFFFFF",
                       "& svg": { color: "white" },
                       h2: { color: "white" },
                       h4: { color: "white" },
@@ -105,7 +106,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                       <Icon
                         as={FaCheck}
                         fontSize="48"
-                        color={"#01acf1"}
+                        color={"#01ACF1"}
                         mb={3}
                       />
                     )}
@@ -121,7 +122,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                         <Spinner
                           mt={3}
                           mb={3}
-                          color="#01acf1"
+                          color="#01ACF1"
                           size="lg"
                           thickness="4px"
                         />
@@ -149,6 +150,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                     </Link>
                   </Box>
                 </Box>
+                </AnimationBox>
               </Box>
             </Flex>
           </Box>
@@ -157,5 +159,4 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
     </>
   );
 };
-
 export default ContentWithPriceCard;

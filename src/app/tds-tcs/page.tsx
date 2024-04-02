@@ -1,5 +1,4 @@
 "use client";
-
 import {
   TDSReturnOnSaleOfPropertyForm26Q,
   TDSReturnOnSalaryPaymentForm24Q,
@@ -7,17 +6,17 @@ import {
   TDSReturnsPaymentsOutsideIndiaForm27Q,
 } from "@/component-contents/tds-tcs/TitleWithTwoCards";
 import { Box, Container, Heading } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-const TitleWithTwoCards = dynamic(
-  () => import("@/components/TitleWithTwoCards")
-);
+import TitleWithTwoCards from "@/components/TitleWithTwoCards";
+import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
 
 export default function TDSTCS() {
   return (
     <Container>
-      <Box my={12} mb={6}>
-        <Heading>All Services</Heading>
-      </Box>
+      <ScrollAnimation>
+        <Box my={12} mb={6}>
+          <Heading>All Services</Heading>
+        </Box>
+      </ScrollAnimation>
       <Box mb={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards
           contents={TDSReturnOnSaleOfPropertyForm26Q}

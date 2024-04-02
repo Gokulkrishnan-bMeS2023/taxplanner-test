@@ -6,6 +6,7 @@ import {
   GSTReturnsLite,
   GSTReturnsLite1Year,
 } from "@/component-contents/gst-return-services/TitleWithTwoCards";
+import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
 import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import { Box, Container, Heading } from "@chakra-ui/react";
 
@@ -13,7 +14,9 @@ export default function GSTReturnServices() {
   return (
     <Container>
       <Box my={12} mb={6}>
-        <Heading>All Services</Heading>
+        <ScrollAnimation>
+          <Heading>All Services</Heading>
+        </ScrollAnimation>
       </Box>
       <Box mb={{ base: 16, lg: 24 }}>
         <TitleWithTwoCards contents={GSTR1} FilingType="GSTReturns" />
