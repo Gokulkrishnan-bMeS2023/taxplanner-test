@@ -60,6 +60,7 @@ const Header = ({ heading }: headerProps) => {
               fontWeight="700"
               line-height={1.1}
               color="#011A41"
+              width={"90%"}
             >
               {heading}
             </Heading>

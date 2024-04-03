@@ -10,8 +10,11 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { FaRupeeSign, FaCheck } from "react-icons/fa";
+// import { useUserContext } from "../../utils/hooks/index";
 import AnimationBox from "../Animation/Box-Animation";
 import Animation from "../Animation/Scroll-Animation";
+import { useEffect, useState } from "react";
+import { getAmountByFilingType } from "@/utils/function";
 interface PriceProps {
   id: number;
   title: string;
@@ -26,27 +29,30 @@ interface PriceCardProps {
   contents: PriceProps[];
   FilingType: string;
 }
-
-async function getData() {
-  const res = await fetch(
-    "https://services.taxplanner.co.in/paymentdetails-json.aspx"
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
-
-export default async function ContentWithPriceCard({
+const ContentWithPriceCard: React.FC<PriceCardProps> = ({
   contents,
   FilingType,
-}: PriceCardProps) {
-  const data = await getData();
+}) => {
+  // const { data } = useUserContext();
+  // const datas = data?.find(
+  //   (data: { FilingType: any }) => data?.FilingType === FilingType
+  // );
 
-  const datas = data?.find(
-    (data: { FilingType: any }) => data?.FilingType === FilingType
-  );
+  const [amount, setAmount] = useState<string | null>(null);
+  const filingType = FilingType;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const amount = await getAmountByFilingType(filingType);
+        setAmount(amount);
+      } catch (error) {
+        console.error("Error fetching amount:", error);
+      }
+    };
+
+    fetchData();
+  }, [filingType]);
 
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -129,10 +135,10 @@ export default async function ContentWithPriceCard({
                         {heading}
                       </Heading>
                       <Heading mb={5} display="inline-flex">
-                        {/* {data ? (
-                          <> */}
-                            <FaRupeeSign /> {datas?.Amount}
-                          {/* </>
+                        {amount ? (
+                          <>
+                            <FaRupeeSign /> {amount?.toLocaleString()}
+                          </>
                         ) : (
                           <Spinner
                             mt={3}
@@ -141,7 +147,7 @@ export default async function ContentWithPriceCard({
                             size="lg"
                             thickness="4px"
                           />
-                        )} */}
+                        )}
                       </Heading>
                       <Text>{content}</Text>
                       <Link
@@ -173,4 +179,5 @@ export default async function ContentWithPriceCard({
       )}
     </>
   );
-}
+};
+export default ContentWithPriceCard;
