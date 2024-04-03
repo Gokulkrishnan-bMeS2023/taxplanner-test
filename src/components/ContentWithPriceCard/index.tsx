@@ -10,11 +10,8 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { FaRupeeSign, FaCheck } from "react-icons/fa";
-// import { useUserContext } from "../../utils/hooks/index";
 import AnimationBox from "../Animation/Box-Animation";
 import Animation from "../Animation/Scroll-Animation";
-import { useEffect, useState } from "react";
-import { getAmountByFilingType } from "@/utils/function";
 interface PriceProps {
   id: number;
   title: string;
@@ -29,30 +26,27 @@ interface PriceCardProps {
   contents: PriceProps[];
   FilingType: string;
 }
-const ContentWithPriceCard: React.FC<PriceCardProps> = ({
+
+async function getData() {
+  const res = await fetch(
+    "https://services.taxplanner.co.in/paymentdetails-json.aspx"
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export default async function ContentWithPriceCard({
   contents,
   FilingType,
-}) => {
-  // const { data } = useUserContext();
-  // const datas = data?.find(
-  //   (data: { FilingType: any }) => data?.FilingType === FilingType
-  // );
+}: PriceCardProps) {
+  const data = await getData();
 
-  const [amount, setAmount] = useState<string | null>(null);
-  const filingType = FilingType;
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const amount = await getAmountByFilingType(filingType);
-  //       setAmount(amount);
-  //     } catch (error) {
-  //       console.error("Error fetching amount:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [filingType]);
+  const datas = data?.find(
+    (data: { FilingType: any }) => data?.FilingType === FilingType
+  );
 
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -135,10 +129,10 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                         {heading}
                       </Heading>
                       <Heading mb={5} display="inline-flex">
-                        {/* {amount ? (
-                          <> */}
-                            <FaRupeeSign /> {getAmountByFilingType(filingType)}
-                          {/* </>
+                        {data ? (
+                          <>
+                            <FaRupeeSign /> {datas?.Amount}
+                          </>
                         ) : (
                           <Spinner
                             mt={3}
@@ -147,7 +141,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                             size="lg"
                             thickness="4px"
                           />
-                        )} */}
+                        )}
                       </Heading>
                       <Text>{content}</Text>
                       <Link
@@ -179,5 +173,4 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
       )}
     </>
   );
-};
-export default ContentWithPriceCard;
+}
