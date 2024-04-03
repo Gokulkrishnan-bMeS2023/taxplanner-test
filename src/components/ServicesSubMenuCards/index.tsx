@@ -110,13 +110,14 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
                   mb={2}
                   href={content.knowMoreLink}
                   textDecoration="none"
-                  fontWeight={700}
+                  fontWeight={1000}
+                  fontSize={"18px"}
                   display={"flex"}
                   alignItems={"center"}
                   _hover={{ textDecoration: "none" }}
                   width={"fit-content"}
                 >
-                  Know More <BiRightArrowAlt size={24} />
+                  Know More <BiRightArrowAlt size={26} />
                 </Link>
               )}
 

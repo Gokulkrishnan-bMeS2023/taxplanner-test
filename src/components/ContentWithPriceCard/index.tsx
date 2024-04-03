@@ -129,10 +129,10 @@ export default async function ContentWithPriceCard({
                         {heading}
                       </Heading>
                       <Heading mb={5} display="inline-flex">
-                        {data ? (
-                          <>
+                        {/* {data ? (
+                          <> */}
                             <FaRupeeSign /> {datas?.Amount}
-                          </>
+                          {/* </>
                         ) : (
                           <Spinner
                             mt={3}
@@ -141,7 +141,7 @@ export default async function ContentWithPriceCard({
                             size="lg"
                             thickness="4px"
                           />
-                        )}
+                        )} */}
                       </Heading>
                       <Text>{content}</Text>
                       <Link
