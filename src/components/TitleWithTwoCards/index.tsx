@@ -50,6 +50,7 @@ export default function TitleWithTwoCards({
                 w={{ lg: "88%" }}
                 ms={{ lg: 16 }}
                 me={{ lg: 4 }}
+                minHeight={"300px"}
                 p={6}
                 border={"1px solid #DFE4FD"}
                 borderRadius={"8px"}
@@ -82,6 +83,7 @@ export default function TitleWithTwoCards({
             <ViewAnimation duration={3}>
               <Box
                 w={{ lg: "88%" }}
+                minHeight={"300px"}
                 ms={{ lg: 4 }}
                 mt={{ base: 8, lg: 0 }}
                 me={{ lg: 16 }}
