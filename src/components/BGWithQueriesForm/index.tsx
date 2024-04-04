@@ -1,12 +1,12 @@
 "use client";
-
 import Animation from "../Animation/Scroll-Animation";
 import QueriesForm from "../Form/QueriesForm";
 import { Box } from "@chakra-ui/react";
 interface BGWFProps {
   heading?: string;
+  buttonName?: string;
 }
-export default function BGWithQueriesForm({ heading }: BGWFProps) {
+export default function BGWithQueriesForm({ heading, buttonName }: BGWFProps) {
   return (
     <Box
       position={"relative"}
@@ -31,7 +31,11 @@ export default function BGWithQueriesForm({ heading }: BGWFProps) {
       ></Box>
       <Box w={{ base: "90%", md: "70%", lg: "48%" }} pt={"5.5rem"} mb={"3rem"}>
         <Animation>
-          <QueriesForm getInTouchLabel={true} heading={heading} />
+          <QueriesForm
+            getInTouchLabel={true}
+            heading={heading}
+            buttonName={buttonName}
+          />
         </Animation>
       </Box>
     </Box>

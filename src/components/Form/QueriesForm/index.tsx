@@ -17,6 +17,7 @@ import * as Yup from "yup";
 interface QueriesFormProps {
   getInTouchLabel: boolean;
   heading?: string;
+  buttonName?: string;
 }
 
 interface InputValueTypes {
@@ -36,6 +37,7 @@ const queriesFormValidationSchema = Yup.object({
 export default function QueriesForm({
   getInTouchLabel,
   heading,
+  buttonName,
 }: QueriesFormProps) {
   const Toast = useToast();
   const showToast = () => {
@@ -276,7 +278,7 @@ export default function QueriesForm({
                   _hover={{ bgColor: "#2d50d6", color: "#DFE4FD" }}
                   _focus={{ boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)" }}
                 >
-                  Submit Now
+                  {buttonName ? <>{buttonName}</> : "Submit Now"}
                 </Button>
               </Form>
             )}

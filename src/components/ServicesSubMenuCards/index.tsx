@@ -7,10 +7,10 @@ import {
   Link,
   Box,
   Spinner,
+  Image,
 } from "@chakra-ui/react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import Animation from "../Animation/Scroll-Animation";
-import Images from "../Images";
 import { useUserContext } from "../../utils/hooks/index";
 import { FaRupeeSign } from "react-icons/fa";
 import "./services.css";
@@ -51,7 +51,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
         {cartcontents?.map((content, index) => (
           <Box key={index} height={"100%"}>
             <Box className="StyledBox1" height={"100%"} alignContent={"center"}>
-              <Images
+              <Image
                 src={content.imgSrc}
                 alt={"img"}
                 width={120}
@@ -74,7 +74,7 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
               <Heading as="h5" mb={3} display={"flex"} alignItems={"center"}>
                 {data ? (
                   <>
-                    Starting From : <FaRupeeSign  size={18}/>
+                    Starting From : <FaRupeeSign size={18} />
                     {datas?.Amount.toLocaleString()}
                   </>
                 ) : (

@@ -1,12 +1,11 @@
 "use client";
-import { Flex, Box, Button, Heading, Text } from "@chakra-ui/react";
+import { Flex, Box, Button, Heading, Text, Image } from "@chakra-ui/react";
 import { FaBars, FaCheck } from "react-icons/fa";
 import { FC, useState } from "react";
 import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SideAnimation from "../Animation/Side-Animation";
-import Images from "../Images";
 
 interface ServicesDatas {
   id: number;
@@ -152,11 +151,11 @@ const FAQSection: FC<ServicesProps> = ({
                               display={"flex"}
                               height={{ base: "100%", lg: "450px" }}
                             >
-                              <Images
+                              <Image
                                 src={subdata?.img}
                                 alt="#"
-                                width={600}
-                                height={400}
+                                width={"500px"}
+                                height={"400px"}
                               />
                             </Box>
                           )}
