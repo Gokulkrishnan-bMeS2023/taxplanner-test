@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Flex,
   Heading,
@@ -7,7 +6,6 @@ import {
   Box,
   SimpleGrid,
   IconButton,
-  Card,
 } from "@chakra-ui/react";
 import { FaCheck } from "react-icons/fa";
 import Animation from "../Animation/Scroll-Animation";

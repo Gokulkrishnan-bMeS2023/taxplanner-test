@@ -12,7 +12,6 @@ import { FaBars, FaAngleDown } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-
 interface SubMenuItem {
   label: string;
   href: string;
@@ -58,12 +57,16 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+<<<<<<< HEAD
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     // Close the service menu if it's open
     setIsServiceMenuOpen(false);
     setSelectedSubMenu(null);
   };
+=======
+  const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+>>>>>>> f394ab760444285583c6f24cb55530959ea94b65
 
 
   const handleToggleServiceMenu = () => {
@@ -74,17 +77,17 @@ const Navbar: React.FC = () => {
   };
   
 
-    const handleServicesMouseEnter = () => {
-      if (!isMobileView) {
-        setIsServiceMenuOpen(true);
-      }
-    };
-  
-    const handleServicesMouseLeave = () => {
-      if (!isMobileView) {
-        setIsServiceMenuOpen(false);
-      }
-    };
+  const handleServicesMouseEnter = () => {
+    if (!isMobileView) {
+      setIsServiceMenuOpen(true);
+    }
+  };
+
+  const handleServicesMouseLeave = () => {
+    if (!isMobileView) {
+      setIsServiceMenuOpen(false);
+    }
+  };
 
     const handleServicesClick = () => {
       if (isMobileView) {
@@ -239,7 +242,6 @@ const Navbar: React.FC = () => {
       >
         <Container maxW="container.xxl" py={0} px={{ base: 2, lg: 12 }}>
           <Flex justify="space-between" alignItems="center">
-           
             <Box>
               <Link href="/">
                 <Flex align="center">
@@ -263,7 +265,7 @@ const Navbar: React.FC = () => {
               </Link>
             </Box>
 
-            {/* Mobile View MenuIcon */ }
+            {/* Mobile View MenuIcon */}
             <IconButton
               borderColor="#DFE4FD"
               padding="1rem"
@@ -283,8 +285,8 @@ const Navbar: React.FC = () => {
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
             />
- 
-           {/* Mobile View */ }          
+
+            {/* Mobile View */}
             <Box
               display={{
                 base: isMobileMenuOpen ? "block" : "none",
@@ -422,7 +424,7 @@ const Navbar: React.FC = () => {
               </Box>
             </Box>
 
-          {/* Desktop View */ }
+            {/* Desktop View */}
             <Box display={{ base: "none", md: "none", lg: "block" }}>
               <Flex
                 align="center"
@@ -432,6 +434,7 @@ const Navbar: React.FC = () => {
               >
                 {menuItems.map((menuItem, index) => (
                   <Box
+<<<<<<< HEAD
                   key={index}
                   ml="4"
                   padding="2"
@@ -456,6 +459,36 @@ const Navbar: React.FC = () => {
                       />
                     </Flex>
                   )}
+=======
+                    key={index}
+                    ml="4"
+                    padding="2"
+                    position="relative"
+                    _hover={{ color: "#01acf1", "& svg": { color: "#01acf1" } }}
+                    color={pathname === menuItem.href ? "#01acf1" : "#555555"}
+                    onMouseEnter={
+                      menuItem.label === "Services"
+                        ? handleServicesMouseEnter
+                        : undefined
+                    }
+                    onMouseLeave={
+                      menuItem.label === "Services"
+                        ? handleServicesMouseLeave
+                        : undefined
+                    }
+                  >
+                    {menuItem.label !== "Services" ? (
+                      <Link href={menuItem.href}>{menuItem.label}</Link>
+                    ) : (
+                      <Flex alignItems="center">
+                        {menuItem.label}
+                        <FaAngleDown
+                          size={16}
+                          style={{ marginLeft: "3px", marginTop: "3px" }}
+                        />
+                      </Flex>
+                    )}
+>>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                     {menuItem.subItems &&
                       isServiceMenuOpen &&
                       menuItem.label === "Services" && (
@@ -475,12 +508,28 @@ const Navbar: React.FC = () => {
                               <Flex
                                 p="4"
                                 position={"relative"}
-                                color={pathname === subItem.href ? "white" : "#555555"}
-                                bg={pathname === subItem.href ? "#01acf1" : "#fff"}
+                                color={
+                                  pathname === subItem.href
+                                    ? "white"
+                                    : "#555555"
+                                }
+                                bg={
+                                  pathname === subItem.href ? "#01acf1" : "#fff"
+                                }
                                 _hover={{
-                                  bg: pathname === subItem.href ? "#01ACF1" : "#F0F0F0"}}
+                                  bg:
+                                    pathname === subItem.href
+                                      ? "#01ACF1"
+                                      : "#F0F0F0",
+                                }}
                                 _active={{
+<<<<<<< HEAD
                                   bg: "#01ACF1",color: "#fff","& svg": { color: "#fff" }}}
+=======
+                                  bg: "#01ACF1",
+                                  color: "#fff",
+                                }}
+>>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                                 alignItems="center"
                                 onMouseEnter={() =>
                                   handleSubMenuItemClick(subItem.id)
@@ -490,7 +539,15 @@ const Navbar: React.FC = () => {
                                 <Box>
                                   <FaAngleDown
                                     size={16}
+<<<<<<< HEAD
                                     color={pathname === subItem.href ? "white" : "#555555"}
+=======
+                                    color={
+                                      pathname === subItem.href
+                                        ? "white"
+                                        : "#555555"
+                                    }
+>>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                                     style={{
                                       marginLeft: "5",
                                       marginTop: "4px",
@@ -519,10 +576,21 @@ const Navbar: React.FC = () => {
                                         <Flex
                                           px={3}
                                           py="2"
-                                          color={pathname === item.href ? "white" : "#555555"}
-                                          bg={pathname === item.href ? "#01acf1" : "#fff"}
+                                          color={
+                                            pathname === item.href
+                                              ? "white"
+                                              : "#555555"
+                                          }
+                                          bg={
+                                            pathname === item.href
+                                              ? "#01acf1"
+                                              : "#fff"
+                                          }
                                           _hover={{
-                                            bg: pathname === item.href ? "#01ACF1" : "#F0F0F0",
+                                            bg:
+                                              pathname === item.href
+                                                ? "#01ACF1"
+                                                : "#F0F0F0",
                                           }}
                                           _active={{
                                             bg: "#01ACF1",
@@ -541,24 +609,24 @@ const Navbar: React.FC = () => {
                         </Box>
                       )}
                   </Box>
-                ))}            
-                  <Button
-                    as={Link}
-                    href={"https://services.taxplanner.co.in"}
-                    ml="4"
-                    fontSize="16px"
-                    fontWeight="500"
-                    color="#DFE4FD"
-                    py="5"
-                    px="5"
-                    bg="#2D50D6"
-                    _hover={{ bg: "#2D50D6", textDecoration: "none" }}
-                    _focus={{
-                      boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
-                    }}
-                  >
-                    Login
-                  </Button>
+                ))}
+                <Button
+                  as={Link}
+                  href={"https://services.taxplanner.co.in"}
+                  ml="4"
+                  fontSize="16px"
+                  fontWeight="500"
+                  color="#DFE4FD"
+                  py="5"
+                  px="5"
+                  bg="#2D50D6"
+                  _hover={{ bg: "#2D50D6", textDecoration: "none" }}
+                  _focus={{
+                    boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
+                  }}
+                >
+                  Login
+                </Button>
               </Flex>
             </Box>
           </Flex>

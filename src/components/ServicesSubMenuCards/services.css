@@ -7,7 +7,28 @@
   width: 350px !important;
   height: 100%;
 }
+.Wrapper {
+  width: 100% !important;
+  display: flex !important;
+  height: 320px;
+}
+.Wrapper:hover .StyledBox1 {
+  display: none !important;
+}
+.Wrapper:hover .StyledBox2 {
+  display: block !important;
+}
+.Wrapper:hover {
+  background-color: #01acf1 !important;
+  transition: 0.5s !important;
+  color: #fff !important;
+}
 
+@media (max-width: 350px) {
+  .Wrapper {
+    height: 400px !important;
+  }
+}
 @media (max-width: 500px) {
   .StyledBox1 {
     width: 100% !important;
@@ -25,7 +46,7 @@
   }
   .Wrapper {
     min-width: 270px !important;
-    height: 350px !important;
+    height: 350px;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -36,7 +57,7 @@
     width: 280px !important;
   }
   .Wrapper {
-    height: 350px !important;
+    height: 350px;
   }
 }
 @media (min-width: 1400px) {
@@ -46,20 +67,4 @@
   .StyledBox2 {
     width: 400px !important;
   }
-}
-.Wrapper {
-  width: 100% !important;
-  display: flex !important;
-  height: 320px !important;
-}
-.Wrapper:hover .StyledBox1 {
-  display: none !important;
-}
-.Wrapper:hover .StyledBox2 {
-  display: block !important;
-}
-.Wrapper:hover {
-  background-color: #01acf1 !important;
-  transition: 0.5s !important;
-  color: #fff !important;
 }

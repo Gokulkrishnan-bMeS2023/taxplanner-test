@@ -4,7 +4,6 @@ import Animation from "../Animation/Scroll-Animation";
 import { useUserContext } from "../../utils/hooks/index";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import ViewAnimation from "../Animation/View-Animation";
-import AnimationBox from "../Animation/Box-Animation";
 
 interface ContentsType {
   id: number;
@@ -44,13 +43,17 @@ export default function TitleWithTwoCards({
           <Heading mb={6} pt={6}>
             {content.title}
           </Heading>
-          <Flex mt={12} pb={12} direction={{ base: "column", lg: "row" }}>
+          <Flex
+            mt={12}
+            pb={12}
+            direction={{ base: "column", lg: "row" }}
+          >
             <ViewAnimation duration={2}>
               <Box
                 w={{ lg: "88%" }}
                 ms={{ lg: 16 }}
                 me={{ lg: 4 }}
-                minHeight={"300px"}
+                height={"100%"}
                 p={6}
                 border={"1px solid #DFE4FD"}
                 borderRadius={"8px"}
@@ -83,7 +86,7 @@ export default function TitleWithTwoCards({
             <ViewAnimation duration={3}>
               <Box
                 w={{ lg: "88%" }}
-                minHeight={"300px"}
+                height={"100%"}
                 ms={{ lg: 4 }}
                 mt={{ base: 8, lg: 0 }}
                 me={{ lg: 16 }}

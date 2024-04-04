@@ -1,4 +1,4 @@
-import { Box, styled } from "@chakra-ui/react";
+import { Box} from "@chakra-ui/react";
 import { motion, useInView, useScroll } from "framer-motion";
 import { useRef, ReactNode } from "react";
 
@@ -19,17 +19,14 @@ export default function ViewAnimation({ children, duration }: AnimationProps) {
   };
 
   return (
-    <Box width={{ base: "100%",md:"100%", lg: "50" }}>
-      <motion.div
-        ref={containerRef}
-        style={{width:"100%"}}
-      >
-        <motion.div ref={skillRef} style={{ width: "100%" }}>
+    <Box width={{ base: "100%", md: "100%", lg: "50" }} maxHeight={"100%"}>
+      <motion.div ref={containerRef} style={{ width: "100%", height: "100%" }}>
+        <motion.div ref={skillRef} style={{ width: "100%", height: "100%" }}>
           <motion.div
             initial="hidden"
             animate={isSkillRefInView ? "visible" : {}}
             variants={containerVariants}
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: "100%" }}
           >
             {children}
           </motion.div>

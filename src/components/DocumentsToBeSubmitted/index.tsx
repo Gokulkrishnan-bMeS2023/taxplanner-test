@@ -1,6 +1,7 @@
 import { Box, Center, Flex, Heading, Icon, Text } from "@chakra-ui/react";
 import { FaCheck } from "react-icons/fa";
 import Animation from "../Animation/Scroll-Animation";
+import SlideTextAnimation from "../Animation/Text-Animation2";
 
 interface ContentsTypes {
   id: number;
@@ -21,20 +22,22 @@ export default function DocumentsToBeSubmitted({
       <Animation>
         {contents.map((content) => (
           <Box key={content.id}>
-            <Center>
-              <Text
-                fontWeight={"500"}
-                border={"1px solid #DFE4FD"}
-                borderRadius={"8px"}
-                px={4}
-                py={1}
-                color={"#01acf1"}
-                mb={4}
-              >
-                {content.title}
-              </Text>
-            </Center>
-            <Heading textAlign={"center"}>Documents To Be Submitted</Heading>
+            <SlideTextAnimation>
+              <Center>
+                <Text
+                  fontWeight={"500"}
+                  border={"1px solid #DFE4FD"}
+                  borderRadius={"8px"}
+                  px={4}
+                  py={1}
+                  color={"#01acf1"}
+                  mb={4}
+                >
+                  {content.title}
+                </Text>
+              </Center>
+              <Heading textAlign={"center"}>Documents To Be Submitted</Heading>
+            </SlideTextAnimation>
             <Center my={12}>
               <Box
                 w={"100%"}

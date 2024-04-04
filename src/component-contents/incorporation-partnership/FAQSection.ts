@@ -23,9 +23,7 @@ export const FAQs = [
     paragraph: [
       "A partnership firm can be registered whether at the time of its formation or even subsequently. The application for registration is to be made to the registrar of firms of the region in which the business is situated. It is advisable to get the firm registered as soon as it starts its business to avail the rights that can be enjoyed only by a registered firm.",
     ],
-    Fs: [
-      "It can be registered even with Rs. 100 as total capital contribution.",
-    ],
+    Fs: [],
   },
   {
     id: 4,
