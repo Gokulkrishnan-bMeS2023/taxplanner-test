@@ -43,7 +43,7 @@ export const FAQs = [
       "No, ITR-U cannot be filed in the following cases: claiming a refund, increase in the refund amount, nil return or filing a loss return.",
     ],
     Fs:[
-      "ITR U is introduced to improve tax compliance by taxpayers without involving litigations.",
+      "Therefore, you cannot claim a refund in ITR-U.",
     ],
   },
   {
@@ -77,7 +77,7 @@ export const FAQs = [
     id: 9,
     title: "Can I file ITR-U if my total income is below 5 lakhs and I have claimed rebate u/s 87A?",
     paragraph: [
-      "Can I file ITR-U if my total income is below 5 lakhs and I have claimed rebate u/s 87A?",
+      "Yes, you can file the updated return, but you will be liable for late filing fees.",
     ],
     Fs:[
       "The same must be paid, and the payment details must be updated under the “Taxes Paid under 140B” tab.",

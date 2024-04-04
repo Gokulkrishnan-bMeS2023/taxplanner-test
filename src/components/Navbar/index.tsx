@@ -41,6 +41,12 @@ const Navbar: React.FC = () => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 991);
       setIsMobilebackgroundView(window.innerWidth <= 650);
+      setIsMobileMenuOpen(prevIsMobileMenuOpen => {
+        if (prevIsMobileMenuOpen && window.innerWidth > 991) {
+          return false;
+        }
+        return prevIsMobileMenuOpen;
+      });     
     };
     handleScroll();
     handleResize();
@@ -52,11 +58,21 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  
+  const handleToggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Close the service menu if it's open
+    setIsServiceMenuOpen(false);
+    setSelectedSubMenu(null);
+  };
 
-  const handleToggleServiceMenu = () =>
+
+  const handleToggleServiceMenu = () => {
     setIsServiceMenuOpen(!isServiceMenuOpen);
+    if (!isServiceMenuOpen) {
+      setSelectedSubMenu(null);
+    }
+  };
+  
 
     const handleServicesMouseEnter = () => {
       if (!isMobileView) {
@@ -70,12 +86,15 @@ const Navbar: React.FC = () => {
       }
     };
 
-  const handleServicesClick = () => {
-    if (isMobileView) {
-      setIsServiceMenuOpen(!isServiceMenuOpen); // Toggle service submenu
-    }
-  };
-
+    const handleServicesClick = () => {
+      if (isMobileView) {
+        setIsServiceMenuOpen(prevState => !prevState); // Toggle service submenu
+        // Close the selected submenu only if the service menu is closed
+        if (!isServiceMenuOpen) {
+          setSelectedSubMenu(null);
+        }
+      }
+    };
   const handleSubMenuItemClick = (id: number) => {
     setSelectedSubMenu(id === selectedSubMenu ? null : id);
   };
@@ -386,7 +405,6 @@ const Navbar: React.FC = () => {
                   <Button
                     as={Link}
                     href={"https://services.taxplanner.co.in"}
-                    ml="4"
                     fontSize="16px"
                     fontWeight="500"
                     color="#DFE4FD"
@@ -418,6 +436,7 @@ const Navbar: React.FC = () => {
                   ml="4"
                   padding="2"
                   position="relative"
+                  _hover={{ color: "#01acf1", "& svg": { color: "#01acf1" } }}
                   color={pathname === menuItem.href ? "#01acf1" : "#555555"}
                   onMouseEnter={
                     menuItem.label === "Services" ? handleServicesMouseEnter : undefined
@@ -429,11 +448,10 @@ const Navbar: React.FC = () => {
                   {menuItem.label !== "Services" ? (
                     <Link href={menuItem.href}>{menuItem.label}</Link>
                   ) : (
-                    <Flex alignItems="center">
+                    <Flex alignItems="center" >
                       {menuItem.label}
                       <FaAngleDown
-                        size={16}
-                        color="#555555"
+                        size={16}                      
                         style={{ marginLeft: "3px", marginTop: "3px" }}
                       />
                     </Flex>
@@ -462,17 +480,17 @@ const Navbar: React.FC = () => {
                                 _hover={{
                                   bg: pathname === subItem.href ? "#01ACF1" : "#F0F0F0"}}
                                 _active={{
-                                  bg: "#01ACF1",color: "#fff"}}
+                                  bg: "#01ACF1",color: "#fff","& svg": { color: "#fff" }}}
                                 alignItems="center"
                                 onMouseEnter={() =>
                                   handleSubMenuItemClick(subItem.id)
                                 }
                               >
                                 <Link href={subItem.href}>{subItem.label}</Link>
-                                <Box _active={{ svg: { color: "white" } }}>
+                                <Box>
                                   <FaAngleDown
                                     size={16}
-                                    color="#555555"
+                                    color={pathname === subItem.href ? "white" : "#555555"}
                                     style={{
                                       marginLeft: "5",
                                       marginTop: "4px",

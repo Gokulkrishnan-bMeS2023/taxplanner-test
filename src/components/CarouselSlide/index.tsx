@@ -109,9 +109,11 @@ const Carousel: React.FC = () => {
             backgroundColor="#01ACF1"
             borderRadius="0 3rem 3rem 0"
             width="2rem"
-            height="3rem"
+            height="3.1rem"
             transform="translateY(-50%)"
             borderWidth="1px"
+            opacity=".6"
+            transition= "opacity 0.15s ease"
             color="white"
             cursor="pointer"
             size={"0"}
@@ -134,10 +136,12 @@ const Carousel: React.FC = () => {
             backgroundColor="#01ACF1"
             borderRadius="3rem 0 0 3rem"
             width="2rem"
-            height="3rem"
+            height="3.1rem"
             transform="translateY(-50%)"
             borderWidth="1px"
             color="white"
+            opacity=".6"
+            transition= "opacity 0.15s ease"
             cursor="pointer"
             size={"0"}
             _hover={{ backgroundColor: "#01ACF1" }}

@@ -17,6 +17,8 @@ export const FAQs = [
       "No requirement to get accounts audited.",
       "No need to assess advance tax, advance tax is paid by 15th March of the previous year.", 
        ],
+    FsHeading: "Note:Any amount paid by way of advance tax on or before 31st day of March is also treated as advance tax paid during the financial year ending on that day.",
+    description:"Note: The scheme applies only to resident assessee who is an individual, HUF, partnership but not limited liability partnership"
     },
   {
     id: 3,

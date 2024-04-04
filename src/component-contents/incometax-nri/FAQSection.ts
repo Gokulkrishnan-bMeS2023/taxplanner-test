@@ -20,6 +20,7 @@ export const FAQs = [
       "Residential status of an individual is determined on the basis of the number of days an individual has physically stayed in India. Residential status has nothing to do with the nationality or domicile of an individual.",
       "It may also happen that an Indian, who is citizen of India, may be a non-resident for Income Tax purposes in a particular year and an American citizen may be resident in India for Income Tax purposes in a particular year.",
     ],
+    FsHeading: "Note:Any amount paid by way of advance tax on or before 31st day of March is also treated as advance tax paid during the financial year ending on that day.",
     },
   {
     id: 3,
