@@ -51,7 +51,7 @@ const OtherServices = () => {
             />
             <ServicesSubContainer
               cartcontents={other_ServicesCard5}
-              FilingType=""
+              FilingType="SFT"
             />
           </Flex>
         </Flex>

@@ -38,22 +38,6 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
     (data: { FilingType: any }) => data?.FilingType === FilingType
   );
 
-  // const [amount, setAmount] = useState<string | null>(null);
-  // const filingType = FilingType;
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const amount = await getAmountByFilingType(filingType);
-  //       setAmount(amount);
-  //     } catch (error) {
-  //       console.error("Error fetching amount:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [filingType]);
-
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -135,10 +119,9 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                         {heading}
                       </Heading>
                       <Heading mb={5} display="inline-flex">
-                        {datas?.Amount}
-                        {/* {amount ? (
+                        {data ? (
                           <>
-                            <FaRupeeSign /> {amount?.toLocaleString()}
+                            <FaRupeeSign /> {datas?.Amount.toLocaleString()}
                           </>
                         ) : (
                           <Spinner
@@ -148,7 +131,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                             size="lg"
                             thickness="4px"
                           />
-                        )} */}
+                        )}
                       </Heading>
                       <Text>{content}</Text>
                       <Link

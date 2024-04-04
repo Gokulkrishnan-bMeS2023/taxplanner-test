@@ -71,10 +71,10 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
               <Heading as="h5" lineHeight={1.5} mb={2} pt="15px">
                 {content.title}
               </Heading>
-              <Heading as="h5" mb={3} display={"flex"}>
+              <Heading as="h5" mb={3} display={"flex"} alignItems={"center"}>
                 {data ? (
                   <>
-                    Starting From : <FaRupeeSign />{" "}
+                    Starting From : <FaRupeeSign  size={18}/>
                     {datas?.Amount.toLocaleString()}
                   </>
                 ) : (
@@ -110,14 +110,14 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
                   mb={2}
                   href={content.knowMoreLink}
                   textDecoration="none"
-                  fontWeight={1000}
-                  fontSize={"18px"}
                   display={"flex"}
                   alignItems={"center"}
                   _hover={{ textDecoration: "none" }}
                   width={"fit-content"}
+                  fontWeight={900}
+                  fontSize={"17px"}
                 >
-                  Know More <BiRightArrowAlt size={26} />
+                  <Text>Know More</Text> <BiRightArrowAlt size={26} />
                 </Link>
               )}
 
