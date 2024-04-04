@@ -9,7 +9,8 @@ export const TDSReturnOnSaleOfPropertyForm26Q = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/tds-return",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     card2Content: [
       "When you buy an immovable property (i.e. a building or a land) costing more than Rs 50 lakh you need to deduct TDS at rate of 1% on the payment made to the seller and file TDS return.",
     ],
@@ -26,7 +27,8 @@ export const TDSReturnOnSalaryPaymentForm24Q = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/tds-return-on-salary-payment",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     card2Content: [
       "When you buy an immovable property (i.e. a building or a land) costing more than Rs 50 lakh you need to deduct TDS at rate of 1% on the payment made to the seller and file TDS return.",
     ],
@@ -43,7 +45,8 @@ export const TDSReturnOnSaleOfPropertyForm26QB = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/tds-return-26-qb",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     card2Content: [
       "When you buy an immovable property (i.e. a building or a land) costing more than Rs 50 lakh you need to deduct TDS at rate of 1% on the payment made to the seller and file TDS return.",
     ],
@@ -61,7 +64,8 @@ export const TDSReturnsPaymentsOutsideIndiaForm27Q = [
     ],
     viewDetailsButton: true,
     viewDetailsLink: "/tds-return-27-q",
-    buyNowLink: "/buy-now",
+    buyNowLink:
+      "/https://services.taxplanner.co.in/auth/itr-filing/other-services/list.aspx?Type=TDS",
     card2Content: [
       "Foreign payments on your mind? Make sure TDS form 27Q is filled when applicable. Buy this plan from us and leave the filing to us.",
     ],

@@ -57,16 +57,7 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-<<<<<<< HEAD
-  const handleToggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    // Close the service menu if it's open
-    setIsServiceMenuOpen(false);
-    setSelectedSubMenu(null);
-  };
-=======
   const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
->>>>>>> f394ab760444285583c6f24cb55530959ea94b65
 
 
   const handleToggleServiceMenu = () => {
@@ -434,32 +425,6 @@ const Navbar: React.FC = () => {
               >
                 {menuItems.map((menuItem, index) => (
                   <Box
-<<<<<<< HEAD
-                  key={index}
-                  ml="4"
-                  padding="2"
-                  position="relative"
-                  _hover={{ color: "#01acf1", "& svg": { color: "#01acf1" } }}
-                  color={pathname === menuItem.href ? "#01acf1" : "#555555"}
-                  onMouseEnter={
-                    menuItem.label === "Services" ? handleServicesMouseEnter : undefined
-                  }
-                  onMouseLeave={
-                    menuItem.label === "Services" ? handleServicesMouseLeave : undefined
-                  }
-                >
-                  {menuItem.label !== "Services" ? (
-                    <Link href={menuItem.href}>{menuItem.label}</Link>
-                  ) : (
-                    <Flex alignItems="center" >
-                      {menuItem.label}
-                      <FaAngleDown
-                        size={16}                      
-                        style={{ marginLeft: "3px", marginTop: "3px" }}
-                      />
-                    </Flex>
-                  )}
-=======
                     key={index}
                     ml="4"
                     padding="2"
@@ -488,7 +453,6 @@ const Navbar: React.FC = () => {
                         />
                       </Flex>
                     )}
->>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                     {menuItem.subItems &&
                       isServiceMenuOpen &&
                       menuItem.label === "Services" && (
@@ -523,13 +487,9 @@ const Navbar: React.FC = () => {
                                       : "#F0F0F0",
                                 }}
                                 _active={{
-<<<<<<< HEAD
-                                  bg: "#01ACF1",color: "#fff","& svg": { color: "#fff" }}}
-=======
                                   bg: "#01ACF1",
                                   color: "#fff",
                                 }}
->>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                                 alignItems="center"
                                 onMouseEnter={() =>
                                   handleSubMenuItemClick(subItem.id)
@@ -539,15 +499,11 @@ const Navbar: React.FC = () => {
                                 <Box>
                                   <FaAngleDown
                                     size={16}
-<<<<<<< HEAD
-                                    color={pathname === subItem.href ? "white" : "#555555"}
-=======
                                     color={
                                       pathname === subItem.href
                                         ? "white"
                                         : "#555555"
                                     }
->>>>>>> f394ab760444285583c6f24cb55530959ea94b65
                                     style={{
                                       marginLeft: "5",
                                       marginTop: "4px",

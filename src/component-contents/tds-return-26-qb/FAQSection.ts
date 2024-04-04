@@ -19,18 +19,6 @@ export const FAQs = [
   },
   {
     id: 3,
-    title:
-      "What are the Annual return forms and their due dates for private limited companies other than One Person Companies?",
-    paragraph: [
-      "Apart from getting your GST registration, you must also consider protecting your brand by registering the trademark for your brand. Also, if you are building any proprietary software or any other intellectual property, you must secure a copyright. Our experts can assist you with trademark and copyright registration.",
-    ],
-    Fs: [
-      "Form MGT 7 is used to file Annual Return. The due date is 60 days from conclusion of Annual General Meeting(AGM).",
-      "Form AOC 4 is used to file Annual Accounts. The due date is 30 days from end of Financial Year(FY)",
-    ],
-  },
-  {
-    id: 4,
     title: "I purchased a property in 2014. Do I need to deduct TDS?",
     paragraph: [
       "From June 1st 2013, when a buyer (Indian Resident) buys immovable property (i.e. a building or part of a building or any land other than agricultural land) costing more than Rs 50 lakhs, he has to deduct TDS when he pays the seller. So, TDS is required to be deducted and you will also have to pay late fee and interest.",
@@ -38,7 +26,7 @@ export const FAQs = [
     Fs: [],
   },
   {
-    id: 5,
+    id: 4,
     title:
       "I purchased a property in September 2015 but forgot to deduct the TDS. What is the interest and penalty for non or late filing of Form 26QB?",
     paragraph: [
@@ -50,7 +38,7 @@ export const FAQs = [
     Fs: [],
   },
   {
-    id: 6,
+    id: 5,
     title:
       "I have 6 Challans to submit. What will be the value of the package?",
     paragraph: [

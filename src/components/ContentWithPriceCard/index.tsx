@@ -63,7 +63,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
           buttonname,
           showCheckIcon,
         }) => (
-          <Box key={id} width="100%">
+          <Box key={id} width="100%" height={"40vh"}>
             <Flex
               gap={10}
               flexDirection={{ base: "column", lg: "row" }}
