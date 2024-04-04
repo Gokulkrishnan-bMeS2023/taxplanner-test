@@ -1,8 +1,7 @@
 import { Providers } from "./providers";
-import dynamic from "next/dynamic";
 import UserContextProvider from "../utils/context/index";
-const Footer = dynamic(() => import("@/components/Footer"));
-const ScrollToTopButton = dynamic(() => import("@/components/BackToTopButton"));
+import BackToTopButton from "@/components/BackToTopButton";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export default function RootLayout({
@@ -17,7 +16,7 @@ export default function RootLayout({
           <Providers>
             <main>{children}</main>
             <Footer />
-            <ScrollToTopButton />
+            <BackToTopButton />
           </Providers>
         </UserContextProvider>
       </body>

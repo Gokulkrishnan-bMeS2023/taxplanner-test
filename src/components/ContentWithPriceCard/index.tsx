@@ -10,7 +10,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { FaRupeeSign, FaCheck } from "react-icons/fa";
-// import { useUserContext } from "../../utils/hooks/index";
+import { useUserContext } from "../../utils/hooks/index";
 import AnimationBox from "../Animation/Box-Animation";
 import Animation from "../Animation/Scroll-Animation";
 import { useEffect, useState } from "react";
@@ -33,26 +33,26 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
   contents,
   FilingType,
 }) => {
-  // const { data } = useUserContext();
-  // const datas = data?.find(
-  //   (data: { FilingType: any }) => data?.FilingType === FilingType
-  // );
+  const { data } = useUserContext();
+  const datas = data?.find(
+    (data: { FilingType: any }) => data?.FilingType === FilingType
+  );
 
-  const [amount, setAmount] = useState<string | null>(null);
-  const filingType = FilingType;
+  // const [amount, setAmount] = useState<string | null>(null);
+  // const filingType = FilingType;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const amount = await getAmountByFilingType(filingType);
-        setAmount(amount);
-      } catch (error) {
-        console.error("Error fetching amount:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const amount = await getAmountByFilingType(filingType);
+  //       setAmount(amount);
+  //     } catch (error) {
+  //       console.error("Error fetching amount:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [filingType]);
+  //   fetchData();
+  // }, [filingType]);
 
   const handleButtonClick = (buttonLink?: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -135,7 +135,8 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                         {heading}
                       </Heading>
                       <Heading mb={5} display="inline-flex">
-                        {amount ? (
+                        {datas?.Amount}
+                        {/* {amount ? (
                           <>
                             <FaRupeeSign /> {amount?.toLocaleString()}
                           </>
@@ -147,7 +148,7 @@ const ContentWithPriceCard: React.FC<PriceCardProps> = ({
                             size="lg"
                             thickness="4px"
                           />
-                        )}
+                        )} */}
                       </Heading>
                       <Text>{content}</Text>
                       <Link

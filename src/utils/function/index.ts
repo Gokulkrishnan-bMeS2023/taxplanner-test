@@ -2,7 +2,6 @@ export const getAmountByFilingType = async (
   filingType: string
 ): Promise<string> => {
   const jsonUrl = "https://services.taxplanner.co.in/paymentdetails-json.aspx";
-
   try {
     const response = await fetch(jsonUrl);
     const data = await response.json();

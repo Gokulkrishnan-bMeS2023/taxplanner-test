@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Heading,
   Box,
@@ -10,8 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import AnimatedText from "../Animation/Text-Animation";
-import dynamic from "next/dynamic";
-const Navbar = dynamic(() => import("../Navbar"));
+import Navbar from "../Navbar";
 
 interface headerProps {
   heading: string;
