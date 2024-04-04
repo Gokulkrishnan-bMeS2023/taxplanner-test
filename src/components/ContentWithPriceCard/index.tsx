@@ -13,8 +13,7 @@ import { FaRupeeSign, FaCheck } from "react-icons/fa";
 import { useUserContext } from "../../utils/hooks/index";
 import AnimationBox from "../Animation/Box-Animation";
 import Animation from "../Animation/Scroll-Animation";
-import { useEffect, useState } from "react";
-import { getAmountByFilingType } from "@/utils/function";
+
 interface PriceProps {
   id: number;
   title: string;
