@@ -1,9 +1,8 @@
 "use client";
 import { Container, Heading, Text, Flex, Box } from "@chakra-ui/react";
 import Animation from "@/components/Animation/Scroll-Animation";
-import dynamic from "next/dynamic";
 import SideAnimation from "@/components/Animation/Side-Animation";
-const ContactForm = dynamic(() => import("@/components/Form/ContactForm"));
+import ContactForm from "@/components/Form/ContactForm";
 
 export default function Contact() {
   return (
