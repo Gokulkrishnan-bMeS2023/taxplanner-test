@@ -5,13 +5,11 @@ export const FAQs = [
     paragraph: [
       "Income tax return is submitted to Income Tax department whereas ROC returns are filed with Ministry of Corporate Affairs (MCA) with whom the company is registered. It is mandatory to file the prescribed ROC forms and other returns on annual basis.",
     ],
-    Fs: [],
   },
   {
     id: 2,
     title:
       "I am sole director of a One Person Company.What are the applicable Annual return forms and their due dates?",
-    paragraph: [],
     Fs: [
       "Form MGT 7 is used to file Annual Return. The due date is May 30.",
       "Form AOC 4 is used to file Annual Accounts. The due date is 180 days from end of Financial Year(FY)",
@@ -21,7 +19,6 @@ export const FAQs = [
     id: 3,
     title:
       "What are the Annual return forms and their due dates for private limited companies other than One Person Companies?",
-    paragraph: [],
     Fs: [
       "Form MGT 7 is used to file Annual Return. The due date is 60 days from conclusion of Annual General Meeting(AGM).",
       "Form AOC 4 is used to file Annual Accounts. The due date is 30 days from end of Financial Year(FY)",
@@ -34,7 +31,6 @@ export const FAQs = [
     paragraph: [
       "For LLPs, the due date of return filing is 60 days from end of financial year i.e 31st May of the assessment year. For form 8(Statement of solvency) the due date is 30th October.",
     ],
-    Fs: [],
   },
   {
     id: 5,
