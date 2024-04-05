@@ -29,7 +29,7 @@ import Animation from "../Animation/Scroll-Animation";
         <Box
           flex={{ base: '100%', sm:'100', lg: '6' }}
           mb={{ base: '4', lg: '0' }} >
-        <Image src="/assets/Taxplanner5.png" alt="" width={{ base: '100%', lg: '100%' }} />
+        <Image src="/assets/Taxplanner5.webp" alt="" width={{ base: '100%', lg: '100%' }} />
         </Box>
         <Box flex={{ base: '100%', lg: '6' }} mb="4" >
         <Animation>

@@ -40,12 +40,12 @@ const Navbar: React.FC = () => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 991);
       setIsMobilebackgroundView(window.innerWidth <= 650);
-      setIsMobileMenuOpen(prevIsMobileMenuOpen => {
+      setIsMobileMenuOpen((prevIsMobileMenuOpen) => {
         if (prevIsMobileMenuOpen && window.innerWidth > 991) {
           return false;
         }
         return prevIsMobileMenuOpen;
-      });     
+      });
     };
     handleScroll();
     handleResize();
@@ -57,8 +57,12 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
+  const handleToggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Close the service menu if it's open
+    setIsServiceMenuOpen(false);
+    setSelectedSubMenu(null);
+  };
 
   const handleToggleServiceMenu = () => {
     setIsServiceMenuOpen(!isServiceMenuOpen);
@@ -66,7 +70,6 @@ const Navbar: React.FC = () => {
       setSelectedSubMenu(null);
     }
   };
-  
 
   const handleServicesMouseEnter = () => {
     if (!isMobileView) {
@@ -80,15 +83,15 @@ const Navbar: React.FC = () => {
     }
   };
 
-    const handleServicesClick = () => {
-      if (isMobileView) {
-        setIsServiceMenuOpen(prevState => !prevState); // Toggle service submenu
-        // Close the selected submenu only if the service menu is closed
-        if (!isServiceMenuOpen) {
-          setSelectedSubMenu(null);
-        }
+  const handleServicesClick = () => {
+    if (isMobileView) {
+      setIsServiceMenuOpen((prevState) => !prevState); // Toggle service submenu
+      // Close the selected submenu only if the service menu is closed
+      if (!isServiceMenuOpen) {
+        setSelectedSubMenu(null);
       }
-    };
+    }
+  };
   const handleSubMenuItemClick = (id: number) => {
     setSelectedSubMenu(id === selectedSubMenu ? null : id);
   };
@@ -238,7 +241,7 @@ const Navbar: React.FC = () => {
                 <Flex align="center">
                   <Box>
                     <Image
-                      src="/assets/Taxplanner-logo.png"
+                      src="/assets/Taxplanner-logo.webp"
                       height={{ base: "60px", sm: "80px" }}
                       width={{ base: "60px", sm: "80px" }}
                       alt=""
@@ -473,35 +476,55 @@ const Navbar: React.FC = () => {
                                 p="4"
                                 position={"relative"}
                                 color={
-                                  pathname === subItem.href
-                                    ? "white"
+                                  pathname === subItem.href ||
+                                  (subItem.subItems1 &&
+                                    subItem.subItems1.some(
+                                      (item) => pathname === item.href
+                                    ))
+                                    ? "#fff"
                                     : "#555555"
                                 }
                                 bg={
-                                  pathname === subItem.href ? "#01acf1" : "#fff"
+                                  pathname === subItem.href ||
+                                  (subItem.subItems1 &&
+                                    subItem.subItems1.some(
+                                      (item) => pathname === item.href
+                                    ))
+                                    ? "#01acf1"
+                                    : "#fff"
                                 }
                                 _hover={{
                                   bg:
-                                    pathname === subItem.href
-                                      ? "#01ACF1"
+                                    pathname === subItem.href ||
+                                    (subItem.subItems1 &&
+                                      subItem.subItems1.some(
+                                        (item) => pathname === item.href
+                                      ))
+                                      ? "#01acf1"
                                       : "#F0F0F0",
                                 }}
                                 _active={{
                                   bg: "#01ACF1",
                                   color: "#fff",
+                                  "& svg": { color: "#fff" },
                                 }}
                                 alignItems="center"
                                 onMouseEnter={() =>
                                   handleSubMenuItemClick(subItem.id)
                                 }
+                                onMouseLeave={() => handleSubMenuItemClick(-1)}
                               >
                                 <Link href={subItem.href}>{subItem.label}</Link>
                                 <Box>
                                   <FaAngleDown
                                     size={16}
                                     color={
-                                      pathname === subItem.href
-                                        ? "white"
+                                      pathname === subItem.href ||
+                                      (subItem.subItems1 &&
+                                        subItem.subItems1.some(
+                                          (item) => pathname === item.href
+                                        ))
+                                        ? "#fff"
                                         : "#555555"
                                     }
                                     style={{
