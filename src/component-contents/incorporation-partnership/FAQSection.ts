@@ -5,7 +5,6 @@ export const FAQs = [
     paragraph: [
       "A Partnership is where two (or more) people join hands to carry out a business for profit. The partners become joint business owners and carry out operations governed by the partnership deed. The regulations are least and it makes it a desirable option for businesses having joint owners. However, in a partnership firm the partners are jointly and individually liable for debts of the firm. This form of structure is ideal if there are no/less requirement of external funds and low risk of bad-debts for example consultancy firms.",
     ],
-    Fs: [],
   },
   {
     id: 2,
@@ -23,7 +22,6 @@ export const FAQs = [
     paragraph: [
       "A partnership firm can be registered whether at the time of its formation or even subsequently. The application for registration is to be made to the registrar of firms of the region in which the business is situated. It is advisable to get the firm registered as soon as it starts its business to avail the rights that can be enjoyed only by a registered firm.",
     ],
-    Fs: [],
   },
   {
     id: 4,
@@ -43,6 +41,5 @@ export const FAQs = [
     paragraph: [
       "The government fees applicable varies from state to state based on partner contribution. In most states the fee falls in range of Rs.1000-1500 along with stamp duty. Our experts will guide you on this. You will be charged only on actual government fees.",
     ],
-    Fs: [],
   },
 ];

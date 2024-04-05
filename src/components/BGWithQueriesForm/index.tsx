@@ -16,7 +16,7 @@ export default function BGWithQueriesForm({ heading, buttonName }: BGWFProps) {
     >
       <Box
         bg={
-          "linear-gradient(rgba(53, 94, 252, .95), rgba(53, 94, 252, .95)), url(/assets/queries-form-bg.png)"
+          "linear-gradient(rgba(53, 94, 252, .95), rgba(53, 94, 252, .95)), url(/assets/queries-form-bg.webp)"
         }
         width={"100%"}
         height={"45%"}

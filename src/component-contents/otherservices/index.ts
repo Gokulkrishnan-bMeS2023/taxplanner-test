@@ -1,7 +1,7 @@
 export const other_ServicesCard1 = [
   {
     id: 1,
-    imgSrc: "/assets/other-services/me.png",
+    imgSrc: "/assets/other-services/me.webp",
     title: "MSME REGISTRATION",
     description: "Required for concessional interest rates on loans",
     knowMoreLink: "/msme-registration",
@@ -12,7 +12,7 @@ export const other_ServicesCard1 = [
 export const other_ServicesCard2 = [
   {
     id: 2,
-    imgSrc: "/assets/other-services/water-transportation.png",
+    imgSrc: "/assets/other-services/water-transportation.webp",
     title: "IEC REGISTRATION / RENEWAL",
     description: "For business having imports and exports of goods.",
     knowMoreLink: "/iec-registration-renewal",
@@ -23,7 +23,7 @@ export const other_ServicesCard2 = [
 export const other_ServicesCard3 = [
   {
     id: 3,
-    imgSrc: "/assets/other-services/usb-memory-stick.png",
+    imgSrc: "/assets/other-services/usb-memory-stick.webp",
     title: "DSC",
     description: "Class 3 / DGFT / ICEGATE / Organizational DSC.",
     knowMoreLink: "/dsc-services",
@@ -34,7 +34,7 @@ export const other_ServicesCard3 = [
 export const other_ServicesCard4 = [
   {
     id: 4,
-    imgSrc: "/assets/other-services/product-documents.png",
+    imgSrc: "/assets/other-services/product-documents.webp",
     title: "ROC filing",
     content: "* exclusive of filing fee.",
     description:
@@ -47,7 +47,7 @@ export const other_ServicesCard4 = [
 export const other_ServicesCard5 = [
   {
     id: 5,
-    imgSrc: "/assets/other-services/business-documentation.png",
+    imgSrc: "/assets/other-services/business-documentation.webp",
     title: "SFT",
     description:
       "SFT Tax Services is the leading accounting, tax & bookkeeping firm in the York and Greater Toronto Area.",

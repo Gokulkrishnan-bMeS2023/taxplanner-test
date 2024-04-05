@@ -1,8 +1,7 @@
-
 export const GSTRegistration = [
   {
     id: 1,
-    imgSrc: "/assets/gst/certification.png",
+    imgSrc: "/assets/gst/certification.webp",
     title: "REGISTRATION",
     description:
       "This plan will help your business adapt to GST implementation and cater to all compliance and registration",
@@ -12,10 +11,10 @@ export const GSTRegistration = [
   },
 ];
 
-export const GSTAmendments= [
+export const GSTAmendments = [
   {
     id: 2,
-    imgSrc: "/assets/gst/check-book.png",
+    imgSrc: "/assets/gst/check-book.webp",
     title: "AMENDMENTS",
     description:
       "Provisions enabling charging of interest upto 24% for wrongly availing and utilizing input tax credit has been made applicable retrospectively w.e.f. 01.07.2022.",
@@ -28,7 +27,7 @@ export const GSTAmendments= [
 export const GSTReturns = [
   {
     id: 3,
-    imgSrc: "/assets/gst/receipt-approved.png",
+    imgSrc: "/assets/gst/receipt-approved.webp",
     title: "GST RETURNS",
     description:
       "Want to file GST-1 returns and get your business GST-compliant? This comprehensive plan covers both! Opt now",
@@ -41,7 +40,7 @@ export const GSTReturns = [
 export const GSTLUT = [
   {
     id: 4,
-    imgSrc: "/assets/gst/heck-for-payment.png",
+    imgSrc: "/assets/gst/heck-for-payment.webp",
     title: "LUT",
     description:
       "LUT in GST: Full form/meaning is Letter of Undertaking. It is prescribed to be furnished in the form GST RFD 11 under rule 96 A,",
@@ -49,10 +48,10 @@ export const GSTLUT = [
     buyNowLink: "#",
   },
 ];
-export const GSTRefunds= [
+export const GSTRefunds = [
   {
     id: 5,
-    imgSrc: "/assets/gst/cash-in-hand.png",
+    imgSrc: "/assets/gst/cash-in-hand.web",
     title: "REFUNDS",
     description:
       "GST law also provides for grant of provisional refund of 90% of the total refund claim.",

@@ -5,7 +5,6 @@ export const FAQs = [
     paragraph: [
       "A Limited Liabilty Partnership firm (LLP) is a hybrid structure between a partnership firm & a private limited company where the business is carried out in a corporate framework, guided by terms of the mutually adopted partnership deed.",
     ],
-    Fs: [],
   },
   {
     id: 2,
@@ -46,6 +45,5 @@ export const FAQs = [
       "The auditor of an LLP is appointed annually by the designated partners.",
       "The first auditor is appointed before the end of the financial year. Subsequent appointment or reappointment of the auditors is made one month before the closing of the financial year by the designated partners.",
     ],
-    Fs: [],
   },
 ];

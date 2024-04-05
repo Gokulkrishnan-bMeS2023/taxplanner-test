@@ -1,7 +1,7 @@
 "use client";
 import { Flex, Box, Button, Heading, Text, Image } from "@chakra-ui/react";
 import { FaBars, FaCheck } from "react-icons/fa";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
 import PrimaryButton from "../Buttons/PrimaryButton";
@@ -25,10 +25,7 @@ interface ServicesProps {
   heading: string;
 }
 
-const FAQSection: FC<ServicesProps> = ({
-  servicesDatas,
-  heading,
-}): JSX.Element => {
+export default function FAQSection({ servicesDatas, heading }: ServicesProps) {
   const [activeTab, setActiveTab] = useState<number>(1);
   const pathname = usePathname();
 
@@ -241,5 +238,4 @@ const FAQSection: FC<ServicesProps> = ({
       </Animation>
     </Flex>
   );
-};
-export default FAQSection;
+}

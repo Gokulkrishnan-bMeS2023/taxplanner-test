@@ -7,7 +7,6 @@ export const FAQs = [
       "The normal registration route can take up to thirty days but if SPICe is followed the whole process can be closed within 7 days.",
       "Tax Planner aims at rendering premium services and delivering it in a speedy manner. The incorporation services shall be delivered following the SPICe route.",
     ],
-    Fs: [],
   },
   {
     id: 2,
@@ -33,13 +32,11 @@ export const FAQs = [
     paragraph: [
       "Apart from getting your GST registration, you must also consider protecting your brand by registering the trademark for your brand. Also, if you are building any proprietary software or any other intellectual property, you must secure a copyright. Our experts can assist you with trademark and copyright registration.",
     ],
-    Fs: [],
   },
   {
     id: 4,
     title:
       "I need to raise capital from external sources. I am considering approaching Investors. Do i get any advantage on getting registered as a private limited company over other forms?",
-    paragraph: [""],
     Fs: [
       "The capital structure of a private limited company can easily accommodate equity funding. So Venture Capitalists prefer pvt. Ltd. over any other structure",
       "Being a regulations compliant entity, it becomes easy to attract capital infusion from financial institutions like banks, NBFCs etc.",
@@ -51,7 +48,6 @@ export const FAQs = [
     paragraph: [
       "No, your physical presence is not required during the process.",
     ],
-    Fs: [],
   },
   {
     id: 6,
@@ -59,7 +55,6 @@ export const FAQs = [
     paragraph: [
       "Yes, Stamp duty charges are imposed by the state in which the registered office is proposed to be located. The charges are on MOA, AOA & form INC 32. These charges are covered under the plan for all the states except Punjab & Madhya Pradesh. Our experts will guide you on additional charges if any for Punjab & Madhya Pradesh.",
     ],
-    Fs: [],
   },
   {
     id: 7,
@@ -67,6 +62,5 @@ export const FAQs = [
     paragraph: [
       "The registration process gets completed when you get a certificate of incorporation(COI) issued by the registrar. The application can processed within 7 working days.",
     ],
-    Fs: [],
   },
 ];

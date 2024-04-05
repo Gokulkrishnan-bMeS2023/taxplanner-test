@@ -2,7 +2,7 @@
 export const incomeTaxSalariedPerson = [
   {
     id: 1,
-    imgSrc: "/assets/income-tax/administrator-male.png",
+    imgSrc: "/assets/income-tax/administrator-male.webp",
     title: "SALARIED & HOUSE PROPERTY INCOME",
     description: "For persons having income from salary.",
     knowMoreLink: "/salary-house-property",
@@ -14,7 +14,7 @@ export const incomeTaxSalariedPerson = [
 export const incomeTaxCapitalGain = [
   {
     id: 2,
-    imgSrc: "/assets/income-tax/mortgage.png",
+    imgSrc: "/assets/income-tax/mortgage.webp",
     title: "CAPITAL GAIN",
     description:
       "Where total income includes gain/loss on sale of house property, land, Investment in shares, etc.",
@@ -27,7 +27,7 @@ export const incomeTaxCapitalGain = [
 export const incomeTaxNRI = [
   {
     id: 3,
-    imgSrc: "/assets/income-tax/airport-building.png",
+    imgSrc: "/assets/income-tax/airport-building.webp",
     title: "NRI",
     description: "For Non Resident Indian/Non Resident having Indian income.",
     knowMoreLink: "/nri",
@@ -39,7 +39,7 @@ export const incomeTaxNRI = [
 export const incomeTaxBusiness = [
   {
     id: 4,
-    imgSrc: "/assets/income-tax/client-company.png",
+    imgSrc: "/assets/income-tax/client-company.webp",
     title: "BUSINESS OR PROFESSION",
     description:
       "Businesses having annual turnover under Rs. 2cr or Professionals having annual gross receipts under Rs. 50 lakh.",
@@ -51,7 +51,7 @@ export const incomeTaxBusiness = [
 export const incomeTaxTDS = [
   {
     id: 5,
-    imgSrc: "/assets/income-tax/bill.png",
+    imgSrc: "/assets/income-tax/bill.webp",
     title: "TDS/TCS",
     description: "For other package details click here.",
     knowMoreLink: "/tds-tcs",

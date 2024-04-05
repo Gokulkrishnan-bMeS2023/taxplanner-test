@@ -26,7 +26,7 @@ const Header = ({ heading }: headerProps) => {
     <>
       <Navbar />
       <Box
-        backgroundImage="url('/assets/header.jpg')"
+        backgroundImage="url('/assets/header.webp')"
         backgroundSize="cover"
         backgroundPosition="top left"
         bgRepeat="no-repeat"
