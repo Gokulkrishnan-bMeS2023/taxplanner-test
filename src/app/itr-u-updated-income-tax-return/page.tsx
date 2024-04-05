@@ -10,10 +10,12 @@ import {
   AboutThisPlanCardContent,
   AboutThisPlanContent,
 } from "@/component-contents/itr-u-updated-income-tax-return/AboutThisPlan";
+import Header from "@/components/Header";
 
 export default function ItrIncomeTax() {
   return (
     <>
+      <Header heading="ITR U" />
       <Container>
         <Box my={{ base: 16, lg: 24 }}>
           <ContentWithPriceCard

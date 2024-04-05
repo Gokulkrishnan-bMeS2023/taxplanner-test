@@ -9,11 +9,13 @@ import { ContentWithPriceCardContents } from "@/component-contents/gst-registrat
 import { AboutThisPlanCardContent, AboutThisPlanContent } from "@/component-contents/gst-registration/AboutThisPlan";
 import { Documents } from "@/component-contents/gst-registration/DocumentSubmitted";
 import { FAQs } from "@/component-contents/gst-registration/FAQSection";
+import Header from "@/components/Header";
 
 
 export default function GSTRegistration() {
   return (
     <>
+      <Header heading="Goods And Services Tax (GST) Registration" />
       <Container>
       <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} FilingType="GSTRegistration"/></Box>
       <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="About This Plan" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box> 

@@ -7,10 +7,12 @@ import { Documents } from "@/component-contents/gst-refund/DocumentSubmitted";
 import { ContentWithPriceCardContents } from "@/component-contents/gst-refund/ContentWithPriceCard";
 import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Header from "@/components/Header";
 
 export default function GSTRefund() {
   return (
     <>
+      <Header heading="GST Refund" />
       <Container>
       <Box my={{ base: 16, lg: 24 }}><ContentWithPriceCard contents={ContentWithPriceCardContents} FilingType="Refunds"/></Box>
       <Box my={{ base: 16, lg: 24 }}><AboutThisPlan title="Latest Update" planContents={AboutThisPlanCardContent} aboutContents={AboutThisPlanContent}/></Box>  

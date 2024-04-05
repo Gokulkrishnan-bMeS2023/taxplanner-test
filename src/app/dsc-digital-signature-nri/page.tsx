@@ -12,26 +12,35 @@ import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import AboutThisPlan from "@/components/AboutThisPlan";
 import FAQSection from "@/components/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Header from "@/components/Header";
 
 export default function DSCDigitalSignatureNRI() {
   return (
-    <Container>
-      <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard contents={PriceDetails} FilingType="DSCNRI"/>
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <AboutThisPlan
-          title="About This Plan"
-          aboutContents={PlanDescription}
-          planContents={PlanDetails}
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <DocumentsToBeSubmitted contents={Documents} />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <FAQSection heading="Frequently Asked Questions" servicesDatas={FAQs} />
-      </Box>
-    </Container>
+    <>
+      <Header heading="Digital Signature for Foreign citizens and NRI - Class 3" />
+      <Container>
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard contents={PriceDetails} FilingType="DSCNRI" />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            title="About This Plan"
+            aboutContents={PlanDescription}
+            planContents={PlanDetails}
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <DocumentsToBeSubmitted contents={Documents} />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <FAQSection
+            heading="Frequently Asked Questions"
+            servicesDatas={FAQs}
+          />
+        </Box>
+      </Container>
+      <BGWithQueriesForm />
+    </>
   );
 }

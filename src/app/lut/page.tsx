@@ -12,10 +12,12 @@ import {
 import { ContentWithPriceCardContents } from "@/component-contents/gst-lut/ContentWithPriceCard";
 import { Documents } from "@/component-contents/gst-lut/DocumentSubmitted";
 import { FAQs } from "@/component-contents/gst-lut/FAQSection";
+import Header from "@/components/Header";
 
 export default function Lut() {
   return (
     <>
+      <Header heading="GST LUT" />
       <Container>
         <Box my={{ base: 16, lg: 24 }}>
           <ContentWithPriceCard

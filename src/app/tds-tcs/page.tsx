@@ -8,39 +8,48 @@ import {
 import { Box, Container, Heading } from "@chakra-ui/react";
 import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
+import Header from "@/components/Header";
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 
 export default function TDSTCS() {
   return (
-    <Container>
-      <ScrollAnimation>
-        <Box my={12} mb={6}>
-          <Heading>All Services</Heading>
+    <>
+      <Header heading=" TDS/TCS" />
+      <Container>
+        <ScrollAnimation>
+          <Box my={12} mb={6}>
+            <Heading>All Services</Heading>
+          </Box>
+        </ScrollAnimation>
+        <Box mb={{ base: 16, lg: 24 }}>
+          <TitleWithTwoCards
+            contents={TDSReturnOnSaleOfPropertyForm26Q}
+            FilingType="TDSForm26Q"
+          />
         </Box>
-      </ScrollAnimation>
-      <Box mb={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards
-          contents={TDSReturnOnSaleOfPropertyForm26Q}
-          FilingType="TDSForm26Q"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards
-          contents={TDSReturnOnSalaryPaymentForm24Q}
-          FilingType="TDSForm24Q"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards
-          contents={TDSReturnOnSaleOfPropertyForm26QB}
-          FilingType="TDSForm26QB"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <TitleWithTwoCards
-          contents={TDSReturnsPaymentsOutsideIndiaForm27Q}
-          FilingType="TDSForm27Q"
-        />
-      </Box>
-    </Container>
+        <Box my={{ base: 16, lg: 24 }}>
+          <TitleWithTwoCards
+            contents={TDSReturnOnSalaryPaymentForm24Q}
+            FilingType="TDSForm24Q"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <TitleWithTwoCards
+            contents={TDSReturnOnSaleOfPropertyForm26QB}
+            FilingType="TDSForm26QB"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <TitleWithTwoCards
+            contents={TDSReturnsPaymentsOutsideIndiaForm27Q}
+            FilingType="TDSForm27Q"
+          />
+        </Box>
+      </Container>
+      <BGWithQueriesForm
+        heading="All Services"
+        buttonName="Request A Callback"
+      />
+    </>
   );
 }

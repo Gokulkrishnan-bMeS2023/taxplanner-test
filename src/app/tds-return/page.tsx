@@ -6,25 +6,29 @@ import {
   aboutPlanContent,
 } from "@/component-contents/tds-return/AboutThisPlan";
 import { Box, Container } from "@chakra-ui/react";
+import Header from "@/components/Header";
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 
-const TDSReturn = () => {
+export default function TDSReturn() {
   return (
-    <Container>
-      <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard
-          contents={contentWithPriceCardContents}
-          FilingType="TDSForm26Q"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <AboutThisPlan
-          aboutContents={aboutPlanContent}
-          planContents={aboutPlanCardContent}
-          title="About this plan"
-        />
-      </Box>
-    </Container>
+    <>
+      <Header heading="TDS Return" />
+      <Container>
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard
+            contents={contentWithPriceCardContents}
+            FilingType="TDSForm26Q"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            aboutContents={aboutPlanContent}
+            planContents={aboutPlanCardContent}
+            title="About this plan"
+          />
+        </Box>
+      </Container>
+      <BGWithQueriesForm />
+    </>
   );
-};
-
-export default TDSReturn;
+}

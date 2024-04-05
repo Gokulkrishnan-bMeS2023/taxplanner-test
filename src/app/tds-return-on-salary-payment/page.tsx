@@ -8,31 +8,35 @@ import {
 } from "@/component-contents/tds-return-on-salary-payment/AboutThisPlan";
 import { documents } from "@/component-contents/tds-return-on-salary-payment/DocumentSubmitted";
 import { Box, Container } from "@chakra-ui/react";
+import Header from "@/components/Header";
+import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 
-const TDSReturnonSalaryPayment = () => {
+export default function TDSReturnonSalaryPayment() {
   return (
-    <Container>
-      <Box my={{ base: 16, lg: 24 }}>
-        <ContentWithPriceCard
-          contents={contentWithPriceCardContents}
-          FilingType="TDSForm24Q"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <AboutThisPlan
-          aboutContents={aboutPlanContent}
-          planContents={aboutPlanCardContent}
-          title="About this plan"
-        />
-      </Box>
-      <Box my={{ base: 16, lg: 24 }}>
-        <DocumentComponent
-          title="TDS Return on Salary Payment (Form 24Q)"
-          documents={documents}
-        />
-      </Box>
-    </Container>
+    <>
+      <Header heading="TDS Return on Salary Payment" />
+      <Container>
+        <Box my={{ base: 16, lg: 24 }}>
+          <ContentWithPriceCard
+            contents={contentWithPriceCardContents}
+            FilingType="TDSForm24Q"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <AboutThisPlan
+            aboutContents={aboutPlanContent}
+            planContents={aboutPlanCardContent}
+            title="About this plan"
+          />
+        </Box>
+        <Box my={{ base: 16, lg: 24 }}>
+          <DocumentComponent
+            title="TDS Return on Salary Payment (Form 24Q)"
+            documents={documents}
+          />
+        </Box>
+      </Container>
+      <BGWithQueriesForm />
+    </>
   );
-};
-
-export default TDSReturnonSalaryPayment;
+}

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-const Header = dynamic(() => import("@/components/Header"));
 
 export const metadata: Metadata = {
   title: "Tax Planner - Amendments",
@@ -12,7 +10,6 @@ export default function AmendmentsLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header heading="Amendments" />
       {children}
     </>
   );

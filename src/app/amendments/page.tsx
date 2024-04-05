@@ -10,10 +10,12 @@ import {
   AboutThisPlanContent,
 } from "@/component-contents/gst-amendments/AboutThisPlan";
 import { Documents } from "@/component-contents/gst-amendments/DocumentSubmitted";
+import Header from "@/components/Header";
 
 export default function Amendments() {
   return (
     <>
+      <Header heading="Amendments" />
       <Container>
         <Box my={{ base: 16, lg: 24 }}>
           <ContentWithPriceCard
