@@ -1,9 +1,11 @@
 import { Providers } from "./providers";
 import UserContextProvider from "../utils/context/index";
-import BackToTopButton from "@/components/BackToTopButton";
-import Footer from "@/components/Footer";
 import { Open_Sans, Jost } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
+
+const BackToTopButton = dynamic(() => import("@/components/BackToTopButton"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export const openSans = Open_Sans({
   subsets: ["latin"],
