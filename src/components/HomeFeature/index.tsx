@@ -1,6 +1,5 @@
 "use client";
 import {
-  Container,
   Flex,
   Heading,
   Text,
@@ -63,57 +62,55 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   </Flex>
 );
 const Features: React.FC = () => (
-  <Container>
-    <Flex
-      alignItems={{ base: "left", lg: "center" }}
-      justifyContent={{ base: "center", md: "space-between" }}
-      flexDirection={{ base: "column", lg: "row" }}
-      gap={{ base: "10", md: "10", lg: "0" }}
-    >
-      <Flex flex="1">
-        <SlideTextAnimation>
-          <Heading marginLeft={{ base: "0", md: "10", lg: "0" }}>
-            Popular Services
-          </Heading>
-        </SlideTextAnimation>
-      </Flex>
-      <Flex flex="1" maxW="100%">
-        <Animation>
-          <Flex
-            flexWrap="wrap"
-            justifyContent="space-between"
-            alignItems="flex-start"
-          >
-            <Flex direction={{ base: "column", md: "row" }} alignItems="center">
-              <Flex
-                direction="column"
-                gap={{ base: "0", md: "6" }}
-                alignItems="center"
-              >
-                <FeatureBox
-                  icon={FaCheck}
-                  title="Salaried & House Property Income"
-                  description="For persons having income from salary, house property and other income"
-                  link="/salary-house-property"
-                />
-                <FeatureBox
-                  icon={FaCheck}
-                  title="Capital Gain"
-                  description="Where total income includes gain/loss on sale of house property, land, Investment in shares, etc."
-                  link="/capital-gain"
-                />
-              </Flex>
+  <Flex
+    alignItems={{ base: "left", lg: "center" }}
+    justifyContent={{ base: "center", md: "space-between" }}
+    flexDirection={{ base: "column", lg: "row" }}
+    gap={{ base: "10", md: "10", lg: "0" }}
+  >
+    <Flex flex="1">
+      <SlideTextAnimation>
+        <Heading marginLeft={{ base: "0", md: "10", lg: "0" }}>
+          Popular Services
+        </Heading>
+      </SlideTextAnimation>
+    </Flex>
+    <Flex flex="1" maxW="100%">
+      <Animation>
+        <Flex
+          flexWrap="wrap"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
+          <Flex direction={{ base: "column", md: "row" }} alignItems="center">
+            <Flex
+              direction="column"
+              gap={{ base: "0", md: "6" }}
+              alignItems="center"
+            >
               <FeatureBox
                 icon={FaCheck}
-                title="NRI"
-                description="For Non Resident Indian/Non Resident having Indian income"
-                link="/nri"
+                title="Salaried & House Property Income"
+                description="For persons having income from salary, house property and other income"
+                link="/salary-house-property"
+              />
+              <FeatureBox
+                icon={FaCheck}
+                title="Capital Gain"
+                description="Where total income includes gain/loss on sale of house property, land, Investment in shares, etc."
+                link="/capital-gain"
               />
             </Flex>
+            <FeatureBox
+              icon={FaCheck}
+              title="NRI"
+              description="For Non Resident Indian/Non Resident having Indian income"
+              link="/nri"
+            />
           </Flex>
-        </Animation>
-      </Flex>
+        </Flex>
+      </Animation>
     </Flex>
-  </Container>
+  </Flex>
 );
 export default Features;
