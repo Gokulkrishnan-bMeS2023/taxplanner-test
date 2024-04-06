@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"); */
 
 * {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: var(--font-open-sans), var(--font-jost) !important;
 }
 
 h1,
@@ -11,7 +11,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif !important;
+  font-family: var(--font-jost), var(--font-open-sans) !important;
 }
 h1 {
   font-size: calc(1.525rem+3.3vw) !important;

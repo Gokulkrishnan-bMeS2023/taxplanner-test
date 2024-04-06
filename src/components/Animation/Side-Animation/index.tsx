@@ -9,12 +9,12 @@ export default function SideAnimation({ children }: AnimationProps) {
   const skillRef = useRef<HTMLDivElement>(null);
   const isSkillRefInView = useInView(skillRef, { once: true });
   const containerVariants = {
-    hidden: { opacity: 0, x: "100" }, // Start off-screen to the right
+    hidden: { opacity: 0, x: "25%" }, // Start off-screen to the right
     visible: { opacity: 1, x: 0, transition: { duration: 0.75 } }, // Move to center
   };
   return (
     <>
-      <motion.div ref={containerRef}>
+      <motion.div ref={containerRef} style={{overflow:"hidden"}}>
         <motion.div ref={skillRef}>
           <motion.div
             initial="hidden"
