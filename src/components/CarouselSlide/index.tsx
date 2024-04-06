@@ -41,7 +41,15 @@ const Carousel: React.FC = () => {
               pos="relative"
               display={index === activeIndex ? "block" : "none"}
             >
-              <Image src={item.imageSrc} alt={"img"} width={"100%"} height={"100%"}  objectFit="cover" />
+              <Image
+                src={item.imageSrc}
+                alt={"img"}
+                width={"100%"}
+                height={"100%"}
+                objectFit="cover"
+                loading="eager"
+                fetchPriority="high"
+              />
               <Box
                 pos="absolute"
                 top={{ base: "10", md: "0" }}
@@ -113,7 +121,7 @@ const Carousel: React.FC = () => {
             transform="translateY(-50%)"
             borderWidth="1px"
             opacity=".6"
-            transition= "opacity 0.15s ease"
+            transition="opacity 0.15s ease"
             color="white"
             cursor="pointer"
             size={"0"}
@@ -141,7 +149,7 @@ const Carousel: React.FC = () => {
             borderWidth="1px"
             color="white"
             opacity=".6"
-            transition= "opacity 0.15s ease"
+            transition="opacity 0.15s ease"
             cursor="pointer"
             size={"0"}
             _hover={{ backgroundColor: "#01ACF1" }}
