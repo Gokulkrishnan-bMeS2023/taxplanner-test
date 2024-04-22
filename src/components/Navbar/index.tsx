@@ -400,7 +400,7 @@ const Navbar: React.FC = () => {
                   ))}
                   <Button
                     as={Link}
-                    href={"https://services.taxplanner.co.in"}
+                    href={"/login"}
                     fontSize="16px"
                     fontWeight="500"
                     color="#DFE4FD"
@@ -591,7 +591,7 @@ const Navbar: React.FC = () => {
                 ))}
                 <Button
                   as={Link}
-                  href={"https://services.taxplanner.co.in"}
+                  href={"/login"}
                   ml="4"
                   fontSize="16px"
                   fontWeight="500"

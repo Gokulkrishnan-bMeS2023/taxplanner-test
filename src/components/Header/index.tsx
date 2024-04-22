@@ -9,7 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import AnimatedText from "../Animation/Text-Animation";
-import Navbar from "../Navbar";
+import dynamic from "next/dynamic";
+const Navbar=dynamic(()=>import("../Navbar"))
 
 interface headerProps {
   heading: string;

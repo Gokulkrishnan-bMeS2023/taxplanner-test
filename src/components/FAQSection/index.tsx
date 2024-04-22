@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Animation from "../Animation/Scroll-Animation";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SideAnimation from "../Animation/Side-Animation";
+import SlideTextAnimation from "../Animation/Text-Animation2";
 
 interface ServicesDatas {
   id: number;
@@ -41,7 +42,7 @@ export default function FAQSection({ servicesDatas, heading }: ServicesProps) {
 
   return (
     <Flex flexDirection="column">
-      <Animation>
+      <SlideTextAnimation>
         {pathname === "/" || (
           <Flex justifyContent="center">
             <Text
@@ -69,7 +70,7 @@ export default function FAQSection({ servicesDatas, heading }: ServicesProps) {
             {heading}
           </Heading>
         </Flex>
-      </Animation>
+      </SlideTextAnimation>
       <Animation>
         <Flex justifyContent="space-between" flexWrap="wrap">
           <Box width={{ base: "100%", lg: "32%" }}>

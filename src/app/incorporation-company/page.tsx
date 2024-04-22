@@ -1,7 +1,3 @@
-// import ContentWithPriceCard from "@/components/ContentWithPriceCard";
-// import AboutThisPlan from "@/components/AboutThisPlan";
-// import DocumentComponent from "@/components/DocumentSubmitted";
-// import FAQsection from "@/components/FAQSection";
 import { contentWithPriceCardContents } from "@/component-contents/incorporation-company/ContentWithPriceCard";
 import {
   aboutPlanCardContent,
@@ -10,8 +6,6 @@ import {
 import { documents } from "@/component-contents/incorporation-company/DocumentSubmitted";
 import { FAQs } from "@/component-contents/incorporation-company/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
-// import Header from "@/components/Header";
-// import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import dynamic from "next/dynamic";
 const ContentWithPriceCard = dynamic(
   () => import("@/components/ContentWithPriceCard")

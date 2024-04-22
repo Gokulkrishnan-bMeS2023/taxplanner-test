@@ -7,13 +7,14 @@ import {
   Link,
   Box,
   Spinner,
-  Image,
 } from "@chakra-ui/react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import Animation from "../Animation/Scroll-Animation";
 import { useUserContext } from "../../utils/hooks/index";
 import { FaRupeeSign } from "react-icons/fa";
 import "./services.css";
+import dynamic from "next/dynamic";
+const Images= dynamic(()=>import("@/components/Images"))
 
 interface ServiceProps {
   title: string;
@@ -51,11 +52,12 @@ const ServicesSubContainer: React.FC<ServicesCardProps> = ({
         {cartcontents?.map((content, index) => (
           <Box key={index} height={"100%"}>
             <Box className="StyledBox1" height={"100%"} alignContent={"center"}>
-              <Image
+              <Images
                 src={content.imgSrc}
                 alt={"img"}
                 width={120}
                 height={120}
+                loading="lazy"
               />
               <Heading
                 as={"h5"}

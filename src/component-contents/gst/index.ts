@@ -51,7 +51,7 @@ export const GSTLUT = [
 export const GSTRefunds = [
   {
     id: 5,
-    imgSrc: "/assets/gst/cash-in-hand.web",
+    imgSrc: "/assets/gst/cash-in-hand.webp",
     title: "REFUNDS",
     description:
       "GST law also provides for grant of provisional refund of 90% of the total refund claim.",
