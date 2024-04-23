@@ -14,6 +14,7 @@ import FAQSection from "@/components/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function GSTReturnsLiteYearly() {
   return (
@@ -43,7 +44,8 @@ export default function GSTReturnsLiteYearly() {
           />
         </Box>
       </Container>
-      <BGWithQueriesForm />
+      <BGWithQueriesForm />\
+      <Footer/>
     </>
   );
 }

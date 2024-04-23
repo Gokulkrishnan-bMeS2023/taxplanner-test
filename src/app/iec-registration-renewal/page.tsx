@@ -12,6 +12,7 @@ import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import AboutThisPlan from "@/components/AboutThisPlan";
 import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
 
 export default function IecRegistrationRenewal() {
   return (
@@ -45,6 +46,7 @@ export default function IecRegistrationRenewal() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

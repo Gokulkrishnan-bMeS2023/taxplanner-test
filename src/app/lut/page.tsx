@@ -13,6 +13,7 @@ import { ContentWithPriceCardContents } from "@/component-contents/gst-lut/Conte
 import { Documents } from "@/component-contents/gst-lut/DocumentSubmitted";
 import { FAQs } from "@/component-contents/gst-lut/FAQSection";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Lut() {
   return (
@@ -43,6 +44,7 @@ export default function Lut() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

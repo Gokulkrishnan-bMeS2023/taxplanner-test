@@ -11,6 +11,7 @@ import {
 } from "@/component-contents/gst-amendments/AboutThisPlan";
 import { Documents } from "@/component-contents/gst-amendments/DocumentSubmitted";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Amendments() {
   return (
@@ -39,6 +40,7 @@ export default function Amendments() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

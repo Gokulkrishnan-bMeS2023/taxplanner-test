@@ -7,6 +7,7 @@ import { documents } from "@/component-contents/incorporation-company/DocumentSu
 import { FAQs } from "@/component-contents/incorporation-company/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import Footer from "@/components/Footer";
 const ContentWithPriceCard = dynamic(
   () => import("@/components/ContentWithPriceCard")
 );
@@ -52,6 +53,7 @@ export default function IncorporationCompany() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

@@ -8,6 +8,7 @@ import {
 } from "@/component-contents/gst-return-services/TitleWithTwoCards";
 import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import { Box, Container, Heading } from "@chakra-ui/react";
@@ -45,6 +46,7 @@ export default function GSTReturnServices() {
         heading="All Services"
         buttonName="Request A Callback"
       />
+      <Footer/>
     </>
   );
 }

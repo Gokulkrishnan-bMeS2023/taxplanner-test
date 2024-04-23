@@ -5,7 +5,6 @@ import "./globals.css";
 import dynamic from "next/dynamic";
 
 const BackToTopButton = dynamic(() => import("@/components/BackToTopButton"));
-// const Footer = dynamic(() => import("@/components/Footer"));
 
 export const openSans = Open_Sans({
   subsets: ["latin"],
@@ -32,7 +31,6 @@ export default function RootLayout({
         <UserContextProvider>
           <Providers>
             <main>{children}</main>
-            {/* <Footer /> */}
             <BackToTopButton />
           </Providers>
         </UserContextProvider>

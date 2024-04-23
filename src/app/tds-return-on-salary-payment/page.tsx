@@ -10,6 +10,7 @@ import { documents } from "@/component-contents/tds-return-on-salary-payment/Doc
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function TDSReturnonSalaryPayment() {
   return (
@@ -37,6 +38,7 @@ export default function TDSReturnonSalaryPayment() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

@@ -12,6 +12,7 @@ import { FAQs } from "@/component-contents/tds-return-27-q/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function TDSReturnsPaymentsoutsideIndi() {
   return (
@@ -45,6 +46,7 @@ export default function TDSReturnsPaymentsoutsideIndi() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

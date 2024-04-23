@@ -10,6 +10,7 @@ import { AboutThisPlanCardContent, AboutThisPlanContent } from "@/component-cont
 import { Documents } from "@/component-contents/gst-registration/DocumentSubmitted";
 import { FAQs } from "@/component-contents/gst-registration/FAQSection";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 export default function GSTRegistration() {
@@ -25,6 +26,7 @@ export default function GSTRegistration() {
             servicesDatas={FAQs}/></Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

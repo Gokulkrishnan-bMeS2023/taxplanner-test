@@ -10,6 +10,7 @@ import { Documents } from "@/component-contents/incometax-nri/DocumentSubmitted"
 import { FAQs } from "@/component-contents/incometax-nri/FAQSection";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function NRI() {
   return (
@@ -24,6 +25,7 @@ export default function NRI() {
             servicesDatas={FAQs} /></Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

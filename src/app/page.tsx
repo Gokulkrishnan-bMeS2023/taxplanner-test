@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { FAQs } from "@/component-contents/home-ourproducts/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import Footer from "@/components/Footer";
 const Features = dynamic(() => import("@/components/HomeFeature"));
 const About = dynamic(() => import("@/components/HomeAbout"));
 const FAQSection = dynamic(() => import("@/components/FAQSection"));
@@ -24,6 +25,7 @@ export default function Home() {
           <FAQSection servicesDatas={FAQs} heading="Our Products" />
         </Box>
       </Container>
+      <Footer />
     </>
   );
 }

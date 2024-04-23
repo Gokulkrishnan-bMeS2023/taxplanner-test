@@ -13,6 +13,7 @@ import FAQSection from "@/components/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function GSTFiling123Monthly() {
   return (
@@ -43,6 +44,7 @@ export default function GSTFiling123Monthly() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

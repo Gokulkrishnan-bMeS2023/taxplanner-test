@@ -10,6 +10,7 @@ import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function TDSTCS() {
   return (
@@ -50,6 +51,7 @@ export default function TDSTCS() {
         heading="All Services"
         buttonName="Request A Callback"
       />
+      <Footer />
     </>
   );
 }

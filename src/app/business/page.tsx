@@ -13,6 +13,7 @@ import TitleWithQueriesForm from "@/components/TitleWithQueriesForm";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import { BusinessQueriesFormContents } from "@/component-contents/incometax-business-profession/TitleWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function BusinessProfession() {
   return (
@@ -43,6 +44,7 @@ export default function BusinessProfession() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

@@ -14,6 +14,7 @@ import FAQSection from "@/components/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function GSTFilingGSTR3B() {
   return (
@@ -44,6 +45,7 @@ export default function GSTFilingGSTR3B() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

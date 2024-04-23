@@ -4,6 +4,7 @@ import Animation from "@/components/Animation/Scroll-Animation";
 import SideAnimation from "@/components/Animation/Side-Animation";
 import ContactForm from "@/components/Form/ContactForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Contact() {
   return (
@@ -45,6 +46,7 @@ export default function Contact() {
           </Flex>
         </Flex>
       </Container>
+      <Footer/>
     </>
   );
 }

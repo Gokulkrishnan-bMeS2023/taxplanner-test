@@ -14,6 +14,7 @@ import FAQSection from "@/components/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function DSCDigitalSignatureNRI() {
   return (
@@ -41,6 +42,7 @@ export default function DSCDigitalSignatureNRI() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

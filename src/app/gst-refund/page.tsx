@@ -8,6 +8,7 @@ import { ContentWithPriceCardContents } from "@/component-contents/gst-refund/Co
 import ContentWithPriceCard from "@/components/ContentWithPriceCard";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function GSTRefund() {
   return (
@@ -24,6 +25,7 @@ export default function GSTRefund() {
           planContents={AboutThisPlan2CardContent} aboutContents={AboutThisPlan2Content}/></Box>    
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

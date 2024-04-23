@@ -1,5 +1,6 @@
 "use client";
 import { SFTQueriesFormContents } from "@/component-contents/sft/TitleWithQueriesForm";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TitleWithQueriesForm from "@/components/TitleWithQueriesForm";
 import { Box, Container } from "@chakra-ui/react";
@@ -13,6 +14,7 @@ export default function SFT() {
           <TitleWithQueriesForm contents={SFTQueriesFormContents} />
         </Box>
       </Container>
+      <Footer/>
     </>
   );
 }

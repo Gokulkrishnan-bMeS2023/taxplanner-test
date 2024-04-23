@@ -10,6 +10,7 @@ import { Container, Heading, Flex } from "@chakra-ui/react";
 import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Incometax() {
   return (
@@ -60,6 +61,7 @@ export default function Incometax() {
           </Flex>
         </Flex>
       </Container>
+      <Footer/>
     </>
   );
 }

@@ -10,6 +10,7 @@ import {
 } from "@/component-contents/dsc-services/TitleWithTwoCards";
 import ScrollAnimation from "@/components/Animation/Scroll-Animation2";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TitleWithTwoCards from "@/components/TitleWithTwoCards";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
@@ -68,6 +69,7 @@ export default function DSCServices() {
         </Box>
       </Container>
       <BGWithQueriesForm heading="All Services" />
+      <Footer/>
     </>
   );
 }

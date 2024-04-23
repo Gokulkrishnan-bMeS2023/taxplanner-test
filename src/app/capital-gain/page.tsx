@@ -13,6 +13,7 @@ import {
 } from "@/component-contents/incometax-capital-gain/AboutThisPlan";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function CapitalGain() {
   return (
@@ -43,6 +44,7 @@ export default function CapitalGain() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

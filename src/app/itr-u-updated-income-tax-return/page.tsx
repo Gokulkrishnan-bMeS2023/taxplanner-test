@@ -11,6 +11,7 @@ import {
   AboutThisPlanContent,
 } from "@/component-contents/itr-u-updated-income-tax-return/AboutThisPlan";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function ItrIncomeTax() {
   return (
@@ -38,6 +39,7 @@ export default function ItrIncomeTax() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer />
     </>
   );
 }

@@ -12,6 +12,7 @@ import { FAQs } from "@/component-contents/msme-registration/FAQSection";
 import { Box, Container } from "@chakra-ui/react";
 import Header from "@/components/Header";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
+import Footer from "@/components/Footer";
 
 export default function MSMERegistration() {
   return (
@@ -42,6 +43,7 @@ export default function MSMERegistration() {
         </Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

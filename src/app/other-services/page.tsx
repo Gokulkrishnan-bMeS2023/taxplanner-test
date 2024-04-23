@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ServicesSubContainer from "@/components/ServicesSubMenuCards";
 import {
   other_ServicesCard1,
@@ -10,6 +10,7 @@ import {
 import { Container, Heading, Flex } from "@chakra-ui/react";
 import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function OtherServices() {
   return (
@@ -60,6 +61,7 @@ export default function OtherServices() {
           </Flex>
         </Flex>
       </Container>
+      <Footer />
     </>
   );
 }

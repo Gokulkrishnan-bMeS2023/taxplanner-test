@@ -10,6 +10,7 @@ import FAQSection from "@/components/FAQSection";
 import { FAQs } from "@/component-contents/incometax-Salary-house-property/FAQSection";
 import BGWithQueriesForm from "@/components/BGWithQueriesForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function SalaryHouseProperty() {
   return (
@@ -24,6 +25,7 @@ export default function SalaryHouseProperty() {
             servicesDatas={FAQs} /></Box>
       </Container>
       <BGWithQueriesForm />
+      <Footer/>
     </>
   );
 }

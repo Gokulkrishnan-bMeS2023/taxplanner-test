@@ -10,6 +10,7 @@ import {
 import { Container, Heading, Flex } from "@chakra-ui/react";
 import SlideTextAnimation from "@/components/Animation/Text-Animation2";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function GST() {
   return (
@@ -57,6 +58,7 @@ export default function GST() {
           </Flex>
         </Flex>
       </Container>
+      <Footer/>
     </>
   );
 }
