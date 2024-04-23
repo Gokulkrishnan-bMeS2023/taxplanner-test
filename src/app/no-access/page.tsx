@@ -40,9 +40,10 @@ export default function NoAccess() {
             color={"black"}
           >
             <Box borderBottom={"1px solid #e3e6f0"} p={"1rem"} pb={6}>
-              We've sent an email to verify your account. Please verify your
-              email address to get full access and file your Income Tax return.
-              Click the resend button if you don't receive verification mail.
+              We&apos;ve sent an email to verify your account. Please verify
+              your email address to get full access and file your Income Tax
+              return. Click the resend button if you don&apos;t receive
+              verification mail.
             </Box>
             <Box display={"flex"} p={"1rem"} justifyContent={"center"}>
               <Button

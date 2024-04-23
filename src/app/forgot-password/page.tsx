@@ -89,8 +89,8 @@ export default function LoginForm() {
               <Text as={"h3"} mb={6} textAlign={"center"}>
                 Successfully Sent
               </Text>
-              <Text as={"p"} textAlign={"center"} mb={"10"}  color={"black"}>
-                We've emailed you instructions to reset your password!
+              <Text as={"p"} textAlign={"center"} mb={"10"} color={"black"}>
+                We&apos;ve emailed you instructions to reset your password!
               </Text>
             </Box>
           ) : (
@@ -106,9 +106,10 @@ export default function LoginForm() {
               {(props) => (
                 <Form style={{ width: "85%" }}>
                   <Flex direction="column" w={"100%"}>
-                    <Text mb={4}  color={"black"}>
+                    <Text mb={4} color={"black"}>
                       We get it, stuff happens. Just enter your email address
-                      below and we'll send you a link to reset your password!
+                      below and we&apos;ll send you a link to reset your
+                      password!
                     </Text>
                     <Box mb={5} w={"100%"} pos={"relative"}>
                       <Field name="email">
