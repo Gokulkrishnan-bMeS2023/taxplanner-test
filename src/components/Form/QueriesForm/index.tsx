@@ -223,7 +223,7 @@ export default function QueriesForm({
                         <Input
                           {...field}
                           id="mobile"
-                          type="number"
+                          type="text"
                           required
                           placeholder=""
                           padding={"2.2rem 1rem 1.8rem"}
@@ -239,6 +239,15 @@ export default function QueriesForm({
                                 transform: "translateY(-70%) scale(0.8)",
                                 color: "gray",
                               },
+                          }}
+                          onChange={(e: any) => {
+                            const { value } = e.target;
+                            const regex = /^[0-9]*$/;
+                            if (!regex.test(value)) {
+                              // Optionally, you can display an error message or handle invalid input here.
+                            } else {
+                              props.setFieldValue("mobile", value);
+                            }
                           }}
                         />
                         <FormLabel

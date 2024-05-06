@@ -125,7 +125,7 @@ export default function LoginForm() {
                               required
                               placeholder=""
                               padding={"1.5rem 1rem 1.5rem"}
-                              border={"2px solid #dfe4fd"}
+                              border={"1px solid #dfe4fd"}
                               border-radius={"15px"}
                               outline={"none"}
                               autoComplete="email"

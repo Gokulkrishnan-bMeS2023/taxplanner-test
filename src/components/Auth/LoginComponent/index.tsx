@@ -46,11 +46,11 @@ export default function LoginForm() {
         `https://taxplanner-test-json.onrender.com/user?email=${values.email}&password=${values.password}`
       );
       if (response.data.length > 0) {
-        setError("Login successfully");
+        // setError("Login successfully");
         props.resetForm();
+        router.push("/dashboard")
       } else {
-        // setError("Login failed");
-        router.push("/dashhboard")
+        setError("Login failed");
         props.resetForm();
       }
       console.log(response.data);
@@ -136,7 +136,7 @@ export default function LoginForm() {
                             required
                             placeholder=""
                             padding={"1.5rem 1rem 1.5rem"}
-                            border={"2px solid #dfe4fd"}
+                            border={"1px solid #dfe4fd"}
                             border-radius={"15px"}
                             outline={"none"}
                             autoComplete="email"
@@ -196,7 +196,7 @@ export default function LoginForm() {
                             required
                             placeholder=""
                             padding={"1.5rem 1rem 1.5rem"}
-                            border={"2px solid #dfe4fd"}
+                            border={"1px solid #dfe4fd"}
                             border-radius={"8px"}
                             maxLength="10"
                             outline={"none"}

@@ -1,3 +1,4 @@
+import DashboardNavbar from "@/components/DashboardNavbar";
 import Navbar from "@/components/Navbar";
 import { Button, Center, Heading, Flex, Box, Text } from "@chakra-ui/react";
 import type { Metadata } from "next";
@@ -9,9 +10,14 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
+  const user = true;
+
+  const ButtonName = user ? "Back to Dashboard" : "Back to Home ";
+  const redirectURl = user ? "/dashboard" : "/";
   return (
     <>
-      <Navbar />
+      {user ? <DashboardNavbar /> : <Navbar />}
+
       <Center background={"#f9f9f9"} height={"100vh"}>
         <Flex direction={"column"}>
           <Heading as={"h1"} textAlign={"center"} color="#01acf1">
@@ -27,9 +33,10 @@ export default function NotFound() {
           >
             The page you&apos;re looking for does not seem to exist
           </Text>
+
           <Button
             as={Link}
-            href={"/"}
+            href={redirectURl}
             bgColor="#01acf1"
             color={"white"}
             my={6}
@@ -49,7 +56,7 @@ export default function NotFound() {
               boxShadow: "lg",
             }}
           >
-            Back to home
+            {ButtonName}
           </Button>
         </Flex>
       </Center>

@@ -30,6 +30,7 @@ export default function BackToTopButton() {
       bottom="6"
       right="6"
       rounded={"50%"}
+      border={"1px solid #fff"}
       bg={"#2d50d6"}
       color={"#fff"}
       opacity={isButtonVisible ? 1 : 0}
