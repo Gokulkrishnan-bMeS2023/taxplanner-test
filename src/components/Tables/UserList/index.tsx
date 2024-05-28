@@ -148,18 +148,49 @@ const UserList = ({ staffData }: StaffProps) => {
                 </Tr>
               </Tbody>
             ) : (
-              <Tbody>
-                {currentEntries.map((staff, index) => (
-                  <Tr key={index}>
-                    <Td  >
-                      <Link href={`/dashboard/user/edit/${staff.id}`} color="blue">{staff.email}</Link>
-                    </Td>
-                    <Td>{staff.firstName.concat(" ", staff.lastName)}</Td>
-                    <Td>{staff.LoginType === 1 ? "Email" : "Google"}</Td>
-                    <Td>{staff.IsActive === true ? "Active" : "In Active"}</Td>
-                  </Tr>
-                ))}
-              </Tbody>
+              <>
+                {window.innerWidth <= 1000 ? (
+                  <Tbody>
+                  {currentEntries.map((staff, index) => (
+                    <Tr key={index}>
+                      <Td>
+                        <Link
+                          href={`/dashboard/user/edit/${staff.id}`}
+                          color="blue"
+                        >
+                          {staff.email+"gokul"}
+                        </Link>
+                      </Td>
+                      <Td>{staff.firstName.concat(" ", staff.lastName)}</Td>
+                      <Td>{staff.LoginType === 1 ? "Email" : "Google"}</Td>
+                      <Td>
+                        {staff.IsActive === true ? "Active" : "In Active"}
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+                ) : (
+                  <Tbody>
+                    {currentEntries.map((staff, index) => (
+                      <Tr key={index}>
+                        <Td>
+                          <Link
+                            href={`/dashboard/user/edit/${staff.id}`}
+                            color="blue"
+                          >
+                            {staff.email}
+                          </Link>
+                        </Td>
+                        <Td>{staff.firstName.concat(" ", staff.lastName)}</Td>
+                        <Td>{staff.LoginType === 1 ? "Email" : "Google"}</Td>
+                        <Td>
+                          {staff.IsActive === true ? "Active" : "In Active"}
+                        </Td>
+                      </Tr>
+                    ))}
+                  </Tbody>
+                )}
+              </>
             )}
           </Table>
           <Box>

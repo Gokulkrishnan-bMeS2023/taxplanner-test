@@ -174,7 +174,7 @@ const DashboardNavbar: React.FC = () => {
     {
       id: 1,
       label: "Dashboard",
-      href: "/",
+      href: "/auth/dashboard",
     },
     {
       id: 2,
@@ -189,27 +189,27 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "Salaried and House Property Income",
-              href: "/salary-house-property",
+              href: "/auth/itr-filing/income-tax/edit-form",
             },
             {
               id: 2,
               label: "Capital Gain",
-              href: "/capital-gain",
+              href: "/auth/itr-filing/income-tax/edit-form",
             },
             {
               id: 3,
               label: "NRI",
-              href: "/nri",
+              href: "/auth/itr-filing/income-tax/edit-form",
             },
             {
               id: 4,
               label: "Business Or Profession",
-              href: "/business",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 5,
               label: "TDS/TCS",
-              href: "/tds-tcs",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
           ],
         },
@@ -221,27 +221,27 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "Registration",
-              href: "/gst-registration",
+              href: "/auth/itr-filing/gst-registration/edit-form",
             },
             {
               id: 2,
               label: "Amendments",
-              href: "/amendments",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 3,
               label: "GST Returns",
-              href: "/gst-return-services",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 4,
               label: "LUT",
-              href: "/lut",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 5,
               label: "Refunds",
-              href: "/gst-refund",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
           ],
         },
@@ -253,17 +253,17 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "Company",
-              href: "/incorporation-company",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 2,
               label: "LLP",
-              href: "/incorporation-llp",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 3,
               label: "Partnership",
-              href: "/incorporation-partnership",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
           ],
         },
@@ -280,38 +280,38 @@ const DashboardNavbar: React.FC = () => {
                 {
                   id: 1,
                   label: "Class III",
-                  href: "/class-3",
+                  href: "#",
                   subItems3: [
                     {
                       id: 1,
                       label: "DSC Class III",
-                      href: "/dsc-class3",
+                      href: "/auth/itr-filing/dsc/edit-form",
                     },
                     {
                       id: 2,
                       label: "DSC Encrypted Individual",
-                      href: "/dsc-individual",
+                      href: "/auth/itr-filing/dsc/edit-form",
                     },
                     {
                       id: 3,
                       label: "DSC Encrypted Organization",
-                      href: "/dsc-organization",
+                      href: "/auth/itr-filing/dsc/edit-form",
                     },
                   ],
                 },
                 {
                   label: "DSC DGFT",
-                  href: "/dsc-dgft",
+                  href: "/auth/itr-filing/dsc/edit-form",
                   id: 2,
                 },
                 {
                   label: "DSC ICEGATE",
-                  href: "/dsc-ice",
+                  href: "/auth/itr-filing/dsc/edit-form",
                   id: 3,
                 },
                 {
                   label: "DSC NRI",
-                  href: "/dsc-nri",
+                  href: "/auth/itr-filing/dsc/edit-form",
                   id: 4,
                 },
               ],
@@ -319,29 +319,29 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 2,
               label: "MSME Registration",
-              href: "/msme-registration",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 3,
               label: "IEC Registration / Renewal",
-              href: "/iec-registration-renewal",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
             {
               id: 4,
               label: "ROC Filing",
-              href: "/roc-filing",
+              href: "/auth/itr-filing/other-services/edit-form",
             },
           ],
         },
         {
           id: 5,
           label: "ITR-U",
-          href: "/itr-u",
+          href: "/auth/itr-filing/income-tax/edit-form",
         },
         {
           id: 6,
           label: "Generate Rental Receipts",
-          href: "/rental-receipts",
+          href: "/auth/itr-filing/rental-receipt/generate-receipt-form",
         },
         {
           id: 7,
@@ -351,12 +351,12 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "Staff list",
-              href: "/staff-list",
+              href: "/auth/admin/staff/list",
             },
             {
               id: 2,
               label: "Add staff",
-              href: "/add-staff",
+              href: "/auth/admin/staff/add",
             },
           ],
         },
@@ -368,7 +368,7 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "User list",
-              href: "/user-list",
+              href: "/auth/admin/user/list",
             },
           ],
         },

@@ -12,8 +12,25 @@ const theme = extendTheme({
   components: {
     Container: {
       baseStyle: {
-        maxW: { base: "540px", md: "720px", lg: "960px", xl: "1140px", "2xl": "1320px" },
+        maxW: {
+          base: "540px",
+          md: "720px",
+          lg: "960px",
+          xl: "1140px",
+          "2xl": "1320px",
+        },
         px: 6,
+      },
+    },
+    Input: {
+      baseStyle: {
+        field: {
+          _disabled: {
+            bg: "#eaecf4", 
+            color: "#6e707e",
+            opacity: "1", 
+          },
+        },
       },
     },
   },

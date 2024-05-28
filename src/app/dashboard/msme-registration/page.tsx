@@ -1,95 +1,84 @@
 "use client";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import {
-  Input,
-  Button,
-  FormControl,
-  FormErrorMessage,
-  Box,
-} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { encrypt } from "@/utils/crypto";
+import LinkComponent from "@/components/Link";
 
-const FormComponent: React.FC = () => {
-  const initialValues = {
-    documentName: "",
-    selectedDocument: "",
+export default function EncryptComponent() {
+  const [text, setText] = useState("");
+  const [encryptedText, setEncryptedText] = useState("");
+  const handleEncrypt = async () => {
+    const encrypted = await encrypt(text);
+    setEncryptedText(encrypted);
+  };
+  const handleSubmit = async () => {
+    // Send the encryptedText to the .NET API for decryption
+    const response = await fetch("/api/decrypt", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ encryptedText }),
+    });
+    const data = await response.json();
+    console.log("Decrypted Text:", data.decryptedText);
   };
 
-  const validationSchema = Yup.object().shape({
-    documentName: Yup.string().required("Document name is required"),
-    selectedDocument: Yup.mixed().required("Please select a document file"),
-  });
-
-  const onSubmit = (values: any, actions: any) => {
-    // Handle form submission
-    console.log("Form submitted with values:", values);
-    actions.setSubmitting(false);
-    alert(JSON.stringify(values));
-  };
+  const encryptedParam = encrypt("1");
 
   return (
-    <Box pt={24}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Field name="documentName">
-              {({ field, form }: any) => (
-                <FormControl
-                  isInvalid={
-                    form.errors.documentName && form.touched.documentName
-                  }
-                >
-                  <Input
-                    {...field}
-                    id="documentName"
-                    placeholder="Enter document name"
-                  />
-                  <FormErrorMessage>
-                    {form.errors.documentName}
-                  </FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-
-            <Field name="selectedDocument">
-              {({ field, form }: any) => (
-                <FormControl
-                  isInvalid={
-                    form.errors.selectedDocument &&
-                    form.touched.selectedDocument
-                  }
-                >
-                  <Input
-                    {...field}
-                    id="selectedDocument"
-                    type="file"
-                    accept=".pdf, image/png, image/jpeg"
-                  />
-                  <FormErrorMessage>
-                    {form.errors.selectedDocument}
-                  </FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-
-            <Button
-              mt={4}
-              colorScheme="teal"
-              isLoading={isSubmitting}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+    <div style={{ padding: "200px" }}>
+      <h1>Encrypt Text</h1>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value.toString())}
+        placeholder="Enter text to encrypt"
+      />
+      <button onClick={handleEncrypt}>Encrypt</button>
+      <textarea
+        value={encryptedText}
+        readOnly
+        placeholder="Encrypted text will appear here"
+      />
+      <button onClick={handleSubmit}>Send to Server for Decryption</button>
+      <LinkComponent href="/dashboard/example?Type=" label="Salaried Person" encryptedParam={encrypt("1")} />
+    </div>
   );
-};
+}
 
-export default FormComponent;
+// "use client";
+// import { useRouter } from "next/navigation";
+// import { encrypt } from "@/utils/crypto";
+// import React from "react";
+// import Link from "next/link";
+
+// export default function page() {
+//   const router = useRouter();
+//   const handleNavigation = () => {
+//     const param = "1";
+//     const encryptedParam = encrypt(param);
+//     router.push(
+//       `/dashboard/example?Type=${encodeURIComponent(encryptedParam)}`
+//     );
+//   };
+//   const encryptedParam = encrypt("1");
+//   const encryptedParamT = encrypt("salary");
+//   const encryptedParam1 = encrypt("2");
+//   return (
+//     <div style={{ padding: "200px" }}>
+//       <button onClick={handleNavigation}>Go to Target Page</button>
+//       <br />
+//       <Link
+//         href={`/dashboard/example?Type=${encodeURIComponent(
+//           encryptedParam
+//         )}&Title=${encodeURIComponent(encryptedParamT)}`}
+//       >
+//         salary link
+//       </Link>
+//       <br />
+//       <Link
+//         href={`/dashboard/example?Type=${encodeURIComponent(encryptedParam1)}`}
+//       >
+//         salary link
+//       </Link>
+//     </div>
+//   );
+// }
