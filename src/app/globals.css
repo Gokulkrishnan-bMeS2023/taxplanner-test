@@ -36,7 +36,7 @@ h6 {
   font-size: calc(1.625rem + 1.5vw);
   font-weight: 600 !important;
 }
-.emailwrap{
+.emailwrap {
   width: 100%;
 }
 @media (min-width: 1200px) {
@@ -72,7 +72,7 @@ h6 {
   h6 {
     font-size: 16px !important;
   }
-  .emailwrap{
+  .emailwrap {
     width: 200px !important;
   }
 }
@@ -81,6 +81,25 @@ h6 {
   flex-wrap: wrap !important;
 }
 
-
-
-
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.blinking-button {
+  animation: blink 1s infinite;
+}
+.hover-button:hover .hover-button {
+  background-color: #2d50d6;
+  color: white;
+}
+.formik-errormessage {
+  color: red !important;
+  font-size: 13px;
+}

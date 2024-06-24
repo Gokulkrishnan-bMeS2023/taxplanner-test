@@ -17,12 +17,12 @@ import {
 } from "@chakra-ui/react";
 import { FaBars, FaAngleDown, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface SubMenuItem {
   label: string;
   href: string;
-  id: number;
+  id: any;
   subItems1?: MenuItem[];
   subItems?: MenuItem[];
   subItems2?: MenuItem[];
@@ -30,7 +30,7 @@ interface SubMenuItem {
 }
 
 interface MenuItem {
-  id: number;
+  id: any;
   label: string;
   href: string;
   subItems?: SubMenuItem[];
@@ -187,19 +187,19 @@ const DashboardNavbar: React.FC = () => {
           href: "#",
           subItems1: [
             {
-              id: 1,
+              id: "100",
               label: "Salaried and House Property Income",
-              href: "/auth/itr-filing/income-tax/edit-form",
+              href: "/auth/itr-filing/income-tax/edit-form?active=100",
             },
             {
-              id: 2,
+              id: "200",
               label: "Capital Gain",
-              href: "/auth/itr-filing/income-tax/edit-form",
+              href: "/auth/itr-filing/income-tax/edit-form?active=200",
             },
             {
-              id: 3,
+              id: "300",
               label: "NRI",
-              href: "/auth/itr-filing/income-tax/edit-form",
+              href: "/auth/itr-filing/income-tax/edit-form?active=300",
             },
             {
               id: 4,
@@ -375,6 +375,9 @@ const DashboardNavbar: React.FC = () => {
       ],
     },
   ];
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("active");
 
   return (
     <>
@@ -788,20 +791,18 @@ const DashboardNavbar: React.FC = () => {
                                 p="4"
                                 position={"relative"}
                                 color={
-                                  pathname === subItem.href ||
-                                  (subItem.subItems1 &&
-                                    subItem.subItems1.some(
-                                      (item) => pathname === item.href
-                                    ))
+                                  subItem.subItems1 &&
+                                  subItem.subItems1.some(
+                                    (item) => search === item.id
+                                  )
                                     ? "#fff"
                                     : "#555555"
                                 }
                                 bg={
-                                  pathname === subItem.href ||
-                                  (subItem.subItems1 &&
-                                    subItem.subItems1.some(
-                                      (item) => pathname === item.href
-                                    ))
+                                  subItem.subItems1 &&
+                                  subItem.subItems1.some(
+                                    (item) => search === item.id
+                                  )
                                     ? "#01acf1"
                                     : "#fff"
                                 }
@@ -841,7 +842,7 @@ const DashboardNavbar: React.FC = () => {
                                         color={
                                           pathname === subItem.href ||
                                           subItem.subItems1.some(
-                                            (item) => pathname === item.href
+                                            (item) => search === item.id
                                           )
                                             ? "#fff"
                                             : "#555555"
@@ -875,18 +876,18 @@ const DashboardNavbar: React.FC = () => {
                                               py="2"
                                               justifyContent="space-between"
                                               color={
-                                                pathname === item.href
+                                                search === item.id
                                                   ? "white"
                                                   : "#555555"
                                               }
                                               bg={
-                                                pathname === item.href
+                                                search === item.id
                                                   ? "#01acf1"
                                                   : "#fff"
                                               }
                                               _hover={{
                                                 bg:
-                                                  pathname === item.href
+                                                  search === item.id
                                                     ? "#01ACF1"
                                                     : "#F0F0F0",
                                               }}
@@ -1102,7 +1103,7 @@ const DashboardNavbar: React.FC = () => {
                       onMouseLeave={handleMenuClose}
                     >
                       <MenuItem>
-                        <Link href="/auth/profile/profile.aspx">
+                        <Link href="/auth/profile">
                           <Flex alignItems="center">
                             <FaUser
                               size="14px"

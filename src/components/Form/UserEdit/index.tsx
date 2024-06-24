@@ -46,7 +46,7 @@ export default function UserEdit({ Data }: DataProps) {
   const showToast = () => {
     Toast({
       title: "User Edited Sucessfully...",
-      duration: 5000,
+      duration: 1000,
       isClosable: true,
       status: "success",
       position: "top",
@@ -55,8 +55,7 @@ export default function UserEdit({ Data }: DataProps) {
 
   const handleSubmitNowButton = async (
     values: InputValueTypes,
-    actions: any,
-    props: { resetForm: () => void }
+    actions: any
   ) => {
     const res = await axios.put(
       `https://taxplanner-test-json.onrender.com/user/${values.id}`,
@@ -65,19 +64,19 @@ export default function UserEdit({ Data }: DataProps) {
 
     if (res.status === 200) {
       showToast();
-      props.resetForm();
       actions.setSubmitting(false);
       setDatas([res.data]);
-      // router.push("/dashboard/user/list");
+      router.push("/dashboard/user/list");
+      router.refresh();
     }
   };
-  // const handleCancel = () => {
-  //   router.push("/dashboard/user/list");
-  // };
+  const handleCancel = () => {
+    router.push("/dashboard/user/list");
+  };
 
   return (
     <Box minH={"86vh"}>
-      <Text as={"h2"} pt={24} pb={2} mx={"1.5rem"} fontWeight={"600"}>
+      <Text as={"h2"} pt={"120px"} mx={"1.5rem"} fontWeight={"600"}>
         Edit user
       </Text>
       <Box
@@ -87,10 +86,11 @@ export default function UserEdit({ Data }: DataProps) {
         style={{
           boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         }}
-        mx={"1.5rem"}
-        px={{ md: "", lg: "7rem" }}
+        m={"1.5rem"}
+        px={{ base: "1rem", lg: "7rem" }}
+        py={"1rem"}
       >
-        <Box p={{ base: 4, md: 6 }}>
+        <>
           {Datas?.map((data, index) => (
             <Formik
               initialValues={{
@@ -105,9 +105,7 @@ export default function UserEdit({ Data }: DataProps) {
               }}
               validationSchema={queriesFormValidationSchema}
               onSubmit={(values, actions) =>
-                handleSubmitNowButton(values, actions, {
-                  resetForm: actions.resetForm,
-                })
+                handleSubmitNowButton(values, actions)
               }
               key={index}
             >
@@ -249,7 +247,7 @@ export default function UserEdit({ Data }: DataProps) {
                   </Field>
                   <Flex justifyContent={"flex-end"}>
                     <Box display={"inline-block"}>
-                      <Box display={"flex"} gap={3}>
+                      <Flex gap={3}>
                         <Button
                           border={"2px solid #2d50d6"}
                           colorScheme="blue"
@@ -261,7 +259,7 @@ export default function UserEdit({ Data }: DataProps) {
                           _focus={{
                             boxShadow: "0 0 0 .25rem rgba(53, 94, 252, 0.25)",
                           }}
-                          // onClick={handleCancel}
+                          onClick={handleCancel}
                         >
                           <Link href={"/dashboard/user/list"}>Cancel</Link>
                         </Button>
@@ -282,14 +280,14 @@ export default function UserEdit({ Data }: DataProps) {
                         >
                           Save
                         </Button>
-                      </Box>
+                      </Flex>
                     </Box>
                   </Flex>
                 </Form>
               )}
             </Formik>
           ))}
-        </Box>
+        </>
       </Box>
     </Box>
   );

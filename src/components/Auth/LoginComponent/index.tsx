@@ -34,7 +34,7 @@ const queriesFormValidationSchema = Yup.object({
 
 export default function LoginForm() {
   const [error, setError] = useState("");
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmitNowButton = async (
     values: InputValueTypes,
@@ -48,13 +48,12 @@ export default function LoginForm() {
       if (response.data.length > 0) {
         // setError("Login successfully");
         props.resetForm();
-        router.push("/dashboard")
+        router.push("auth/dashboard");
       } else {
         setError("Login failed");
         props.resetForm();
       }
       console.log(response.data);
-      
     } catch (error) {
       console.error("An error occurred:", error);
     } finally {
@@ -109,7 +108,9 @@ export default function LoginForm() {
           <Text as={"h3"} mb={6} textAlign={"center"}>
             Welcome Back!
           </Text>
-          <Text color={"red"} mb={4}>{error}</Text>
+          <Text color={"red"} mb={4}>
+            {error}
+          </Text>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={queriesFormValidationSchema}

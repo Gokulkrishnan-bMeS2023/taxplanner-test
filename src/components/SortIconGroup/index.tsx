@@ -29,7 +29,7 @@ const SortIconGroup = ({ sortConfig, KeyType }: SortIconGroupProps) => {
           position: "absolute",
           right: "1px",
           opacity:
-            sortConfig.direction === "desc" && sortConfig.key === "email"
+            sortConfig.direction === "desc" && sortConfig.key === KeyType
               ? 1
               : 0.3,
         }}

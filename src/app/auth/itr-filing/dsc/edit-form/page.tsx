@@ -13,8 +13,11 @@ import {
   Divider,
   Flex,
 } from "@chakra-ui/react";
+import { useSearchParams } from "next/navigation";
+import { decrypt } from "@/utils/crypto";
+import { TitleList } from "@/component-contents/TitleFilterData";
 
-const FormComponent: React.FC = () => {
+const FormComponent = () => {
   const initialValues = {
     Pan: "",
     Passport: "",
@@ -45,11 +48,65 @@ const FormComponent: React.FC = () => {
     GSTCertificate: Yup.mixed().required("Please select a document file"),
   });
 
-  const onSubmit = (values: any, actions: any) => {
-    // Handleform submission
+  // const onSubmit = (values: any, actions: any) => {
+  //   // Handleform submission
+  //   console.log("Form submitted with values:", values);
+  //   actions.setSubmitting(false);
+  //   alert(JSON.stringify(values));
+  // };
+
+  const searchParams = useSearchParams();
+
+  const Type = searchParams.get("Type");
+
+  const onSubmit = async (values: any, actions: any) => {
+    // Handle form submission
     console.log("Form submitted with values:", values);
-    actions.setSubmitting(false);
-    alert(JSON.stringify(values));
+
+    const encryptedData = decodeURIComponent(Type as string);
+    const decryptedId = await decrypt(encryptedData);
+    const title = TitleList.find((title) => title.Type === decryptedId);
+
+    try {
+      // Send a POST request to the API endpoint
+      const formdata = {
+        ...values,
+        id: "12",
+        type: title?.Type,
+        year: `FY${new Date().getFullYear() - 1}-${new Date().getFullYear()}`,
+      };
+      console.log(formdata);
+
+      const response = await fetch(
+        "https://taxplanner-test-json.onrender.com/dsc",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formdata),
+        }
+      );
+
+      // Check if the request was successful
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Response from the server:", data);
+
+      // Display a success message to the user
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+
+      // Display an error message to the user
+      alert("There was an error submitting the form. Please try again.");
+    } finally {
+      // Set submitting to false
+      actions.setSubmitting(false);
+    }
   };
 
   return (

@@ -43,29 +43,34 @@ export default function Dashboard() {
           mb={10}
         >
           <DashboardCard
-            href="auth/admin/itr-filing/capital-gain/list?type=salaray"
+            href="/auth/itr-filing/income-tax/edit-form"
             ImageSrc={"/assets/income-tax/administrator-male.webp"}
             ButtonLabel=" Salaried Person"
+            encryptId={"1"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/income-tax/edit-form"
             ImageSrc={"/assets/income-tax/mortgage.webp"}
             ButtonLabel=" Capital Gain"
+            encryptId={"2"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/income-tax/edit-form"
             ImageSrc={"/assets/income-tax/airport-building.webp"}
             ButtonLabel="NRI"
+            encryptId={"3"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/income-tax/client-company.webp"}
             ButtonLabel="Business"
+            encryptId={"13"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/income-tax/bill.webp"}
             ButtonLabel="TDS"
+            encryptId={"14"}
           />
         </Box>
       </Box>
@@ -96,6 +101,7 @@ export default function Dashboard() {
             href="#"
             ImageSrc={"/assets/income-tax/client-company.webp"}
             ButtonLabel="ITR U"
+            encryptId={"4"}
           />
         </Box>
       </Box>
@@ -126,26 +132,31 @@ export default function Dashboard() {
             href="#"
             ImageSrc={"/assets/gst/certification.webp"}
             ButtonLabel="GST Registration"
+            encryptId={"11"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/gst/heck-for-payment.webp"}
             ButtonLabel="LUT"
+            encryptId={"15"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/gst/cash-in-hand.webp"}
             ButtonLabel="Refunds"
+            encryptId={"16"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/gst/check-book.webp"}
             ButtonLabel="Amendments"
+            encryptId={"17"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/gst/receipt-approved.webp"}
             ButtonLabel="Returns"
+            encryptId={""}
           />
         </Box>
       </Box>
@@ -176,16 +187,19 @@ export default function Dashboard() {
             href="#"
             ImageSrc={"/assets/incorporation/organization.webp"}
             ButtonLabel="Company"
+            encryptId={"19"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/incorporation/conference-call.webp"}
             ButtonLabel="Partnership"
+            encryptId={"20"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/incorporation/appointment-scheduling.webp"}
             ButtonLabel="LLP"
+            encryptId={"21"}
           />
         </Box>
       </Box>
@@ -216,31 +230,37 @@ export default function Dashboard() {
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Class III"
+            encryptId={"5"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Encrypted"
+            encryptId={"6"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Organization"
+            encryptId={"7"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC DGFT"
+            encryptId={"8"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC ICEGATE"
+            encryptId={"9"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC NRI"
+            encryptId={"10"}
           />
         </Box>
       </Box>
@@ -271,16 +291,19 @@ export default function Dashboard() {
             href="#"
             ImageSrc={"/assets/other-services/me.webp"}
             ButtonLabel="MSME Registration"
+            encryptId={"22"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/water-transportation.webp"}
             ButtonLabel="IEC Registration"
+            encryptId={"24"}
           />
           <DashboardCard
             href="#"
             ImageSrc={"/assets/other-services/product-documents.webp"}
             ButtonLabel="ROC Filing"
+            encryptId={"23"}
           />
         </Box>
       </Box>

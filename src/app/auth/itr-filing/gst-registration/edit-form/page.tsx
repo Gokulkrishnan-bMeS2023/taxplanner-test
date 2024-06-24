@@ -5,35 +5,48 @@ import {
   Input,
   Button,
   FormControl,
-  FormErrorMessage,
   Box,
   FormLabel,
   Stack,
   Heading,
   Text,
   Divider,
-  Select,
-  Textarea,
   Flex,
   RadioGroup,
   Radio,
 } from "@chakra-ui/react";
 import Link from "next/link";
+
 const FormComponent: React.FC = () => {
   const initialValues = {
-    documentName: "",
-    selectedDocument: "",
+    Pan: "",
+    Passport: "",
+    AadhaarNo: "",
+    Address: "",
+    Premises: "",
+    TradeName: "",
+    GoodServices: "",
   };
+
   const validationSchema = Yup.object().shape({
-    documentName: Yup.string().required("Document name is required"),
-    selectedDocument: Yup.mixed().required("Please select a document file"),
+    Pan: Yup.string().required("Please select a document file"),
+    Passport: Yup.mixed().required("Please select a document file"),
+    Address: Yup.string().required("This field is required."),
+    Premises: Yup.string().required("This field is required."),
+    GoodServices: Yup.string().required("This field is required."),
+    TradeName: Yup.string().required("This field is required."),
+    AadhaarNo: Yup.string()
+      .required("This field is required.")
+      .length(12, "Invalid Aadhaar Number"),
   });
+
   const onSubmit = (values: any, actions: any) => {
     // Handle form submission
     console.log("Form submitted with values:", values);
     actions.setSubmitting(false);
     alert(JSON.stringify(values));
   };
+
   return (
     <Box pt={24} px={{ base: "20px", md: "3rem" }} pb={"1.5rem"} minH={"100vh"}>
       <Heading as={"h2"} py="10">
@@ -49,19 +62,15 @@ const FormComponent: React.FC = () => {
           border={"1px solid #E3E6F0"}
           borderRadius={"10px 10px 0 0"}
         >
-          <Text as={"h5"} fontWeight={700}>
-            User Text ({" "}
-            <Link href={"#"} style={{ color: "#02ABEF" }}>
-              useremail
-            </Link>{" "}
-            )
+          <Text as={"h4"} fontWeight="bolder">
+            Fill The Details
           </Text>
         </Box>
         <Box
           bg="white"
           py="10"
           px="4"
-          border="1px solid #E3E6F0"
+          border="1px solid #e3e6f0"
           borderRadius={"0 0 10px 10px"}
         >
           <Formik
@@ -69,195 +78,348 @@ const FormComponent: React.FC = () => {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
           >
-            {({ isSubmitting }) => (
+            {(props) => (
               <Form>
                 <Box p={4}>
-                  <Heading as="h3" mb="5" width={{ base: "100%", sm: "50%" }}>
-                    Personal Details
-                  </Heading>
-                  <FormControl
-                    display="flex"
-                    justifyContent="space-between"
-                    mb="5"
-                    flexDirection={{ base: "column", sm: "row" }}
-                    width={{ base: "100%", sm: "50%" }}
-                  >
-                    <FormLabel>Copy of PAN</FormLabel>
-                    <Link href="#" style={{ color: "#02ABEF" }}>
-                      1.jpg
-                    </Link>
-                  </FormControl>
+                  <Field name="Pan">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }}>
+                          <FormLabel
+                            htmlFor="Pan"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Copy of PAN <Text color="red">*</Text>
+                          </FormLabel>
+                          <Box
+                            className="hover-button"
+                            display={"flex"}
+                            border={"1px solid #E2E8F0"}
+                            as="label"
+                            mt="2"
+                            cursor="pointer"
+                            width={"100%"}
+                            alignItems={"center"}
+                            justifyContent={"space-between"}
+                            borderRadius={"8px"}
+                          >
+                            <Text
+                              ml={"4"}
+                              color="grey"
+                              w={"fit-content"}
+                              whiteSpace="nowrap"
+                              fontSize="14px"
+                              overflow="hidden"
+                            >
+                              {props.values.Pan ||
+                                "Select your file! (PDF / Image)"}
+                            </Text>
+                            <Input
+                              {...field}
+                              id="Pan"
+                              type="file"
+                              accept=".pdf, image/png, image/jpeg"
+                              style={{ display: "none" }}
+                            />
+                            <Button
+                              as="label"
+                              borderLeftRadius="0px"
+                              htmlFor="Pan"
+                              variant="solid"
+                              cursor="pointer"
+                              className="hover-button"
+                            >
+                              Browser
+                            </Button>
+                          </Box>
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="Pan"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
                   <Divider
                     width="100%"
-                    mt="2rem"
-                    mb="2rem"
+                    mt="1.5rem"
+                    mb="1.5rem"
                     border="0"
                     borderTop="1px solid rgba(0, 0, 0, 0.1)"
                   />
-                  <FormControl mb="5" width={{ base: "100%", sm: "50%" }}>
-                    <FormLabel>Aadhaar No</FormLabel>
-                    <Input
-                      type="text"
-                      bg="#EAECF4"
-                      borderColor="#ccc"
-                      height="50px"
-                      defaultValue="123455555555"
-                      isDisabled
-                    />
-                  </FormControl>
-                  <FormControl width={{ base: "100%", sm: "50%" }} isRequired>
-                    <FormLabel>Address</FormLabel>
-                    <Input
-                      type="text"
-                      color="#6E707E"
-                      bg="#EAECF4"
-                      borderColor="#ccc"
-                      height="50px"
-                      defaultValue="ERODE"
-                      isDisabled
-                    />
-                  </FormControl>
+                  <Field name="AadhaarNo">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }}>
+                          <FormLabel
+                            htmlFor="AadhaarNo"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Aadhaar No<Text color="red">*</Text>
+                          </FormLabel>
+                          <Input
+                            {...field}
+                            type="text"
+                            id="AadhaarNo"
+                            fontSize="14px"
+                            placeholder="Enter Aadhaar No"
+                            maxLength={12}
+                            borderColor="#ccc"
+                            height="50px"
+                            onChange={(e: any) => {
+                              const { value } = e.target;
+                              const regex = /^[0-9]*$/;
+                              if (!regex.test(value)) {
+                                // Optionally, you can display an error message or handle invalid input here.
+                              } else {
+                                props.setFieldValue("AadhaarNo", value);
+                              }
+                            }}
+                          />
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="AadhaarNo"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
+                  <Field name="Address" >
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }} mt="5">
+                          <FormLabel
+                            htmlFor="Address"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Address<Text color="red">*</Text>
+                          </FormLabel>
+                          <Input
+                            {...field}
+                            type="text"
+                            id="Address"
+                            fontSize="14px"
+                            placeholder="Enter Address"
+                            maxLength={12}
+                            borderColor="#ccc"
+                            height="50px"
+                          />
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="Address"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
                   <Divider
                     width="100%"
-                    mt="2rem"
-                    mb="2rem"
+                    mt="1.5rem"
+                    mb="1.5rem"
                     border="0"
                     borderTop="1px solid rgba(0, 0, 0, 0.1)"
                   />
-                  <FormControl
-                    display="flex"
-                    justifyContent="space-between"
-                    mb="5"
-                    width={{ base: "100%", sm: "50%" }}
-                    flexDirection={{ base: "column", sm: "row" }}
-                  >
-                    <FormLabel>Passport Size Photo</FormLabel>
-                    <Link href="#" style={{ color: "#02ABEF" }}>
-                      2.jpg
-                    </Link>
-                  </FormControl>
+                  <Field name="Passport">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }}>
+                          <FormLabel
+                            htmlFor="Passport"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Passport Size Photo <Text color="red">*</Text>
+                          </FormLabel>
+                          <Box
+                            className="hover-button"
+                            display={"flex"}
+                            border={"1px solid #E2E8F0"}
+                            as="label"
+                            mt="2"
+                            cursor="pointer"
+                            width={"100%"}
+                            alignItems={"center"}
+                            justifyContent={"space-between"}
+                            borderRadius={"8px"}
+                          >
+                            <Text
+                              ml={"4"}
+                              color="grey"
+                              w={"fit-content"}
+                              whiteSpace="nowrap"
+                              fontSize="14px"
+                              overflow="hidden"
+                            >
+                              {props.values.Passport ||
+                                "Select your file! (PDF / Image)"}
+                            </Text>
+                            <Input
+                              {...field}
+                              id="Passport"
+                              type="file"
+                              accept=".pdf, image/png, image/jpeg"
+                              style={{ display: "none" }}
+                            />
+                            <Button
+                              as="label"
+                              borderLeftRadius="0px"
+                              htmlFor="Passport"
+                              variant="solid"
+                              cursor="pointer"
+                              className="hover-button"
+                            >
+                              Browser
+                            </Button>
+                          </Box>
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="Passport"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
                   <Divider
                     mt="1.5rem"
                     mb="1.5rem"
                     border="0"
                     borderTop="1px solid rgba(0, 0, 0, 0.1)"
                   />
-                  <FormControl mb="8" width={{ base: "100%", sm: "50%" }}>
-                    <Flex flexDirection={{ base: "column", sm: "row" }}>
-                      <FormLabel mr="5">Premises</FormLabel>
-                      <Flex pl={{ base: "4", sm: "0" }}>
-                        <RadioGroup defaultValue="1">
-                          <Radio value="1" mr="4">
-                            In case of rental premises
-                          </Radio>
-                          <Radio value="2" mt={{ base: "3", sm: "3" }}>
-                            Scanned copy of owned premises
-                          </Radio>
-                        </RadioGroup>
-                      </Flex>
-                    </Flex>
-                  </FormControl>
-                  <FormControl
-                    display="flex"
-                    justifyContent="space-between"
-                    mb="8"
-                    width={{ base: "100%", sm: "50%" }}
-                    flexDirection={{ base: "column", sm: "row" }}
-                  >
-                    <FormLabel>Electric Bill</FormLabel>
-                    <Link href="#" style={{ color: "#02ABEF" }}>
-                      3.jpg
-                    </Link>
-                  </FormControl>
-                  <FormControl
-                    display="flex"
-                    justifyContent="space-between"
-                    mb="8"
-                    width={{ base: "100%", sm: "50%" }}
-                    flexDirection={{ base: "column", sm: "row" }}
-                  >
-                    <FormLabel>Rental Agreement</FormLabel>
-                    <Link href="#" style={{ color: "#02ABEF" }}>
-                      4.jpg
-                    </Link>
-                  </FormControl>
-                  <FormControl
-                    display="flex"
-                    justifyContent="space-between"
-                    mb="8"
-                    width={{ base: "100%", sm: "50%" }}
-                    flexDirection={{ base: "column", sm: "row" }}
-                  >
-                    <FormLabel>Property Receipt</FormLabel>
-                    <Link href="#" style={{ color: "#02ABEF" }}>
-                      5.jpg
-                    </Link>
-                  </FormControl>
-                  <FormControl mb="5" width={{ base: "100%", sm: "50%" }}>
-                    <FormLabel>Trade</FormLabel>
-                    <Input
-                      type="text"
-                      bg="#EAECF4"
-                      borderColor="#ccc"
-                      height="50px"
-                      defaultValue="goods"
-                      isDisabled
-                    />
-                  </FormControl>
+                  <Field name="Premises">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl mb="8" width={{ base: "100%", sm: "50%" }}>
+                          <Flex flexDirection={{ base: "column", sm: "row" }}>
+                            <FormLabel
+                              htmlFor="Premises"
+                              mr="5"
+                              display={"flex"}
+                              gap={1}
+                              m="0"
+                              p="0"
+                            >
+                              Premises<Text color="red">*</Text>
+                            </FormLabel>
+                            <Flex pl={{ base: "4", sm: "10" }}>
+                              <RadioGroup
+                                {...field}
+                                id="Premises"
+                                onChange={(value) => form.setFieldValue(field.name, value)}>
+                                <Radio value="1" mr="4">
+                                  In case of rental premises
+                                </Radio>
+                                <Radio value="2" mt={{ base: "3", sm: "3" }}>
+                                  Scanned copy of owned premises
+                                </Radio>
+                              </RadioGroup>
+                            </Flex>
+                          </Flex>
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="Premises"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
                   <Divider
-                    mt="2rem"
-                    mb="2rem"
+                    mt="1.5rem"
+                    mb="1.5rem"
                     border="0"
                     borderTop="1px solid rgba(0, 0, 0, 0.1)"
                   />
-                  <FormControl mb="5" width={{ base: "100%", sm: "50%" }}>
-                    <FormLabel>Goods / Services Dealing</FormLabel>
-                    <Input
-                      type="text"
-                      bg="#EAECF4"
-                      borderColor="#ccc"
-                      height="50px"
-                      defaultValue="goods"
-                      isDisabled
-                    />
-                  </FormControl>
+                  <Field name="TradeName">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }}>
+                          <FormLabel
+                            htmlFor="TradeName"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Trade Name<Text color="red">*</Text>
+                          </FormLabel>
+                          <Input
+                            {...field}
+                            type="text"
+                            id="TradeName"
+                            fontSize="14px"
+                            placeholder="Trade"
+                            maxLength={12}
+                            borderColor="#ccc"
+                            height="50px"
+                          />
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="TradeName"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
                   <Divider
-                    mt="2rem"
-                    mb="2rem"
+                    mt="1.5rem"
+                    mb="1.5rem"
                     border="0"
                     borderTop="1px solid rgba(0, 0, 0, 0.1)"
                   />
-                  <Stack
-                    direction={{ base: "column", sm: "row" }}
-                    spacing="5"
-                    mb="5"
-                  >
-                    <FormControl>
-                      <FormLabel>Status</FormLabel>
-                      <Select
-                        name="status"
-                        id="status"
-                        color="#000"
-                        borderColor="#ccc"
-                        height="60px"
-                      >
-                        <option value="1">Draft</option>
-                        <option value="2">In Progress</option>
-                        <option value="3">Done</option>
-                        <option value="4">Declined</option>
-                        <option value="5">Correction Required</option>
-                      </Select>
-                    </FormControl>
-                    <FormControl isRequired>
-                      <FormLabel>Remarks</FormLabel>
-                      <Textarea
-                        name="remarks"
-                        id="remarks"
-                        rows={2}
-                        cols={20}
-                      />
-                    </FormControl>
-                  </Stack>
+                  <Field name="GoodServices">
+                    {({ field, form }: any) => (
+                      <>
+                        <FormControl width={{ base: "100%", sm: "50%" }}>
+                          <FormLabel
+                            htmlFor="GoodServices"
+                            display={"flex"}
+                            gap={1}
+                            m="0"
+                            p="0"
+                          >
+                            Goods / Services Dealing <Text color="red">*</Text>
+                          </FormLabel>
+                          <Input
+                            {...field}
+                            type="text"
+                            id="GoodServices"
+                            fontSize="14px"
+                            placeholder="Goods / Services Dealing"
+                            maxLength={12}
+                            borderColor="#ccc"
+                            height="50px"
+                          />
+                        </FormControl>
+                        <ErrorMessage
+                          className="formik-errormessage"
+                          name="GoodServices"
+                          component="div"
+                        />
+                      </>
+                    )}
+                  </Field>
+                  <Divider
+                    mt="1.5rem"
+                    mb="1.5rem"
+                    border="0"
+                    borderTop="1px solid rgba(0, 0, 0, 0.1)"
+                  />
                 </Box>
                 <Box textAlign="right" alignItems="right">
                   <Flex justifyContent="flex-end">
@@ -278,7 +440,8 @@ const FormComponent: React.FC = () => {
                       <Button
                         mt={4}
                         color="#fff"
-                        isLoading={isSubmitting}
+                        isLoading={props.isSubmitting}
+                        loadingText={"submit.."}
                         type="submit"
                         border="1px solid #2D50D6"
                         bg="#2D50D6"
@@ -289,6 +452,21 @@ const FormComponent: React.FC = () => {
                         }}
                       >
                         Submit
+                      </Button>
+                      <Button
+                        mt={4}
+                        color="#fff"
+                        isLoading={props.isSubmitting}
+                        type="submit"
+                        border="1px solid #2D50D6"
+                        bg="#2D50D6"
+                        _hover={{
+                          bg: "#02ABEF",
+                          borderColor: "#02ABEF",
+                          color: "#fff",
+                        }}
+                      >
+                        Save
                       </Button>
                     </Stack>
                   </Flex>
@@ -301,4 +479,5 @@ const FormComponent: React.FC = () => {
     </Box>
   );
 };
+
 export default FormComponent;

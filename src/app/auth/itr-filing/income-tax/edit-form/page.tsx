@@ -20,22 +20,58 @@ import {
   Center,
   RadioGroup,
   Radio,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaInfoCircle, FaPlusCircle } from "react-icons/fa";
-// import Marquee from '@/components/Marquee';
+import Marquee from "@/components/Marquee";
+import EmployerModal from "@/components/ModelPopUp/CapitalgainSalary-detail";
+import Deduction from "@/components/ModelPopUp/Deductions";
+import ExemptionDetail from "@/components/ModelPopUp/ExemptionDetail";
+import ListedShare from "@/components/ModelPopUp/ListedShare";
+import Property from "@/components/ModelPopUp/Property";
+import { useSearchParams } from "next/navigation";
+import DecryptComponent from "@/components/DecryptComponent";
 
-const FormComponent: FC = () => {
+const CapitalgainEdit=() => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [showDocumentSection, setShowDocumentSection] = useState(true);
-  const [showDocumentSection1, setShowDocumentSection1] = useState(false);
-  const [showDocumentSection2, setShowDocumentSection2] = useState(false);
-  const [showDocumentSection3, setShowDocumentSection3] = useState(false);
-  const [showDocumentSection4, setShowDocumentSection4] = useState(false);
-  const [showDocumentSection5, setShowDocumentSection5] = useState(false);
-  const [showDocumentSection6, setShowDocumentSection6] = useState(false);
-  const [showDocumentSection7, setShowDocumentSection7] = useState(false);
+  const [showDocuments, setShowDocuments] = useState({
+    Document1: false,
+    Document2: false,
+    Document3: false,
+    Document4: false,
+    Document5: false,
+    Document6: false,
+    Document7: false,
+    Document8: false,
+  });
+  const {
+    isOpen: isOpen1,
+    onOpen: onOpen1,
+    onClose: onClose1,
+  } = useDisclosure();
+  const {
+    isOpen: isOpen2,
+    onOpen: onOpen2,
+    onClose: onClose2,
+  } = useDisclosure();
+  const {
+    isOpen: isOpen3,
+    onOpen: onOpen3,
+    onClose: onClose3,
+  } = useDisclosure();
+  const {
+    isOpen: isOpen4,
+    onOpen: onOpen4,
+    onClose: onClose4,
+  } = useDisclosure();
+  const {
+    isOpen: isOpen5,
+    onOpen: onOpen5,
+    onClose: onClose5,
+  } = useDisclosure();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
   const initialValues = {
     AadhaarNo: "",
     selectedDocument: "",
@@ -50,10 +86,9 @@ const FormComponent: FC = () => {
     PassportNumber: Yup.string()
       .required("This field is required.")
       .matches(
-        /^[A-Z][a-zA-Z0-9]*$/,
-        "Passport Number must start with a capital letter"
-      )
-      .length(8, "Invalid Passport Number"),
+        /^[A-Z]\d{7}(?:(?:\s|-)?[A-Z0-9]+)?$/,
+        "Invalid Passport Number"
+      ),
     selectedDocument: Yup.mixed().required("Please select a document file"),
   });
 
@@ -69,14 +104,17 @@ const FormComponent: FC = () => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files && event.target.files[0]; // Check if files is not undefined
-    setSelectedFile(file || null); // Use null if file is undefined
+    const file = event.target.files && event.target.files[0];
+    setSelectedFile(file || null);
   };
+
+  const searchParams = useSearchParams();
+  const Type = searchParams.get("Type");
 
   return (
     <Box pt={24} px={{ base: "20px", md: "3rem" }} pb={"1.5rem"} minH={"100vh"}>
       <Heading as={"h2"} py="10">
-        GST Registration
+        <DecryptComponent Type={Type} />
       </Heading>
       <Box
         borderRadius="10px"
@@ -124,18 +162,21 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection}
+                    isChecked={showDocuments.Document1}
                     onChange={() =>
-                      setShowDocumentSection(!showDocumentSection)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document1: !showDocuments.Document1,
+                      })
                     }
                     mr="2"
                   />
-                  <FormLabel fontWeight="bolder">
+                  <FormLabel fontWeight="bolder" cursor="pointer">
                     {" "}
                     Has already registered with income tax
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection && (
+                {showDocuments.Document1 && (
                   <>
                     <Stack
                       direction={{ base: "column", sm: "row" }}
@@ -165,6 +206,7 @@ const FormComponent: FC = () => {
                                 onChange={handleFileChange}
                               />
                               <Input
+                                type="none"
                                 fontSize="16px"
                                 placeholder="select a file!"
                                 onClick={handleBrowseClick}
@@ -212,7 +254,6 @@ const FormComponent: FC = () => {
                                 const { value } = e.target;
                                 const regex = /^[0-9]*$/;
                                 if (!regex.test(value)) {
-                                  // Optionally, you can display an error message or handle invalid input here.
                                 } else {
                                   props.setFieldValue("AadhaarNo", value);
                                 }
@@ -297,8 +338,8 @@ const FormComponent: FC = () => {
                           alignItems={{ base: "left", md: "center" }}
                         >
                           <Text fontSize="14px" color="red" mt="2">
-                            Sample passport number( A1234567 ) 
-                          </Text> |
+                            Sample passport number( A1234567 )
+                          </Text>
                           <FormErrorMessage>
                             {form.errors.PassportNumber}
                           </FormErrorMessage>
@@ -330,9 +371,19 @@ const FormComponent: FC = () => {
                     display="flex"
                     flexDirection={{ base: "column", sm: "row" }}
                   >
-                    <Text>Please fill any one of the </Text>
-                    <Text ml="1">below details to continue</Text>
-                    <Text display={"flex"} ml="1" alignItems={"center"} gap={1}>
+                    <Text fontFamily={"var(--font-jost)!important"}>
+                      Please fill any one of the{" "}
+                    </Text>
+                    <Text ml="1" fontFamily={"var(--font-jost)!important"}>
+                      below details to continue
+                    </Text>
+                    <Text
+                      display={"flex"}
+                      ml="1"
+                      alignItems={"center"}
+                      gap={1}
+                      fontFamily={"var(--font-jost)!important"}
+                    >
                       payment{" "}
                       <FaInfoCircle style={{ cursor: "pointer" }} color="red" />
                     </Text>
@@ -341,9 +392,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection1}
+                    isChecked={showDocuments.Document2}
                     onChange={() =>
-                      setShowDocumentSection1(!showDocumentSection1)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document2: !showDocuments.Document2,
+                      })
                     }
                     mr="2"
                   />
@@ -351,7 +405,7 @@ const FormComponent: FC = () => {
                     Having Income from House Property
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection1 && (
+                {showDocuments.Document2 && (
                   <>
                     <Stack
                       direction={{ base: "column", sm: "row" }}
@@ -450,9 +504,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection2}
+                    isChecked={showDocuments.Document3}
                     onChange={() =>
-                      setShowDocumentSection2(!showDocumentSection2)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document3: !showDocuments.Document3,
+                      })
                     }
                     mr="2"
                   />
@@ -461,7 +518,7 @@ const FormComponent: FC = () => {
                     Having Income from Interest / Dividened / Commission
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection2 && (
+                {showDocuments.Document3 && (
                   <>
                     <FormLabel mt="2">Interest Certificate from Bank</FormLabel>
                     <Stack
@@ -525,9 +582,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection3}
+                    isChecked={showDocuments.Document4}
                     onChange={() =>
-                      setShowDocumentSection3(!showDocumentSection3)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document4: !showDocuments.Document4,
+                      })
                     }
                     mr="2"
                   />
@@ -535,22 +595,24 @@ const FormComponent: FC = () => {
                     Having Income from Salary
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection3 && (
+                {showDocuments.Document4 && (
                   <>
                     <Box width="50%" mt="5" pl={{ base: "6", sm: "12" }}>
                       <Button
-                        fontSize="15px"
+                        fontWeight="500"
                         border="1px solid #2D50D6"
                         color="#2D50D6"
                         padding="10px 36px"
                         _hover={{ bg: "#2D50D6", color: "white" }}
                         leftIcon={<FaPlusCircle />}
+                        onClick={onOpen1}
                       >
                         Add Employer
                       </Button>
                     </Box>
                   </>
                 )}
+                <EmployerModal isOpen={isOpen1} onClose={onClose1} />
                 <Divider
                   mt="1.2rem"
                   mb="1.2rem"
@@ -565,8 +627,16 @@ const FormComponent: FC = () => {
                     display="flex"
                     flexDirection={{ base: "column", sm: "row" }}
                   >
-                    <Text> Please fill Sale of Property /</Text>
-                    <Text display={"flex"} alignItems={"center"} gap={1}>
+                    <Text fontFamily={"var(--font-jost)!important"}>
+                      {" "}
+                      Please fill Sale of Property /{" "}
+                    </Text>
+                    <Text
+                      display={"flex"}
+                      alignItems={"center"}
+                      gap={1}
+                      fontFamily={"var(--font-jost)!important"}
+                    >
                       Shares detail / Both{" "}
                       <FaInfoCircle style={{ cursor: "pointer" }} color="red" />
                     </Text>
@@ -575,9 +645,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline" isRequired>
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection4}
+                    isChecked={showDocuments.Document5}
                     onChange={() =>
-                      setShowDocumentSection4(!showDocumentSection4)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document5: !showDocuments.Document5,
+                      })
                     }
                     mr="2"
                   />
@@ -585,7 +658,7 @@ const FormComponent: FC = () => {
                     Gain on sale of property
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection4 && (
+                {showDocuments.Document5 && (
                   <>
                     <Box
                       mt="5"
@@ -602,12 +675,13 @@ const FormComponent: FC = () => {
                           <Button
                             as={Link}
                             href=""
-                            fontSize="15px"
+                            fontWeight="500"
                             border="1px solid #2D50D6"
                             color="#2D50D6"
                             padding="10px 40px"
                             _hover={{ bg: "#2D50D6", color: "white" }}
                             leftIcon={<FaPlusCircle />}
+                            onClick={onOpen2}
                           >
                             Add property details
                           </Button>
@@ -616,7 +690,7 @@ const FormComponent: FC = () => {
                           <Button
                             className="blinking-button"
                             bg="#2D50D6"
-                            fontSize="15px"
+                            fontWeight="500"
                             color="white"
                             padding="10px 30px"
                             leftIcon={<FaPlusCircle />}
@@ -631,15 +705,16 @@ const FormComponent: FC = () => {
                         pl={{ base: "5", sm: "12" }}
                         flex="1"
                       >
-                        {/* <Marquee> */}
-                        Get expert assistance, assistance with complete tax
-                        computation and customized tax saving tips at an
-                        additional cost of Rs.2500.00 only
-                        {/* </Marquee> */}
+                        <Marquee>
+                          Get expert assistance, assistance with complete tax
+                          computation and customized tax saving tips at an
+                          additional cost of Rs.2500.00 only
+                        </Marquee>
                       </Center>
                     </Box>
                   </>
                 )}
+                {/* <Property isOpen={isOpen2} onClose={onClose2} /> */}
                 <Divider
                   mt="1.2rem"
                   mb="1.2rem"
@@ -649,9 +724,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection5}
+                    isChecked={showDocuments.Document6}
                     onChange={() =>
-                      setShowDocumentSection5(!showDocumentSection5)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document6: !showDocuments.Document6,
+                      })
                     }
                     mr="2"
                   />
@@ -673,7 +751,7 @@ const FormComponent: FC = () => {
                     </FormLabel>
                   </Stack>
                 </FormControl>
-                {showDocumentSection5 && (
+                {showDocuments.Document6 && (
                   <>
                     <Box
                       mt="5"
@@ -690,12 +768,13 @@ const FormComponent: FC = () => {
                           <Button
                             as={Link}
                             href=""
-                            fontSize="15px"
+                            fontWeight="500"
                             border="1px solid #2D50D6"
                             color="#2D50D6"
                             padding="10px 40px"
                             _hover={{ bg: "#2D50D6", color: "white" }}
                             leftIcon={<FaPlusCircle />}
+                            onClick={onOpen3}
                           >
                             Add Shares
                           </Button>
@@ -704,7 +783,7 @@ const FormComponent: FC = () => {
                           <Button
                             className="blinking-button"
                             bg="#2D50D6"
-                            fontSize="15px"
+                            fontWeight="500"
                             color="white"
                             padding="10px 30px"
                             leftIcon={<FaPlusCircle />}
@@ -721,11 +800,11 @@ const FormComponent: FC = () => {
                       >
                         {" "}
                         {/* Add flex="1" to center the marquee */}
-                        {/* <Marquee> */}
-                        Get expert assistance, assistance with complete tax
-                        computation and customized tax saving tips at an
-                        additional cost of Rs.2500.00 only
-                        {/* </Marquee> */}
+                        <Marquee>
+                          Get expert assistance, assistance with complete tax
+                          computation and customized tax saving tips at an
+                          additional cost of Rs.2500.00 only
+                        </Marquee>
                       </Center>
                     </Box>
                     <Stack
@@ -754,11 +833,11 @@ const FormComponent: FC = () => {
                               <InputRightAddon
                                 as="label"
                                 fontSize="15px"
-                                color="#2D50D6"
-                                textTransform="uppercase"
                                 htmlFor="selectedDocument"
                                 cursor="pointer"
                                 onClick={handleBrowseClick}
+                                color="#2D50D6"
+                                textTransform="uppercase"
                                 _hover={{ bg: "#2D50D6", color: "white" }}
                               >
                                 Browse
@@ -780,6 +859,7 @@ const FormComponent: FC = () => {
                     </Stack>
                   </>
                 )}
+                <ListedShare isOpen={isOpen3} onClose={onClose3} />
                 <Divider
                   mt="1.2rem"
                   mb="1.2rem"
@@ -789,30 +869,35 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection6}
+                    isChecked={showDocuments.Document7}
                     onChange={() =>
-                      setShowDocumentSection6(!showDocumentSection6)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document7: !showDocuments.Document7,
+                      })
                     }
                     mr="2"
                   />
                   <FormLabel fontWeight="bolder"> Exemption Details</FormLabel>
                 </FormControl>
-                {showDocumentSection6 && (
+                {showDocuments.Document7 && (
                   <>
                     <Box width="50%" mt="5" pl={{ base: "6", sm: "12" }}>
                       <Button
-                        fontSize="15px"
+                        fontWeight="500"
                         border="1px solid #2D50D6"
                         color="#2D50D6"
                         padding="10px 36px"
                         _hover={{ bg: "#2D50D6", color: "white" }}
                         leftIcon={<FaPlusCircle />}
+                        onClick={onOpen4}
                       >
                         Add Exemption
                       </Button>
                     </Box>
                   </>
                 )}
+                <ExemptionDetail isOpen={isOpen4} onClose={onClose4} />
                 <Divider
                   mt="1.2rem"
                   mb="1.2rem"
@@ -822,9 +907,12 @@ const FormComponent: FC = () => {
                 <FormControl display="flex" alignItems="baseline">
                   <Checkbox
                     fontWeight="bolder"
-                    isChecked={showDocumentSection7}
+                    isChecked={showDocuments.Document8}
                     onChange={() =>
-                      setShowDocumentSection7(!showDocumentSection7)
+                      setShowDocuments({
+                        ...showDocuments,
+                        Document8: !showDocuments.Document8,
+                      })
                     }
                     mr="2"
                   />
@@ -833,22 +921,24 @@ const FormComponent: FC = () => {
                     Not claimed with form 16
                   </FormLabel>
                 </FormControl>
-                {showDocumentSection7 && (
+                {showDocuments.Document8 && (
                   <>
                     <Box width="50%" mt="5" pl={{ base: "6", sm: "12" }}>
                       <Button
-                        fontSize="15px"
+                        fontWeight="500"
                         border="1px solid #2D50D6"
                         color="#2D50D6"
                         padding="10px 36px"
                         _hover={{ bg: "#2D50D6", color: "white" }}
                         leftIcon={<FaPlusCircle />}
+                        onClick={onOpen5}
                       >
                         Add Deduction
                       </Button>
                     </Box>
                   </>
                 )}
+                <Deduction isOpen={isOpen5} onClose={onClose5} />
                 <Divider
                   mt="1.2rem"
                   mb="1.2rem"
@@ -913,4 +1003,4 @@ const FormComponent: FC = () => {
   );
 };
 
-export default FormComponent;
+export default CapitalgainEdit;

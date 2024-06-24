@@ -16,14 +16,21 @@ import Images from "../Images";
 import { FaCalendarDays } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Link from "next/link";
+import { encrypt } from "@/utils/crypto";
 
 interface CardProps {
   ImageSrc: string;
   ButtonLabel: string;
   href: string;
+  encryptId: string;
 }
 
-const DashboardCard = ({ ImageSrc, ButtonLabel, href }: CardProps) => {
+const DashboardCard = async ({
+  ImageSrc,
+  ButtonLabel,
+  href,
+  encryptId,
+}: CardProps) => {
   return (
     <Card
       p={2}
@@ -52,7 +59,9 @@ const DashboardCard = ({ ImageSrc, ButtonLabel, href }: CardProps) => {
               boxShadow: "md",
             }}
             w={"200px"}
-            href={href}
+            href={`${href}?Type=${encodeURIComponent(
+              await encrypt(encryptId)
+            )}`}
           >
             {ButtonLabel}
           </Button>

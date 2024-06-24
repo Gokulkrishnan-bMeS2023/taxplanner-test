@@ -17,7 +17,6 @@ export default function NotFound() {
   return (
     <>
       {user ? <DashboardNavbar /> : <Navbar />}
-
       <Center background={"#f9f9f9"} height={"100vh"}>
         <Flex direction={"column"}>
           <Heading as={"h1"} textAlign={"center"} color="#01acf1">

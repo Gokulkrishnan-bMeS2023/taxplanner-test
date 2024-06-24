@@ -53,17 +53,17 @@
 //         try {
 //           const data = decrypt(encryptedData);
 //           setDecryptedData(await data);
-//           if (decryptedData) {
-//             fetch("example.com", {
-//               body: decryptedData,
-//             });
-//             const res = await axios.post("exa.com", {
-//               userid: 1,
-//               decryptedData,
-//             });
-//           } else {
-//             router.push("/dashboard");
-//           }
+//           // if (decryptedData) {
+//           //   fetch("example.com", {
+//           //     body: decryptedData,
+//           //   });
+//           //   const res = await axios.post("exa.com", {
+//           //     userid: 1,
+//           //     decryptedData,
+//           //   });
+//           // } else {
+//           //   router.push("/dashboard");
+//           // }
 //         } catch (error) {
 //           console.error("Error decrypting data:", error);
 //         }
@@ -99,26 +99,27 @@
 //   const Title = searchParams.get("Title");
 
 //   useEffect(() => {
-//     if (Type) {
-//       const encryptedData = decodeURIComponent(Type as string);
-//       const encryptedTitle = decodeURIComponent(Title as string);
-//       try {
-//         const data = decrypt(encryptedData);
-//         const Title = decrypt(encryptedTitle);
-//         setDecryptedData(data);
-//         setDecryptedTitle(Title);
-//       } catch (error) {
-//         console.error("Error decrypting data:", error);
+//     const getdata = async () => {
+//       if (Type) {
+//         const encryptedData = decodeURIComponent(Type as string);
+//         const encryptedTitle = decodeURIComponent(Title as string);
+//         try {
+//           const data = decrypt(encryptedData);
+//           setDecryptedData(await data);
+//         } catch (error) {
+//           console.error("Error decrypting data:", error);
+//         }
 //       }
-//     }
-//   }, [Type, Title]);
+//     };
+//     getdata();
+//   }, []);
 
 //   const title = TitleList.find((title) => title.Type === decryptedData);
 
 //   return (
 //     <div style={{ padding: "200px" }}>
 //       <h1>Target Page</h1>
-//       {decryptedData && <p>Decrypted Data: {Number(decryptedData)}</p>}
+//       {decryptedData && decryptedData}
 //       {/* <h1>{decryptedTitle}</h1> */}
 //       <h1>{title?.Title}</h1>
 //     </div>
@@ -157,59 +158,28 @@
 
 // export default UsersPage;
 
+// pages/query.tsx
+// src/app/dashboard/example/page.tsx
+"use client";
+import { TitleList } from "@/component-contents/TitleFilterData";
+import { decrypt } from "@/utils/crypto";
+import { useSearchParams } from "next/navigation";
 
+const QueryPage = async () => {
+  const searchParams = useSearchParams();
+  const myParam = searchParams.get("Type");
 
-"use client"
+  const encryptedData = decodeURIComponent(myParam as string);
+  const decryptedId = await decrypt(encryptedData);
 
-import React, { useState, useEffect } from "react";
-
-async function fetchUsers() {
-  const res = await fetch("https://taxplanner-test-json.onrender.com/user", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
-}
-
-const UsersPage = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetchUsers().then(setUsers);
-  }, []);
-
-  const handleUserEdit = async (userId: any, updatedUserData: { firstName: string; }) => {
-    await fetch(`https://taxplanner-test-json.onrender.com/user/${userId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedUserData),
-    });
-
-    const updatedUsers = await fetchUsers();
-    setUsers(updatedUsers);
-    console.log(updatedUsers);
-    
-  };
+  const title = TitleList.find((title) => title.Type === decryptedId);
 
   return (
     <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map((user: any) => (
-          <li key={user.id}>
-            {user.firstName}
-            <button  style={{color:"ButtonFace"}}
-              onClick={() => handleUserEdit(user.id, { firstName: "Updated Name" })}
-            >
-              Edit
-            </button>
-          </li>
-        ))}
-      </ul>
+      <h1>Query Parameter Value</h1>
+      <p>Value of "myParam": {title?.Title}</p>
     </div>
   );
 };
 
-export default UsersPage;
+export default QueryPage;

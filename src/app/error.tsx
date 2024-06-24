@@ -1,4 +1,5 @@
 "use client";
+import Navbar from "@/components/Navbar";
 import {
   Alert,
   AlertDescription,
@@ -19,6 +20,7 @@ export default function Error({
 }) {
   return (
     <Box height={"100vh"}>
+      <Navbar />
       <Alert
         status="error"
         variant="subtle"

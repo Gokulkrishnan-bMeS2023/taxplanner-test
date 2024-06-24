@@ -1,46 +1,37 @@
-// "use client";
+// import { encrypt } from "@/utils/crypto";
+// import Link from "next/link";
+// async function fetchUsers() {
+//   const res = await fetch("https://taxplanner-test-json.onrender.com/user", {
+//     cache: "no-store",
+//   });
+//   return res.json();
+// }
 
-// import React, { useEffect, useState } from "react";
-import Link from "next/link";
-// import axios from "axios";
+// const UsersPage = async () => {
+//   const users = await fetchUsers();
 
-async function fetchUsers() {
-  const res = await fetch("https://taxplanner-test-json.onrender.com/user", {
-    cache: "no-store",
-  });
-  return res.json();
+//   return (
+//     <ul style={{ padding: "200px" }}>
+//       {users?.map(async (user: { id: string; firstName: string }) => (
+//         <li key={user.id}>
+//           {user.firstName}
+//           <Link href={`/dashboard/useredit?userid=${await encrypt(user.id)}`}>
+//             Edit Link
+//           </Link>
+//           {/* <Link href={`/dashboard/useredit?userid=${user.id}`}>Edit Link</Link> */}
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
+
+// export default UsersPage;
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>page</div>
+  )
 }
 
-const UsersPage = async () => {
-  //   const [users, setUsers] = useState([]);
-  const users = await fetchUsers();
-
-  //   useEffect(() => {
-  //     const fetchUsers = async () => {
-  //       try {
-  //         const res = await axios.get("https://taxplanner-test-json.onrender.com/user");
-  //         setUsers(res.data);
-  //       } catch (error) {
-  //         console.error("Failed to fetch users:", error);
-  //       }
-  //     };
-
-  //     fetchUsers();
-  //   }, [users]);
-
-  return (
-    <div>
-      <h1>User List</h1>
-      <ul>
-        {users?.map((user: { id: string; firstName: string }) => (
-          <li key={user.id}>
-            {user.firstName}
-            <Link href={`/dashboard/useredit/${user.id}`}>Edit</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default UsersPage;
+export default page
