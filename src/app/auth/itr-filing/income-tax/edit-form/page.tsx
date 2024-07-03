@@ -72,6 +72,9 @@ const CapitalgainEdit=() => {
   } = useDisclosure();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  console.log(fileInputRef);
+  
+
   const initialValues = {
     AadhaarNo: "",
     selectedDocument: "",

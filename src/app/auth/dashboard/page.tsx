@@ -227,7 +227,7 @@ export default function Dashboard() {
           mb={10}
         >
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Class III"
             encryptId={"5"}

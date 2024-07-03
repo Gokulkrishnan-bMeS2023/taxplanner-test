@@ -25,7 +25,7 @@ interface CardProps {
   encryptId: string;
 }
 
-const DashboardCard = async ({
+const DashboardCard = ({
   ImageSrc,
   ButtonLabel,
   href,
@@ -59,9 +59,7 @@ const DashboardCard = async ({
               boxShadow: "md",
             }}
             w={"200px"}
-            href={`${href}?Type=${encodeURIComponent(
-              await encrypt(encryptId)
-            )}`}
+            href={`${href}?Type=${encodeURIComponent(encrypt(encryptId))}`}
           >
             {ButtonLabel}
           </Button>

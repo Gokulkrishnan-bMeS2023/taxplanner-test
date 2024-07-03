@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Box,
@@ -9,30 +9,175 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Link,
   Flex,
   Divider,
 } from "@chakra-ui/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import DocumentListTable from "@/components/Tables/DocumentListTable/page";
-const initialValues = {
-  documentName: "",
-  selectedDocument: "", // Initialize with null
-};
-const validationSchema = Yup.object().shape({
-  documentName: Yup.string()
-    .required("Document name is required")
-    .length(5, "length is required"),
-  selectedDocument: Yup.mixed().required("Please select a document file"),
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import FileInput from "@/components/Form/FileUploadField";
+
+interface TodoItem {
+  documentName: string;
+  file: File | null;
+  id?: string;
+  osId?: string;
+  fileName?: string;
+}
+
+Yup.addMethod(Yup.string, "unique", function (message, list) {
+  return this.test("unique", message, function (value) {
+    const { path, createError } = this;
+    const isUnique = !list.some(
+      (item: TodoItem) => item.documentName === value
+    );
+    return isUnique || createError({ path, message });
+  });
 });
-const onSubmit = (values: any, actions: any) => {
-  // Handle form submission
-  console.log("Form submitted with values:", values);
-  // You can add your logic for handling the form submission here
-  actions.setSubmitting(false);
-};
-const FileUploadForm: React.FC = () => {
+
+const FileUploadForm = () => {
+  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todosList, setTodosList] = useState<TodoItem[]>([]);
+  const [otherServiceId, setotherServiceId] = useState<number | string>(0);
+
+  const searchParams = useSearchParams();
+
+  const ID = searchParams.get("id");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:88/v1/otherservice/get otherservice document",
+          {
+            params: {
+              ID: ID,
+            },
+          }
+        );
+        setTodosList(response.data);
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+    if (ID) {
+      fetchUserData();
+      setotherServiceId(ID);
+    }
+  }, [ID]);
+
+  const initialValues = {
+    documentName: "",
+    file: null as File | null,
+  };
+
+  const financialYear = `FY${
+    new Date().getFullYear() - 1
+  }-${new Date().getFullYear()}`;
+  const fillingType = 17;
+  const userId = 1;
+
+  const combinedTodos = [...todos, ...todosList];
+
+  const validationSchema = Yup.object({
+    documentName: Yup.string()
+      .required("Document name is required")
+      ?.unique("Document name must be unique", combinedTodos),
+    file: Yup.mixed().required("A file is required"),
+  });
+
+  const handleAdd = (
+    values: { documentName: string; file: File | null },
+    { resetForm }: any
+  ) => {
+    const todo: TodoItem = {
+      documentName: values.documentName,
+      file: values.file,
+    };
+    setTodos([...todos, todo]);
+    setTodosList([...todosList, todo]);
+    resetForm();
+
+    const fileInput = document.getElementById("file") as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = "";
+    }
+  };
+  console.log(otherServiceId);
+
+  const handleFileUpload = () => {
+    const formData = new FormData();
+    todos.forEach((todo) => {
+      if (todo.file && todo.documentName) {
+        formData.append("files", todo.file);
+        formData.append("documentNames", todo.documentName);
+      }
+    });
+    formData.append("financialYear", financialYear);
+    formData.append("userId", userId.toString());
+    formData.append("otherServiceId", otherServiceId.toString());
+    formData.append("fillingType", fillingType.toString());
+    fetch("http://localhost:88/v1/otherservice/register", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to upload");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const newTodosList = data.map((item: any) => ({
+          id: item.id || "N/A",
+          osId: item.osId || "N/A",
+          documentName: item.documentName,
+          fileName: item.fileName,
+        }));
+        // Remove entries without id and osId from todosList
+        const filteredTodosList = newTodosList.filter(
+          (item: any) => item.id !== "N/A" && item.osId !== "N/A"
+        );
+        setTodosList(filteredTodosList);
+        setTodos([]); // Clear the todos state
+        const IDOS = filteredTodosList.map((item: any) => item.osId);
+        setotherServiceId(IDOS[0]);
+        console.log(filteredTodosList);
+        console.log(IDOS, "idos");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleFileDelete = async (todo: TodoItem) => {
+    const newTodosList = todosList.filter(
+      (item) => item.documentName !== todo?.documentName
+    );
+    const newTodos = todos.filter(
+      (item) => item.documentName !== todo?.documentName
+    );
+    setTodos(newTodos);
+    setTodosList(newTodosList);
+
+    if (todo.id) {
+      try {
+        const res = await axios.post(
+          "http://localhost:88/v1/otherservice/remove",
+          { ID: todo.id, OSID: todo.osId }
+        );
+        console.log("File deleted successfully:", res.data);
+      } catch (error) {
+        console.error("Error deleting file:", error);
+      }
+    }
+  };
+  console.log(todos);
+  
+
   return (
     <Box pt={24} px={{ base: "20px", md: "1.5rem" }} pb={"1.5rem"}>
       <Heading as={"h2"} py="10">
@@ -68,13 +213,12 @@ const FileUploadForm: React.FC = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={onSubmit}
+            onSubmit={handleAdd}
           >
             {(props) => (
               <Form>
                 <Flex
                   flexDirection={"column"}
-                  gap={6}
                   width={{ base: "100%", md: "50%" }}
                   px={5}
                 >
@@ -84,6 +228,7 @@ const FileUploadForm: React.FC = () => {
                         <FormControl>
                           <FormLabel
                             htmlFor="documentName"
+                            id="documentName"
                             display="flex"
                             gap={1}
                           >
@@ -105,68 +250,13 @@ const FileUploadForm: React.FC = () => {
                       </>
                     )}
                   </Field>
-                  <Field name="selectedDocument">
-                    {({ field }: any) => (
-                      <>
-                        <FormControl>
-                          <FormLabel
-                            htmlFor="selectedDocument"
-                            display={"flex"}
-                            gap={1}
-                          >
-                            Select Document <Text color="red">*</Text>
-                          </FormLabel>
-                          <Box
-                            className="hover-button"
-                            display={"flex"}
-                            border={"1px solid #E2E8F0"}
-                            as="label"
-                            cursor="pointer"
-                            width={"100%"}
-                            alignItems={"center"}
-                            justifyContent={"space-between"}
-                            borderRadius={"8px"}
-                            h={"50px"}
-                          >
-                            <Text
-                              ml={"4"}
-                              color="grey"
-                              w={"fit-content"}
-                              whiteSpace="nowrap"
-                              fontSize="14px"
-                              overflow="hidden"
-                            >
-                              {props.values.selectedDocument ||
-                                "Select your file! (PDF / Image)"}
-                            </Text>
-                            <Input
-                              {...field}
-                              id="selectedDocument"
-                              type="file"
-                              accept=".pdf, image/png, image/jpeg"
-                              style={{ display: "none" }}
-                            />
-                            <Button
-                              as="label"
-                              borderLeftRadius="0px"
-                              htmlFor="selectedDocument"
-                              variant="solid"
-                              cursor="pointer"
-                              className="hover-button"
-                              h={"50px"}
-                            >
-                              Browser
-                            </Button>
-                          </Box>
-                        </FormControl>
-                        <ErrorMessage
-                          className="formik-errormessage"
-                          name="selectedDocument"
-                          component="div"
-                        />
-                      </>
-                    )}
-                  </Field>
+
+                  <FileInput
+                    name="file"
+                    props={props}
+                    labelName="Select Document"
+                  />
+
                   <Button
                     color={"#2D50D6"}
                     bg={"transparent"}
@@ -174,47 +264,81 @@ const FileUploadForm: React.FC = () => {
                     _hover={{ bg: "#2D50D6", color: "#FFF" }}
                     w={"fit-content"}
                     mb={2}
+                    type="submit"
+                    mt={6}
                   >
-                    Save & Add
+                    Add
                   </Button>
                 </Flex>
               </Form>
             )}
           </Formik>
-          <DocumentListTable />
-          <Divider
-            mt="2rem"
-            mb="2rem"
-            border="0"
-            borderTop="1px solid rgba(0, 0, 0, 0.1)"
-          />
-          <Flex
-            align={"end"}
-            w={{ base: "100%", md: "55%" }}
-            gap={5}
-            flexDirection={{ base: "column", md: "row" }}
-          >
-            <FormControl id="comments">
-              <FormLabel fontWeight={"bold"}>Comments</FormLabel>
-              <Input type="text" placeholder="Enter Comments" h={14} />
-            </FormControl>
-            <Button color={"#FFF"} bg={"#2D50D6"} _hover={{ bg: "#02ABEF" }}>
-              Send
-            </Button>
-          </Flex>
-          <Flex justify={"flex-end"} gap={4} mt={4}>
-            <Button
-              color={"#2D50D6"}
-              bg={"transparent"}
-              border={"1px solid #2D50D6"}
-              _hover={{ bg: "#2D50D6", color: "#FFF" }}
-            >
-              Back
-            </Button>
-            <Button color={"#fff"} bg={"#2D50D6"} _hover={{ bg: "#02ABEF" }}>
-              Submit
-            </Button>
-          </Flex>
+          <>
+            {todosList.length > 0 && (
+              <DocumentListTable
+                tableData={todosList}
+                handleFileDelete={handleFileDelete}
+              />
+            )}
+            <Divider
+              mt="2rem"
+              mb="2rem"
+              border="0"
+              borderTop="1px solid rgba(0, 0, 0, 0.1)"
+            />
+            {todosList.length > 0 && (
+              <Flex
+                align={"end"}
+                w={{ base: "100%", md: "55%" }}
+                gap={5}
+                flexDirection={{ base: "column", md: "row" }}
+              >
+                <FormControl id="comments">
+                  <FormLabel fontWeight={"bold"}>Comments</FormLabel>
+                  <Input type="text" placeholder="Enter Comments" h={14} />
+                </FormControl>
+                <Button
+                  color={"#FFF"}
+                  bg={"#2D50D6"}
+                  _hover={{ bg: "#02ABEF" }}
+                >
+                  Send
+                </Button>
+              </Flex>
+            )}
+
+            <Flex justify={"flex-end"} gap={4} mt={4}>
+              <Button
+                as={Link}
+                href={"/auth/itr-filing/other-services/list"}
+                color={"#2D50D6"}
+                bg={"transparent"}
+                border={"1px solid #2D50D6"}
+                _hover={{ bg: "#2D50D6", color: "#FFF" }}
+              >
+                Back
+              </Button>
+              {todosList.length > 0 && (
+                <>
+                  <Button
+                    color={"#FFF"}
+                    bg={"#2D50D6"}
+                    _hover={{ bg: "#02ABEF" }}
+                    onClick={handleFileUpload}
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    color={"#fff"}
+                    bg={"#2D50D6"}
+                    _hover={{ bg: "#02ABEF" }}
+                  >
+                    Submit
+                  </Button>
+                </>
+              )}
+            </Flex>
+          </>
         </Box>
       </Box>
     </Box>

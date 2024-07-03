@@ -1,5 +1,5 @@
-"use client";
 
+"use client";
 import { useState, useEffect } from "react";
 import {
   Box,
@@ -18,21 +18,24 @@ import {
 import { FaBars, FaAngleDown, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { encrypt } from "@/utils/crypto";
 
 interface SubMenuItem {
   label: string;
-  href: string;
+  href?: string;
   id: any;
   subItems1?: MenuItem[];
   subItems?: MenuItem[];
   subItems2?: MenuItem[];
   subItems3?: MenuItem[];
+  encryptId?: string;
 }
 
 interface MenuItem {
   id: any;
   label: string;
-  href: string;
+  href?: string;
+  encryptId?: any;
   subItems?: SubMenuItem[];
   subItems2?: SubMenuItem[];
 }
@@ -40,6 +43,7 @@ interface MenuItem {
 const DashboardNavbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClickActive, setIsClickActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
@@ -51,7 +55,6 @@ const DashboardNavbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 991);
       setIsMobilebackgroundView(window.innerWidth <= 650);
@@ -78,15 +81,6 @@ const DashboardNavbar: React.FC = () => {
     setSelectedSubMenu(null);
     setSelectedSubMenu2(null);
     setSelectedSubMenu3(null);
-  };
-
-  const handleToggleServiceMenu = () => {
-    setIsServiceMenuOpen(!isServiceMenuOpen);
-    if (!isServiceMenuOpen) {
-      setSelectedSubMenu(null);
-      setSelectedSubMenu2(null);
-      setSelectedSubMenu3(null);
-    }
   };
 
   const handleServicesMouseEnter = () => {
@@ -135,26 +129,12 @@ const DashboardNavbar: React.FC = () => {
 
   const handleSubMenuItemClick1 = (id: number) => {
     // Toggle the selected submenu1 only if it's not already selected
-    if (id === selectedSubMenu) {
-      // If the clicked submenu is already selected, close it
-      return;
-    } else {
-      // If the clicked submenu is not selected, open it
-      setSelectedSubMenu(id);
-      setSelectedSubMenu2(null);
-    }
+    setSelectedSubMenu(id === selectedSubMenu ? null : id);
   };
 
   const handleSubMenuItemClick4 = (id: number) => {
     // Toggle the selected submenu1 only if it's not already selected
-    if (id === selectedSubMenu2) {
-      // If the clicked submenu is already selected, keep it open
-      return;
-    } else {
-      // If the clicked submenu is not selected, toggle its state
-      setSelectedSubMenu2(id);
-      setSelectedSubMenu3(null);
-    }
+      setSelectedSubMenu2(id === selectedSubMenu2 ? null : id);
   };
 
   const handleSubMenuItemClick5 = (id: number) => {
@@ -163,13 +143,19 @@ const DashboardNavbar: React.FC = () => {
   };
 
   const handleMenuOpen = () => {
-    setIsMenuOpen(true);
+    if (isClickActive) {
+      setIsMenuOpen(true);
+    }
   };
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
-
+  const handleMenuButtonClick = () => {
+    const newIsClickActive = !isClickActive;
+    setIsClickActive(newIsClickActive);
+    setIsMenuOpen(newIsClickActive);
+  };
   const menuItems: MenuItem[] = [
     {
       id: 1,
@@ -179,123 +165,133 @@ const DashboardNavbar: React.FC = () => {
     {
       id: 2,
       label: "Services",
-      href: "#",
       subItems: [
         {
           id: 1,
           label: "Income Tax",
-          href: "#",
           subItems1: [
             {
-              id: "100",
+              id: 1,
               label: "Salaried and House Property Income",
-              href: "/auth/itr-filing/income-tax/edit-form?active=100",
+              href: "/auth/itr-filing/income-tax/edit-form",
+              encryptId: "1",
             },
             {
-              id: "200",
+              id: 2,
               label: "Capital Gain",
-              href: "/auth/itr-filing/income-tax/edit-form?active=200",
+              href: "/auth/itr-filing/income-tax/edit-form",
+              encryptId: "2",
             },
             {
-              id: "300",
+              id: 3,
               label: "NRI",
-              href: "/auth/itr-filing/income-tax/edit-form?active=300",
+              href: "/auth/itr-filing/income-tax/edit-form",
+              encryptId: "3",
             },
             {
               id: 4,
               label: "Business Or Profession",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "13",
             },
             {
               id: 5,
               label: "TDS/TCS",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "14",
             },
           ],
         },
         {
           id: 2,
           label: "GST",
-          href: "#",
           subItems1: [
             {
               id: 1,
               label: "Registration",
               href: "/auth/itr-filing/gst-registration/edit-form",
+              encryptId: "11",
             },
             {
               id: 2,
               label: "Amendments",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "17",
             },
             {
               id: 3,
               label: "GST Returns",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "18",
             },
             {
               id: 4,
               label: "LUT",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "15",
             },
             {
               id: 5,
               label: "Refunds",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "16",
             },
           ],
         },
         {
           id: 3,
           label: "Incorporation",
-          href: "#",
           subItems1: [
             {
               id: 1,
               label: "Company",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "19",
             },
             {
               id: 2,
               label: "LLP",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "21",
             },
             {
               id: 3,
               label: "Partnership",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "20",
             },
           ],
         },
         {
           id: 4,
           label: "Other Services",
-          href: "",
           subItems1: [
             {
               id: 1,
               label: "DSC",
-              href: "/dsc-services",
+            
               subItems2: [
                 {
                   id: 1,
                   label: "Class III",
-                  href: "#",
                   subItems3: [
                     {
                       id: 1,
                       label: "DSC Class III",
                       href: "/auth/itr-filing/dsc/edit-form",
+                      encryptId: "5",
                     },
                     {
                       id: 2,
                       label: "DSC Encrypted Individual",
                       href: "/auth/itr-filing/dsc/edit-form",
+                      encryptId: "6",
                     },
                     {
                       id: 3,
                       label: "DSC Encrypted Organization",
                       href: "/auth/itr-filing/dsc/edit-form",
+                      encryptId: "7",
                     },
                   ],
                 },
@@ -303,16 +299,19 @@ const DashboardNavbar: React.FC = () => {
                   label: "DSC DGFT",
                   href: "/auth/itr-filing/dsc/edit-form",
                   id: 2,
+                  encryptId: "8",
                 },
                 {
                   label: "DSC ICEGATE",
                   href: "/auth/itr-filing/dsc/edit-form",
                   id: 3,
+                  encryptId: "9",
                 },
                 {
                   label: "DSC NRI",
                   href: "/auth/itr-filing/dsc/edit-form",
                   id: 4,
+                  encryptId: "10",
                 },
               ],
             },
@@ -320,16 +319,19 @@ const DashboardNavbar: React.FC = () => {
               id: 2,
               label: "MSME Registration",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "22",
             },
             {
               id: 3,
               label: "IEC Registration / Renewal",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "24",
             },
             {
               id: 4,
               label: "ROC Filing",
               href: "/auth/itr-filing/other-services/edit-form",
+              encryptId: "",
             },
           ],
         },
@@ -337,6 +339,7 @@ const DashboardNavbar: React.FC = () => {
           id: 5,
           label: "ITR-U",
           href: "/auth/itr-filing/income-tax/edit-form",
+          encryptId: "4",
         },
         {
           id: 6,
@@ -346,29 +349,30 @@ const DashboardNavbar: React.FC = () => {
         {
           id: 7,
           label: "Staff",
-          href: "#",
           subItems1: [
             {
               id: 1,
               label: "Staff list",
               href: "/auth/admin/staff/list",
+              encryptId: "14",
             },
             {
               id: 2,
               label: "Add staff",
               href: "/auth/admin/staff/add",
+              encryptId: "14",
             },
           ],
         },
         {
           id: 8,
           label: "Users",
-          href: "#",
           subItems1: [
             {
               id: 1,
               label: "User list",
               href: "/auth/admin/user/list",
+              encryptId: "14",
             },
           ],
         },
@@ -489,9 +493,6 @@ const DashboardNavbar: React.FC = () => {
                                       alignItems: "center",
                                     }}
                                     width={"100%"}
-                                    onClick={() =>
-                                      handleSubMenuItemClick1(subItem.id)
-                                    }
                                     position={"relative"}
                                     flexDirection={"column"}
                                   >
@@ -499,23 +500,23 @@ const DashboardNavbar: React.FC = () => {
                                       width={"100%"}
                                       padding="3"
                                       _hover={{ bg: "#F0F0F0" }}
+                                      onClick={() =>
+                                        handleSubMenuItemClick1(subItem.id)
+                                      }
                                     >
-                                      <Link href={subItem.href}>
-                                        {subItem.label}
-                                      </Link>
+                                          {subItem.href ? (
+                                    <Link href={subItem.href}>
+                                      {subItem.label}
+                                    </Link>
+                                  ) : (
+                                    <Box>{subItem.label}</Box>
+                                  )}
 
                                       {subItem.subItems1 && (
                                         <Box>
                                           <FaAngleDown
-                                            size={16}
-                                            color={
-                                              pathname === subItem.href ||
-                                              subItem.subItems1.some(
-                                                (item) => pathname === item.href
-                                              )
-                                                ? "#fff"
-                                                : "#555555"
-                                            }
+                                            size={20}
+                                            color={"#555555"}
                                             style={{
                                               position: "absolute",
                                               right: 20,
@@ -538,35 +539,31 @@ const DashboardNavbar: React.FC = () => {
                                                 flexDirection={"column"}
                                                 _hover={{ bg: "#F0F0F0" }}
                                                 _active={{ color: "#011A41" }}
-                                                onClick={() =>
-                                                  handleSubMenuItemClick4(
-                                                    item.id
-                                                  )
-                                                }
                                               >
                                                 <Flex
                                                   width={"100%"}
                                                   padding="2"
                                                   _hover={{ bg: "#F0F0F0" }}
+                                                  onClick={() =>
+                                                    handleSubMenuItemClick4(
+                                                      item.id
+                                                    )
+                                                  }
                                                 >
-                                                  <Link href={item.href}>
-                                                    {item.label}
-                                                  </Link>
+                                                  {item.href ? (
+                                    <Link href={item.href}>
+                                      {item.label}
+                                    </Link>
+                                  ) : (
+                                    <Box>{item.label}</Box>
+                                  )}
+
                                                   {item.subItems2 && (
                                                     <Box>
                                                       <FaAngleDown
-                                                        size={16}
+                                                        size={20}
                                                         color={
-                                                          pathname ===
-                                                            subItem.href ||
-                                                          item.subItems2.some(
-                                                            (subi) =>
-                                                              pathname ===
-                                                              subi.href
-                                                          )
-                                                            ? "#fff"
-                                                            : "#555555"
-                                                        }
+                                                           "#555555"}
                                                         style={{
                                                           position: "absolute",
                                                           right: 30,
@@ -604,28 +601,19 @@ const DashboardNavbar: React.FC = () => {
                                                                 )
                                                               }
                                                             >
-                                                              <Link
-                                                                href={subi.href}
-                                                              >
-                                                                {subi.label}
-                                                              </Link>
+                                                                {subi.href ? (
+                                    <Link href={subi.href}>
+                                      {subi.label}
+                                    </Link>
+                                  ) : (
+                                    <Box>{subi.label}</Box>
+                                  )}
+
                                                               {subi.subItems3 && (
                                                                 <Box>
                                                                   <FaAngleDown
-                                                                    size={16}
-                                                                    color={
-                                                                      pathname ===
-                                                                        subItem.href ||
-                                                                      subi.subItems3.some(
-                                                                        (
-                                                                          subii
-                                                                        ) =>
-                                                                          pathname ===
-                                                                          subii.href
-                                                                      )
-                                                                        ? "#fff"
-                                                                        : "#555555"
-                                                                    }
+                                                                    size={20}
+                                                                    color={ "#555555"}
                                                                     style={{
                                                                       position:
                                                                         "absolute",
@@ -688,15 +676,14 @@ const DashboardNavbar: React.FC = () => {
                                                                               "#fff",
                                                                           }}
                                                                         >
-                                                                          <Link
-                                                                            href={
-                                                                              subii.href
-                                                                            }
-                                                                          >
-                                                                            {
-                                                                              subii.label
-                                                                            }
-                                                                          </Link>
+                                                                          {subii.href ? (
+                                    <Link href={subii.href}>
+                                      {subii.label}
+                                    </Link>
+                                  ) : (
+                                    <Box>{subii.label}</Box>
+                                  )}
+
                                                                         </Flex>
                                                                       </Box>
                                                                     )
@@ -718,8 +705,10 @@ const DashboardNavbar: React.FC = () => {
                               </Box>
                             )}
                         </Box>
-                      ) : (
+                      ) : menuItem.href ? (
                         <Link href={menuItem.href}>{menuItem.label}</Link>
+                      ) : (
+                        <Box>{menuItem.label}</Box>
                       )}
                     </Box>
                   ))}
@@ -760,7 +749,11 @@ const DashboardNavbar: React.FC = () => {
                     }
                   >
                     {menuItem.label !== "Services" ? (
-                      <Link href={menuItem.href}>{menuItem.label}</Link>
+                      menuItem.href ? (
+                        <Link href={menuItem.href}>{menuItem.label}</Link>
+                      ) : (
+                        <Flex>{menuItem.label}</Flex>
+                      )
                     ) : (
                       <Flex alignItems="center" onClick={handleServicesClick}>
                         {menuItem.label}
@@ -832,9 +825,14 @@ const DashboardNavbar: React.FC = () => {
                                   alignItems="center"
                                   width="100%"
                                 >
-                                  <Link href={subItem.href}>
-                                    {subItem.label}
-                                  </Link>
+                                  {subItem.href ? (
+                                    <Link href={subItem.href}>
+                                      {subItem.label}
+                                    </Link>
+                                  ) : (
+                                    <Box>{subItem.label}</Box>
+                                  )}
+
                                   {subItem.subItems1 && (
                                     <Box>
                                       <FaAngleDown
@@ -868,36 +866,55 @@ const DashboardNavbar: React.FC = () => {
                                       border={"1px solid #F0F0F0"}
                                       transition={"0.5s"}
                                     >
-                                      {subItem.subItems1?.map((item, index) => (
-                                        <Box key={index}>
-                                          <Link href={item.href}>
+                                     {subItem.subItems1?.map((item, index) => (
+                                        <Box key={index}
+                                        onMouseEnter={() =>
+                                          handleSubMenuItemClick2(item.id)
+                                        }
+                                        onMouseLeave={() => handleSubMenuItemClick2(-1)}
+                                        >
+                                          {item.href ? (
+                                            <Link href={`${item.href}?Type=${encodeURIComponent(encrypt(item?.encryptId))}`}>
+                                              <Flex
+                                                px={3}
+                                                py="2"
+                                                justifyContent="space-between"
+                                                color={
+                                                  search === item.id
+                                                    ? "white"
+                                                    : "#555555"
+                                                }
+                                                bg={
+                                                  search === item.id
+                                                    ? "#01acf1"
+                                                    : "#fff"
+                                                }
+                                                _hover={{
+                                                  bg:
+                                                    search === item.id
+                                                      ? "#01ACF1"
+                                                      : "#F0F0F0",
+                                                }}
+                                                _active={{
+                                                  bg: "#01ACF1",
+                                                  color: "#fff",
+                                                }}
+                                              >
+                                                {item.label}
+                                              </Flex>
+                                            </Link>
+                                          ) : (
                                             <Flex
                                               px={3}
                                               py="2"
+                                              color={"#555555"}
+                                              bg={"#fff"}
                                               justifyContent="space-between"
-                                              color={
-                                                search === item.id
-                                                  ? "white"
-                                                  : "#555555"
-                                              }
-                                              bg={
-                                                search === item.id
-                                                  ? "#01acf1"
-                                                  : "#fff"
-                                              }
-                                              _hover={{
-                                                bg:
-                                                  search === item.id
-                                                    ? "#01ACF1"
-                                                    : "#F0F0F0",
-                                              }}
+                                              _hover={{ bg: "#F0F0F0" }}
                                               _active={{
                                                 bg: "#01ACF1",
                                                 color: "#fff",
                                               }}
-                                              onMouseEnter={() =>
-                                                handleSubMenuItemClick2(item.id)
-                                              }
                                             >
                                               {item.label}
                                               {item.subItems2 && (
@@ -919,8 +936,7 @@ const DashboardNavbar: React.FC = () => {
                                                 </Box>
                                               )}
                                             </Flex>
-                                          </Link>
-
+                                          )}
                                           {item.subItems2 &&
                                             selectedSubMenu2 === item.id && (
                                               <Box
@@ -938,40 +954,62 @@ const DashboardNavbar: React.FC = () => {
                                               >
                                                 {item.subItems2.map(
                                                   (subi, index) => (
-                                                    <Box key={index}>
-                                                      <Link href={subi.href}>
+                                                    <Box key={index}
+                                                    onMouseEnter={() =>
+                                                      handleSubMenuItemClick3(
+                                                        subi.id
+                                                      )
+                                                    }
+                                                    onMouseLeave={() => handleSubMenuItemClick3(-1)}
+                                                    >
+                                                      {subi.href ? (
+                                                        <Link href={subi.href}>
+                                                          <Flex
+                                                            px={3}
+                                                            py="2"
+                                                            justifyContent="space-between"
+                                                            color={
+                                                              pathname ===
+                                                              subi.href
+                                                                ? "white"
+                                                                : "#555555"
+                                                            }
+                                                            bg={
+                                                              pathname ===
+                                                              subi.href
+                                                                ? "#01acf1"
+                                                                : "#fff"
+                                                            }
+                                                            _hover={{
+                                                              bg:
+                                                                pathname ===
+                                                                subi.href
+                                                                  ? "#01ACF1"
+                                                                  : "#F0F0F0",
+                                                            }}
+                                                            _active={{
+                                                              bg: "#01ACF1",
+                                                              color: "#fff",
+                                                            }}
+                                                           
+                                                          >
+                                                            {subi.label}
+                                                          </Flex>
+                                                        </Link>
+                                                      ) : (
                                                         <Flex
                                                           px={3}
                                                           py="2"
                                                           justifyContent="space-between"
-                                                          color={
-                                                            pathname ===
-                                                            subi.href
-                                                              ? "white"
-                                                              : "#555555"
-                                                          }
-                                                          bg={
-                                                            pathname ===
-                                                            subi.href
-                                                              ? "#01acf1"
-                                                              : "#fff"
-                                                          }
+                                                          color={"#555555"}
+                                                          bg={"#fff"}
                                                           _hover={{
-                                                            bg:
-                                                              pathname ===
-                                                              subi.href
-                                                                ? "#01ACF1"
-                                                                : "#F0F0F0",
+                                                            bg: "#F0F0F0",
                                                           }}
                                                           _active={{
                                                             bg: "#01ACF1",
                                                             color: "#fff",
                                                           }}
-                                                          onMouseEnter={() =>
-                                                            handleSubMenuItemClick3(
-                                                              subi.id
-                                                            )
-                                                          }
                                                         >
                                                           {subi.label}
                                                           {subi.subItems3 && (
@@ -997,7 +1035,7 @@ const DashboardNavbar: React.FC = () => {
                                                             </Box>
                                                           )}
                                                         </Flex>
-                                                      </Link>
+                                                      )}
                                                       {subi.subItems3 &&
                                                         selectedSubMenu3 ===
                                                           subi.id && (
@@ -1028,32 +1066,57 @@ const DashboardNavbar: React.FC = () => {
                                                                 <Box
                                                                   key={index}
                                                                 >
-                                                                  <Link
-                                                                    href={
-                                                                      subii.href
-                                                                    }
-                                                                  >
+                                                                  {subii.href ? (
+                                                                    <Link
+                                                                      href={
+                                                                        subii.href
+                                                                      }
+                                                                    >
+                                                                      <Flex
+                                                                        px={3}
+                                                                        py="2"
+                                                                        color={
+                                                                          pathname ===
+                                                                          subii.href
+                                                                            ? "white"
+                                                                            : "#555555"
+                                                                        }
+                                                                        bg={
+                                                                          pathname ===
+                                                                          subii.href
+                                                                            ? "#01acf1"
+                                                                            : "#fff"
+                                                                        }
+                                                                        _hover={{
+                                                                          bg:
+                                                                            pathname ===
+                                                                            subii.href
+                                                                              ? "#01ACF1"
+                                                                              : "#F0F0F0",
+                                                                        }}
+                                                                        _active={{
+                                                                          bg: "#01ACF1",
+                                                                          color:
+                                                                            "#fff",
+                                                                        }}
+                                                                      >
+                                                                        {
+                                                                          subii.label
+                                                                        }
+                                                                      </Flex>
+                                                                    </Link>
+                                                                  ) : (
                                                                     <Flex
                                                                       px={3}
                                                                       py="2"
                                                                       color={
-                                                                        pathname ===
-                                                                        subii.href
-                                                                          ? "white"
-                                                                          : "#555555"
+                                                                        "#555555"
                                                                       }
                                                                       bg={
-                                                                        pathname ===
-                                                                        subii.href
-                                                                          ? "#01acf1"
-                                                                          : "#fff"
+                                                                        "#fff"
                                                                       }
                                                                       _hover={{
-                                                                        bg:
-                                                                          pathname ===
-                                                                          subii.href
-                                                                            ? "#01ACF1"
-                                                                            : "#F0F0F0",
+                                                                        bg: "#F0F0F0",
                                                                       }}
                                                                       _active={{
                                                                         bg: "#01ACF1",
@@ -1065,7 +1128,7 @@ const DashboardNavbar: React.FC = () => {
                                                                         subii.label
                                                                       }
                                                                     </Flex>
-                                                                  </Link>
+                                                                  )}
                                                                 </Box>
                                                               )
                                                             )}
@@ -1077,7 +1140,7 @@ const DashboardNavbar: React.FC = () => {
                                               </Box>
                                             )}
                                         </Box>
-                                      ))}
+                                      ))} 
                                     </Box>
                                   )}
                               </Flex>
@@ -1087,23 +1150,21 @@ const DashboardNavbar: React.FC = () => {
                       )}
                   </Box>
                 ))}
-                <Box ml="4">
+                <Box ml="2" onMouseLeave={handleMenuClose} p="2">
                   <Menu isOpen={isMenuOpen} onClose={handleMenuClose}>
                     <MenuButton
                       as={IconButton}
                       icon={<Avatar size="sm" />}
                       colorScheme="white"
                       aria-label="User Menu"
+                      onClick={handleMenuButtonClick}
                       onMouseEnter={handleMenuOpen}
                       _hover={{ color: "white" }}
                       _focus={{ color: "white" }}
                     />
-                    <MenuList
-                      onMouseEnter={handleMenuOpen}
-                      onMouseLeave={handleMenuClose}
-                    >
+                    <MenuList>
                       <MenuItem>
-                        <Link href="/auth/profile">
+                        <Link href="/auth/profile/profile.aspx">
                           <Flex alignItems="center">
                             <FaUser
                               size="14px"
@@ -1140,3 +1201,4 @@ const DashboardNavbar: React.FC = () => {
 };
 
 export default DashboardNavbar;
+

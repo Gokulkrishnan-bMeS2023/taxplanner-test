@@ -14,6 +14,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 interface User {
   email: string;
@@ -79,6 +80,7 @@ const Profile = () => {
     console.log("Form submitted with values:", values);
     actions.setSubmitting(false);
     alert(JSON.stringify(values));
+    // http://localhost:88/user-service/v1/users/2
   };
 
   const handleChangePassword = (values: any, actions: any) => {
@@ -160,6 +162,7 @@ const Profile = () => {
       console.error("Error deleting file:", error);
     }
   };
+
   const handleFileDancel = () => {
     setImagePreviewUrl(user?.profileUrl);
     setbuttonShow(false);
@@ -169,6 +172,14 @@ const Profile = () => {
       fileInput.value = "";
     }
   };
+
+  if (!user) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <Box
@@ -572,6 +583,8 @@ const Profile = () => {
                             borderColor: "#2D50D6",
                             color: "#fff",
                           }}
+                          type="button"
+                          onClick={() => props.resetForm()}
                         >
                           Reset
                         </Button>

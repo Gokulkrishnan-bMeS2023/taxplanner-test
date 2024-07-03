@@ -21,17 +21,20 @@ import Link from "next/link";
 import { FaMinusCircle, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import Pagination from "@/components/pagination";
 import SortIconGroup from "@/components/SortIconGroup";
+import axios from "axios";
 
 interface User {
   id: any;
-  IsActive: boolean;
   email: string;
-  firstName: string;
-  lastName: string;
-  UserType: number;
-  MobileNumber: number;
-  remark: string;
-  TransactionDate: string;
+  status: number;
+  mobileNumber: number | null;
+  remarks: string | null;
+  transDate: string | null;
+  itrType: string | null;
+  financialYear: string;
+  transStatus: string | null;
+  updatedOn: string | null;
+  userId: string;
 }
 
 const DSCList = () => {
@@ -48,25 +51,29 @@ const DSCList = () => {
       direction: "",
     }
   );
+  const id = "1";
+  const FillingType = "17";
 
   useEffect(() => {
-    const fetchuserData = async () => {
+    const fetchUserData = async () => {
       try {
-        const usertype = 3;
-        const url = `https://taxplanner-test-json.onrender.com/user?UserType=${usertype}`;
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setUserData(data);
+        const response = await axios.get(
+          "http://localhost:88/v1/otherservice/get otherservive records",
+          {
+            params: {
+              id,
+              FillingType,
+            },
+          }
+        );
+        setUserData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Failed to fetch user data:", error);
       }
     };
 
-    fetchuserData();
-  }, []);
+    fetchUserData();
+  }, [id, FillingType]);
 
   const handleRoleFilterChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -120,10 +127,9 @@ const DSCList = () => {
 
   const filteredUser = sorteduser.filter(
     (user) =>
-      (!roleFilter || user?.UserType?.toString() === roleFilter) &&
-      (!statusFilter || user.IsActive.toString() === statusFilter) &&
-      (user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.firstName.toLowerCase().includes(searchTerm.toLowerCase()))
+      (!roleFilter || user?.status?.toString() === roleFilter) &&
+      (!statusFilter || user?.transStatus?.toString() === statusFilter) &&
+      user?.email?.toLowerCase()?.includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastEntry = currentPage * entriesPerPage;
@@ -148,6 +154,22 @@ const DSCList = () => {
   };
   const handleMinus = (id: string) => {
     setIconShow([...iconShow.filter((show: any) => show !== id)]);
+  };
+
+  const handleDeleteDocument = async (user: any) => {
+    const deleteUsers = userData.filter((item) => item.id !== user.id);
+
+    setUserData(deleteUsers);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:88/v1/otherservice/removeID",
+        { id: user.id, userID: user.userId, itrType: user.itrType.toString() }
+      );
+      console.log("File deleted successfully:", res.data);
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
   };
 
   const Title = "MSME Registration";
@@ -247,11 +269,11 @@ const DSCList = () => {
                 borderRight="1px solid #e3e6f0"
                 w={"100%"}
                 pb="8"
-                onClick={() => handleSort("MobileNumber")}
+                onClick={() => handleSort("mobileNumber")}
                 position={"relative"}
               >
                 Email
-                <SortIconGroup sortConfig={sortConfig} KeyType="MobileNumber" />
+                <SortIconGroup sortConfig={sortConfig} KeyType="mobileNumber" />
               </Th>
               <Th
                 width="10px"
@@ -324,11 +346,11 @@ const DSCList = () => {
                 color="black"
                 borderRight="1px solid #e3e6f0"
                 style={{ cursor: "pointer", position: "relative" }}
-                onClick={() => handleSort("MobileNumber")}
+                onClick={() => handleSort("mobileNumber")}
                 p={3}
               >
                 Mobile Number
-                <SortIconGroup sortConfig={sortConfig} KeyType="MobileNumber" />
+                <SortIconGroup sortConfig={sortConfig} KeyType="mobileNumber" />
               </Th>
               <Th
                 width="160px"
@@ -361,7 +383,7 @@ const DSCList = () => {
                 borderRight="1px solid #e3e6f0"
                 p={3}
                 position={"relative"}
-                onClick={() => handleSort("remark")}
+                onClick={() => handleSort("remarks")}
                 cursor={"pointer"}
               >
                 Remark
@@ -391,15 +413,12 @@ const DSCList = () => {
                 width="10px"
                 color="black"
                 borderRight="1px solid #e3e6f0"
-                onClick={() => handleSort("TransactionDate")}
+                onClick={() => handleSort("transDate")}
                 style={{ cursor: "pointer", position: "relative" }}
                 p={3}
               >
                 Transaction Date
-                <SortIconGroup
-                  sortConfig={sortConfig}
-                  KeyType="TransactionDate"
-                />
+                <SortIconGroup sortConfig={sortConfig} KeyType="transDate" />
               </Th>
               <Th
                 width="100px"
@@ -511,9 +530,15 @@ const DSCList = () => {
                             <Text as={"b"}> Payment : </Text>
                             <Text
                               fontWeight={"bold"}
-                              color={user.IsActive === true ? "green" : "red"}
+                              color={
+                                user?.transStatus === "success"
+                                  ? "green"
+                                  : "red"
+                              }
                             >
-                              {user.IsActive === true ? "SUCCESS" : "FAIL"}
+                              {user?.transStatus === "success"
+                                ? "SUCCESS"
+                                : "FAIL"}
                             </Text>
                           </Td>
                         </Tr>
@@ -563,20 +588,24 @@ const DSCList = () => {
                       9876543210
                     </Td>
                     <Td p={3} border={"1px solid #e3e6f0"}>
-                      {user.UserType === 1 ? "Admin" : "User"}
+                      {user.status}
                     </Td>
-                    <Td p={3}>remark data</Td>
+                    <Td p={3}>{user.remarks}</Td>
                     <Td
                       p={3}
                       fontWeight={"bold"}
                       border={"1px solid #e3e6f0"}
-                      color={user.IsActive === true ? "green" : "red"}
+                      color={user?.transStatus === "success" ? "green" : "red"}
                     >
-                      {user.IsActive === true ? "SUCCESS" : "FAIL"}
+                      {user.transStatus &&
+                        (user?.transStatus === "success" ? "SUCCESS" : "FAIL")}
                     </Td>
-                    <Td p={3}> Transaction Date Data</Td>
+                    <Td p={3}>{user.transDate} </Td>
                     <Td border={"1px solid #e3e6f0"}>
-                      <FaTrashAlt style={{ color: "#e74a3b " }} />
+                      <FaTrashAlt
+                        style={{ color: "#e74a3b ", cursor: "pointer" }}
+                        onClick={() => handleDeleteDocument(user)}
+                      />
                     </Td>
                   </Tr>
                 ))}

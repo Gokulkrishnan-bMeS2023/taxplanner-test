@@ -16,14 +16,19 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useState } from "react";
 
 const FormComponent: React.FC = () => {
+  const [premises, setPremises] = useState<string>("");
   const initialValues = {
     Pan: "",
     Passport: "",
     AadhaarNo: "",
     Address: "",
     Premises: "",
+    ElectricBill: "",
+    RentedAgreement: "",
+    PropertyReceipt: "",
     TradeName: "",
     GoodServices: "",
   };
@@ -35,6 +40,9 @@ const FormComponent: React.FC = () => {
     Premises: Yup.string().required("This field is required."),
     GoodServices: Yup.string().required("This field is required."),
     TradeName: Yup.string().required("This field is required."),
+    ElectricBill: Yup.string().required("This field is required."),
+    PropertyReceipt: Yup.string().required("This field is required."),
+    RentedAgreement: Yup.string().required("This field is required."),
     AadhaarNo: Yup.string()
       .required("This field is required.")
       .length(12, "Invalid Aadhaar Number"),
@@ -177,7 +185,6 @@ const FormComponent: React.FC = () => {
                               const { value } = e.target;
                               const regex = /^[0-9]*$/;
                               if (!regex.test(value)) {
-                                // Optionally, you can display an error message or handle invalid input here.
                               } else {
                                 props.setFieldValue("AadhaarNo", value);
                               }
@@ -192,7 +199,7 @@ const FormComponent: React.FC = () => {
                       </>
                     )}
                   </Field>
-                  <Field name="Address" >
+                  <Field name="Address">
                     {({ field, form }: any) => (
                       <>
                         <FormControl width={{ base: "100%", sm: "50%" }} mt="5">
@@ -319,7 +326,9 @@ const FormComponent: React.FC = () => {
                               <RadioGroup
                                 {...field}
                                 id="Premises"
-                                onChange={(value) => form.setFieldValue(field.name, value)}>
+                                onChange={(value) => setPremises(value)}
+                                value={premises}
+                              >
                                 <Radio value="1" mr="4">
                                   In case of rental premises
                                 </Radio>
@@ -330,6 +339,193 @@ const FormComponent: React.FC = () => {
                             </Flex>
                           </Flex>
                         </FormControl>
+
+                        {(premises === "1" || premises === "2") && (
+                          <>
+                            <FormControl width={{ base: "100%", sm: "50%" }}>
+                              <FormLabel
+                                htmlFor="ElectricBill"
+                                display={"flex"}
+                                gap={1}
+                                m="0"
+                                p="0"
+                              >
+                                Electric Bill
+                                <Text color="red">*</Text>
+                              </FormLabel>
+                              <Box
+                                className="hover-button"
+                                display={"flex"}
+                                border={"1px solid #E2E8F0"}
+                                as="label"
+                                mt="2"
+                                cursor="pointer"
+                                width={"100%"}
+                                alignItems={"center"}
+                                justifyContent={"space-between"}
+                                borderRadius={"8px"}
+                              >
+                                <Text
+                                  ml={"4"}
+                                  color="grey"
+                                  w={"fit-content"}
+                                  whiteSpace="nowrap"
+                                  fontSize="14px"
+                                  overflow="hidden"
+                                >
+                                  {props.values.ElectricBill ||
+                                    "Select your file! (PDF / Image)"}
+                                </Text>
+                                <Input
+                                  {...field}
+                                  id="ElectricBill"
+                                  type="file"
+                                  accept=".pdf, image/png, image/jpeg"
+                                  style={{ display: "none" }}
+                                />
+                                <Button
+                                  as="label"
+                                  borderLeftRadius="0px"
+                                  htmlFor="Pan"
+                                  variant="solid"
+                                  cursor="pointer"
+                                  className="hover-button"
+                                >
+                                  Browser
+                                </Button>
+                              </Box>
+                            </FormControl>
+                            <ErrorMessage
+                              className="formik-errormessage"
+                              name="ElectricBill"
+                              component="div"
+                            />
+                          </>
+                        )}
+                        {premises === "2" && (
+                          <>
+                            <FormControl width={{ base: "100%", sm: "50%" }} pt="5">
+                              <FormLabel
+                                htmlFor="PropertyReceipt"
+                                display={"flex"}
+                                gap={1}
+                                m="0"
+                                p="0"
+                              >
+                                Property Receipt
+                                <Text color="red">*</Text>
+                              </FormLabel>
+                              <Box
+                                className="hover-button"
+                                display={"flex"}
+                                border={"1px solid #E2E8F0"}
+                                as="label"
+                                mt="2"
+                                cursor="pointer"
+                                width={"100%"}
+                                alignItems={"center"}
+                                justifyContent={"space-between"}
+                                borderRadius={"8px"}
+                              >
+                                <Text
+                                  ml={"4"}
+                                  color="grey"
+                                  w={"fit-content"}
+                                  whiteSpace="nowrap"
+                                  fontSize="14px"
+                                  overflow="hidden"
+                                >
+                                  {props.values.PropertyReceipt ||
+                                    "Select your file! (PDF / Image)"}
+                                </Text>
+                                <Input
+                                  {...field}
+                                  id="PropertyReceipt"
+                                  type="file"
+                                  accept=".pdf, image/png, image/jpeg"
+                                  style={{ display: "none" }}
+                                />
+                                <Button
+                                  as="label"
+                                  borderLeftRadius="0px"
+                                  htmlFor="PropertyReceipt"
+                                  variant="solid"
+                                  cursor="pointer"
+                                  className="hover-button"
+                                >
+                                  Browser
+                                </Button>
+                              </Box>
+                            </FormControl>
+                            <ErrorMessage
+                              className="formik-errormessage"
+                              name="PropertyReceipt"
+                              component="div"
+                            />
+                          </>
+                        )}
+                        {premises === "1" && (
+                          <>
+                            <FormControl width={{ base: "100%", sm: "50%" }}  pt="5">
+                              <FormLabel
+                                htmlFor="RentedAgreement"
+                                display={"flex"}
+                                gap={1}
+                                m="0"
+                                p="0"
+                              >
+                                Rented Agreement
+                                <Text color="red">*</Text>
+                              </FormLabel>
+                              <Box
+                                className="hover-button"
+                                display={"flex"}
+                                border={"1px solid #E2E8F0"}
+                                as="label"
+                                mt="2"
+                                cursor="pointer"
+                                width={"100%"}
+                                alignItems={"center"}
+                                justifyContent={"space-between"}
+                                borderRadius={"8px"}
+                              >
+                                <Text
+                                  ml={"4"}
+                                  color="grey"
+                                  w={"fit-content"}
+                                  whiteSpace="nowrap"
+                                  fontSize="14px"
+                                  overflow="hidden"
+                                >
+                                  {props.values.RentedAgreement ||
+                                    "Select your file! (PDF / Image)"}
+                                </Text>
+                                <Input
+                                  {...field}
+                                  id="RentedAgreement"
+                                  type="file"
+                                  accept=".pdf, image/png, image/jpeg"
+                                  style={{ display: "none" }}
+                                />
+                                <Button
+                                  as="label"
+                                  borderLeftRadius="0px"
+                                  htmlFor="RentedAgreement"
+                                  variant="solid"
+                                  cursor="pointer"
+                                  className="hover-button"
+                                >
+                                  Browser
+                                </Button>
+                              </Box>
+                            </FormControl>
+                            <ErrorMessage
+                              className="formik-errormessage"
+                              name="RentedAgreement"
+                              component="div"
+                            />
+                          </>
+                        )}
                         <ErrorMessage
                           className="formik-errormessage"
                           name="Premises"

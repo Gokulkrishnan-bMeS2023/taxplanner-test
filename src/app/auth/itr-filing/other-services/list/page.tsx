@@ -21,16 +21,20 @@ import Link from "next/link";
 import { FaMinusCircle, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import Pagination from "@/components/pagination";
 import SortIconGroup from "@/components/SortIconGroup";
+import axios from "axios";
 
 interface User {
   id: any;
-  IsActive: boolean;
   email: string;
-  firstName: string;
-  lastName: string;
-  UserType: number;
-  remark: string;
-  TransactionDate: string;
+  status: number;
+  mobileNumber: number | null;
+  remarks: string | null;
+  transDate: string | null;
+  itrType: string | null;
+  financialYear: string;
+  transStatus: string | null;
+  updatedOn: string | null;
+  userId: string;
 }
 
 const OtherServicesList = () => {
@@ -48,24 +52,32 @@ const OtherServicesList = () => {
     }
   );
 
+  const id = "1";
+  const FillingType = "17";
+  const financialYear = `FY${
+    new Date().getFullYear() - 1
+  }-${new Date().getFullYear()}`;
+
   useEffect(() => {
-    const fetchuserData = async () => {
+    const fetchUserData = async () => {
       try {
-        const usertype = 3;
-        const url = `https://taxplanner-test-json.onrender.com/user?UserType=${usertype}`;
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setUserData(data);
+        const response = await axios.get(
+          "http://localhost:88/v1/otherservice/get otherservice records",
+          {
+            params: {
+              id,
+              FillingType,
+            },
+          }
+        );
+        setUserData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Failed to fetch user data:", error);
       }
     };
 
-    fetchuserData();
-  }, []);
+    fetchUserData();
+  }, [id, FillingType]);
 
   const handleRoleFilterChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -119,10 +131,9 @@ const OtherServicesList = () => {
 
   const filteredUser = sorteduser.filter(
     (user) =>
-      (!roleFilter || user?.UserType?.toString() === roleFilter) &&
-      (!statusFilter || user.IsActive.toString() === statusFilter) &&
-      (user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.firstName.toLowerCase().includes(searchTerm.toLowerCase()))
+      (!roleFilter || user?.status?.toString() === roleFilter) &&
+      (!statusFilter || user?.transStatus?.toString() === statusFilter) &&
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastEntry = currentPage * entriesPerPage;
@@ -149,7 +160,24 @@ const OtherServicesList = () => {
     setIconShow([...iconShow.filter((show: any) => show !== id)]);
   };
 
+  const handleDeleteDocument = async (user: any) => {
+    const deleteUsers = userData.filter((item) => item.id !== user.id);
+
+    setUserData(deleteUsers);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:88/v1/otherservice/removeID",
+        { id: user.id, userID: user.userId, itrType: user.itrType.toString() }
+      );
+      console.log("File deleted successfully:", res.data);
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
+  };
+
   const Title = "MSME Registration";
+
   return (
     <Box
       pt={"120px"}
@@ -166,6 +194,8 @@ const OtherServicesList = () => {
           {Title}
         </Heading>
         <Button
+          as={Link}
+          href={"/auth/itr-filing/other-services/edit-form"}
           display={"flex"}
           gap={1}
           bg={"#2D50D6"}
@@ -173,6 +203,13 @@ const OtherServicesList = () => {
           _hover={{ bg: "#01acf1" }}
           w={{ base: "100%", sm: "fit-content" }}
           fontSize={"14px"}
+          isDisabled={
+            userData?.some(
+              (item: User) => item?.financialYear === financialYear
+            )
+              ? true
+              : false
+          }
         >
           <FaPlusCircle />
           Export
@@ -388,11 +425,11 @@ const OtherServicesList = () => {
                 borderRight="1px solid #e3e6f0"
                 p={3}
                 position={"relative"}
-                onClick={() => handleSort("remark")}
+                onClick={() => handleSort("remarks")}
                 style={{ cursor: "pointer", position: "relative" }}
               >
                 Remark
-                <SortIconGroup sortConfig={sortConfig} KeyType="remark" />
+                <SortIconGroup sortConfig={sortConfig} KeyType="remarks" />
               </Th>
               <Th
                 width="140px"
@@ -418,15 +455,12 @@ const OtherServicesList = () => {
                 width="10px"
                 color="black"
                 borderRight="1px solid #e3e6f0"
-                onClick={() => handleSort("TransactionDate")}
+                onClick={() => handleSort("transDate")}
                 style={{ cursor: "pointer", position: "relative" }}
                 p={3}
               >
                 Transaction Date
-                <SortIconGroup
-                  sortConfig={sortConfig}
-                  KeyType="TransactionDate"
-                />
+                <SortIconGroup sortConfig={sortConfig} KeyType="transDate" />
               </Th>
               <Th
                 width="100px"
@@ -491,10 +525,10 @@ const OtherServicesList = () => {
                           display={"flex"}
                         >
                           <Link
-                            href={`/dashboard/auth/admin/itr-filing/other-services/edit/${user.id}`}
+                            href={`/auth/itr-filing/other-services/edit-form?id=${user.id}`}
                             className="emailwrap"
                           >
-                            FY2022-2023
+                            {user.financialYear}
                           </Link>
                         </Text>
                       </Td>
@@ -518,7 +552,7 @@ const OtherServicesList = () => {
                             display={"flex"}
                             gap={2}
                           >
-                            <Text as={"b"}>Status :</Text> Draft
+                            <Text as={"b"}>Status :</Text> {user.status}
                           </Td>
                         </Tr>
                         <Tr>
@@ -527,7 +561,7 @@ const OtherServicesList = () => {
                             display={"flex"}
                             gap={2}
                           >
-                            <Text as={"b"}>Remark :</Text> Remark data
+                            <Text as={"b"}>Remark :</Text> {user.remarks}
                           </Td>
                         </Tr>
                         <Tr>
@@ -539,9 +573,16 @@ const OtherServicesList = () => {
                             <Text as={"b"}> Payment : </Text>
                             <Text
                               fontWeight={"bold"}
-                              color={user.IsActive === true ? "green" : "red"}
+                              color={
+                                user?.transStatus === "success"
+                                  ? "green"
+                                  : "red"
+                              }
                             >
-                              {user.IsActive === true ? "SUCCESS" : "FAIL"}
+                              {user.transStatus &&
+                                (user?.transStatus === "success"
+                                  ? "SUCCESS"
+                                  : "FAIL")}
                             </Text>
                           </Td>
                         </Tr>
@@ -562,7 +603,10 @@ const OtherServicesList = () => {
                             alignItems={"center"}
                           >
                             <Text as={"b"}>Remove :</Text>
-                            <FaTrashAlt style={{ color: "#e74a3b " }} />
+                            <FaTrashAlt
+                              style={{ color: "#e74a3b ", cursor: "pointer" }}
+                              onClick={() => handleDeleteDocument(user)}
+                            />
                           </Td>
                         </Tr>
                       </>
@@ -582,9 +626,9 @@ const OtherServicesList = () => {
                         _hover={{ color: "#2D50D6", textDecor: "underline" }}
                       >
                         <Link
-                          href={`/dashboard/auth/admin/itr-filing/other-services/edit/${user.id}`}
+                          href={`/auth/itr-filing/other-services/edit-form?id=${user.id}`}
                         >
-                          FY2022-2023
+                          {user.financialYear}
                         </Link>
                       </Text>
                     </Td>
@@ -592,20 +636,24 @@ const OtherServicesList = () => {
                       {user.email}
                     </Td>
                     <Td p={3} border={"1px solid #e3e6f0"}>
-                      {user.UserType === 1 ? "Admin" : "User"}
+                      {user.status}
                     </Td>
-                    <Td p={3}>remark data</Td>
+                    <Td p={3}>{user.remarks}</Td>
                     <Td
                       p={3}
                       fontWeight={"bold"}
                       border={"1px solid #e3e6f0"}
-                      color={user.IsActive === true ? "green" : "red"}
+                      color={user.transStatus === "success" ? "green" : "red"}
                     >
-                      {user.IsActive === true ? "SUCCESS" : "FAIL"}
+                      {user.transStatus &&
+                        (user.transStatus === "success" ? "SUCCESS" : "FAIL")}
                     </Td>
-                    <Td p={3}> Transaction Date Data</Td>
+                    <Td p={3}>{user.transDate}</Td>
                     <Td border={"1px solid #e3e6f0"}>
-                      <FaTrashAlt style={{ color: "#e74a3b " }} />
+                      <FaTrashAlt
+                        style={{ color: "#e74a3b ", cursor: "pointer" }}
+                        onClick={() => handleDeleteDocument(user)}
+                      />
                     </Td>
                   </Tr>
                 ))}
