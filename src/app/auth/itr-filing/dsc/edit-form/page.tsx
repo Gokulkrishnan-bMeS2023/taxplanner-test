@@ -47,7 +47,7 @@ const FormComponent = () => {
   const Type = searchParams.get("Type");
 
   const decryptedId = decrypt(decodeURIComponent(Type as string));
-  const ID = decrypt(decodeURIComponent(DSCID as string));
+  // const ID = decrypt(decodeURIComponent(DSCID as string));                
   const title = TitleList.find(
     (title: { Type: any }) => title.Type === decryptedId
   );

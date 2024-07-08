@@ -146,6 +146,7 @@ const FileUploadForm = () => {
             osId: item.osId || "N/A",
             documentName: item.documentName,
             fileName: item.fileName,
+            fileUrl: item.fileUrl,
           }));
           // Remove entries without id and osId from todosList
           const filteredTodosList = newTodosList.filter(

@@ -157,8 +157,12 @@ const DocumentListTable: React.FC<TableProps> = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const handleAttachmentClick = (imageUrl: string) => {
-    setSelectedImage(imageUrl);
+  const handleAttachmentClick = (item: any) => {
+    if (item.fileUrl) {
+      setSelectedImage(`http://localhost:88${item.fileUrl}`);
+    } else {
+      setSelectedImage(URL.createObjectURL(item.file));
+    }
     onOpen();
   };
 
@@ -218,13 +222,14 @@ const DocumentListTable: React.FC<TableProps> = ({
                   display={{ base: "none", md: "flex" }}
                   border="1px solid #e3e6f0"
                 >
-                  <Link
-                    href="#"
-                    style={{ color: "#02ABEF" }}
-                    onClick={() => handleAttachmentClick(item.file?.url || "")}
+                  <Text
+                    color="#02ABEF"
+                    cursor="pointer"
+                    _hover={{ color: "blue" }}
+                    onClick={() => handleAttachmentClick(item)}
                   >
                     {item.fileName || item.file?.name}
-                  </Link>
+                  </Text>
                 </Td>
                 <Td color="#e74a3b" border="1px solid #e3e6f0">
                   <FaTrashAlt
