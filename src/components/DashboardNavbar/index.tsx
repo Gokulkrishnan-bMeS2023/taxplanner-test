@@ -1,4 +1,3 @@
-
 "use client";
 import { useState, useEffect } from "react";
 import {
@@ -28,7 +27,7 @@ interface SubMenuItem {
   subItems?: MenuItem[];
   subItems2?: MenuItem[];
   subItems3?: MenuItem[];
-  encryptId?: string;
+  encryptId?: any;
 }
 
 interface MenuItem {
@@ -134,7 +133,7 @@ const DashboardNavbar: React.FC = () => {
 
   const handleSubMenuItemClick4 = (id: number) => {
     // Toggle the selected submenu1 only if it's not already selected
-      setSelectedSubMenu2(id === selectedSubMenu2 ? null : id);
+    setSelectedSubMenu2(id === selectedSubMenu2 ? null : id);
   };
 
   const handleSubMenuItemClick5 = (id: number) => {
@@ -269,7 +268,7 @@ const DashboardNavbar: React.FC = () => {
             {
               id: 1,
               label: "DSC",
-            
+
               subItems2: [
                 {
                   id: 1,
@@ -504,13 +503,13 @@ const DashboardNavbar: React.FC = () => {
                                         handleSubMenuItemClick1(subItem.id)
                                       }
                                     >
-                                          {subItem.href ? (
-                                    <Link href={subItem.href}>
-                                      {subItem.label}
-                                    </Link>
-                                  ) : (
-                                    <Box>{subItem.label}</Box>
-                                  )}
+                                      {subItem.href ? (
+                                        <Link href={subItem.href}>
+                                          {subItem.label}
+                                        </Link>
+                                      ) : (
+                                        <Box>{subItem.label}</Box>
+                                      )}
 
                                       {subItem.subItems1 && (
                                         <Box>
@@ -551,19 +550,18 @@ const DashboardNavbar: React.FC = () => {
                                                   }
                                                 >
                                                   {item.href ? (
-                                    <Link href={item.href}>
-                                      {item.label}
-                                    </Link>
-                                  ) : (
-                                    <Box>{item.label}</Box>
-                                  )}
+                                                    <Link href={item.href}>
+                                                      {item.label}
+                                                    </Link>
+                                                  ) : (
+                                                    <Box>{item.label}</Box>
+                                                  )}
 
                                                   {item.subItems2 && (
                                                     <Box>
                                                       <FaAngleDown
                                                         size={20}
-                                                        color={
-                                                           "#555555"}
+                                                        color={"#555555"}
                                                         style={{
                                                           position: "absolute",
                                                           right: 30,
@@ -601,19 +599,27 @@ const DashboardNavbar: React.FC = () => {
                                                                 )
                                                               }
                                                             >
-                                                                {subi.href ? (
-                                    <Link href={subi.href}>
-                                      {subi.label}
-                                    </Link>
-                                  ) : (
-                                    <Box>{subi.label}</Box>
-                                  )}
+                                                              {subi.href ? (
+                                                                <Link
+                                                                  href={
+                                                                    subi.href
+                                                                  }
+                                                                >
+                                                                  {subi.label}
+                                                                </Link>
+                                                              ) : (
+                                                                <Box>
+                                                                  {subi.label}
+                                                                </Box>
+                                                              )}
 
                                                               {subi.subItems3 && (
                                                                 <Box>
                                                                   <FaAngleDown
                                                                     size={20}
-                                                                    color={ "#555555"}
+                                                                    color={
+                                                                      "#555555"
+                                                                    }
                                                                     style={{
                                                                       position:
                                                                         "absolute",
@@ -677,13 +683,22 @@ const DashboardNavbar: React.FC = () => {
                                                                           }}
                                                                         >
                                                                           {subii.href ? (
-                                    <Link href={subii.href}>
-                                      {subii.label}
-                                    </Link>
-                                  ) : (
-                                    <Box>{subii.label}</Box>
-                                  )}
-
+                                                                            <Link
+                                                                              href={
+                                                                                subii.href
+                                                                              }
+                                                                            >
+                                                                              {
+                                                                                subii.label
+                                                                              }
+                                                                            </Link>
+                                                                          ) : (
+                                                                            <Box>
+                                                                              {
+                                                                                subii.label
+                                                                              }
+                                                                            </Box>
+                                                                          )}
                                                                         </Flex>
                                                                       </Box>
                                                                     )
@@ -866,15 +881,24 @@ const DashboardNavbar: React.FC = () => {
                                       border={"1px solid #F0F0F0"}
                                       transition={"0.5s"}
                                     >
-                                     {subItem.subItems1?.map((item, index) => (
-                                        <Box key={index}
-                                        onMouseEnter={() =>
-                                          handleSubMenuItemClick2(item.id)
-                                        }
-                                        onMouseLeave={() => handleSubMenuItemClick2(-1)}
+                                      {subItem.subItems1?.map((item, index) => (
+                                        <Box
+                                          key={index}
+                                          onMouseEnter={() =>
+                                            handleSubMenuItemClick2(item.id)
+                                          }
+                                          onMouseLeave={() =>
+                                            handleSubMenuItemClick2(-1)
+                                          }
                                         >
                                           {item.href ? (
-                                            <Link href={`${item.href}?Type=${encodeURIComponent(encrypt(item?.encryptId))}`}>
+                                            <Link
+                                              href={`${
+                                                item.href
+                                              }?Type=${encodeURIComponent(
+                                                encrypt(item?.encryptId)
+                                              )}`}
+                                            >
                                               <Flex
                                                 px={3}
                                                 py="2"
@@ -954,16 +978,29 @@ const DashboardNavbar: React.FC = () => {
                                               >
                                                 {item.subItems2.map(
                                                   (subi, index) => (
-                                                    <Box key={index}
-                                                    onMouseEnter={() =>
-                                                      handleSubMenuItemClick3(
-                                                        subi.id
-                                                      )
-                                                    }
-                                                    onMouseLeave={() => handleSubMenuItemClick3(-1)}
+                                                    <Box
+                                                      key={index}
+                                                      onMouseEnter={() =>
+                                                        handleSubMenuItemClick3(
+                                                          subi.id
+                                                        )
+                                                      }
+                                                      onMouseLeave={() =>
+                                                        handleSubMenuItemClick3(
+                                                          -1
+                                                        )
+                                                      }
                                                     >
                                                       {subi.href ? (
-                                                        <Link href={subi.href}>
+                                                        <Link
+                                                          href={`${
+                                                            subi.href
+                                                          }?Type=${encodeURIComponent(
+                                                            encrypt(
+                                                              subi?.encryptId
+                                                            )
+                                                          )}`}
+                                                        >
                                                           <Flex
                                                             px={3}
                                                             py="2"
@@ -991,7 +1028,6 @@ const DashboardNavbar: React.FC = () => {
                                                               bg: "#01ACF1",
                                                               color: "#fff",
                                                             }}
-                                                           
                                                           >
                                                             {subi.label}
                                                           </Flex>
@@ -1068,9 +1104,13 @@ const DashboardNavbar: React.FC = () => {
                                                                 >
                                                                   {subii.href ? (
                                                                     <Link
-                                                                      href={
+                                                                      href={`${
                                                                         subii.href
-                                                                      }
+                                                                      }?Type=${encodeURIComponent(
+                                                                        encrypt(
+                                                                          subii?.encryptId
+                                                                        )
+                                                                      )}`}
                                                                     >
                                                                       <Flex
                                                                         px={3}
@@ -1140,7 +1180,7 @@ const DashboardNavbar: React.FC = () => {
                                               </Box>
                                             )}
                                         </Box>
-                                      ))} 
+                                      ))}
                                     </Box>
                                   )}
                               </Flex>
@@ -1201,4 +1241,3 @@ const DashboardNavbar: React.FC = () => {
 };
 
 export default DashboardNavbar;
-

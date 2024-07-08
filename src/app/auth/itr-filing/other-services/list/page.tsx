@@ -22,6 +22,7 @@ import { FaMinusCircle, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import Pagination from "@/components/pagination";
 import SortIconGroup from "@/components/SortIconGroup";
 import axios from "axios";
+import { encrypt } from "@/utils/crypto";
 
 interface User {
   id: any;
@@ -71,6 +72,7 @@ const OtherServicesList = () => {
           }
         );
         setUserData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }
@@ -525,7 +527,9 @@ const OtherServicesList = () => {
                           display={"flex"}
                         >
                           <Link
-                            href={`/auth/itr-filing/other-services/edit-form?id=${user.id}`}
+                            href={`/auth/itr-filing/other-services/edit-form?osid=${encodeURIComponent(
+                              encrypt(user.id.toString())
+                            )}&Type=${encodeURIComponent(encrypt("17"))}`}
                             className="emailwrap"
                           >
                             {user.financialYear}
@@ -626,7 +630,9 @@ const OtherServicesList = () => {
                         _hover={{ color: "#2D50D6", textDecor: "underline" }}
                       >
                         <Link
-                          href={`/auth/itr-filing/other-services/edit-form?id=${user.id}`}
+                          href={`/auth/itr-filing/other-services/edit-form?osid=${encodeURIComponent(
+                            encrypt(user.id.toString())
+                          )}&Type=${encodeURIComponent(encrypt("17"))}`}
                         >
                           {user.financialYear}
                         </Link>

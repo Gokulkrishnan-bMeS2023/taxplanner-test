@@ -22,6 +22,7 @@ import { FaMinusCircle, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import Pagination from "@/components/pagination";
 import SortIconGroup from "@/components/SortIconGroup";
 import axios from "axios";
+import { encrypt } from "@/utils/crypto";
 
 interface User {
   id: any;
@@ -51,29 +52,30 @@ const DSCList = () => {
       direction: "",
     }
   );
-  const id = "1";
-  const FillingType = "17";
+  const UserID = "2";
+
+  console.log(userData, "da");
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:88/v1/otherservice/get otherservive records",
+          "http://localhost:88/v1/DSC/get dsc records",
           {
             params: {
-              id,
-              FillingType,
+              UserID,
             },
           }
         );
         setUserData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }
     };
 
     fetchUserData();
-  }, [id, FillingType]);
+  }, [UserID]);
 
   const handleRoleFilterChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -157,16 +159,15 @@ const DSCList = () => {
   };
 
   const handleDeleteDocument = async (user: any) => {
-    const deleteUsers = userData.filter((item) => item.id !== user.id);
+    // const deleteUsers = userData.filter((item) => item.id !== user.id);
 
-    setUserData(deleteUsers);
+    // setUserData(deleteUsers);
 
     try {
-      const res = await axios.post(
-        "http://localhost:88/v1/otherservice/removeID",
-        { id: user.id, userID: user.userId, itrType: user.itrType.toString() }
-      );
-      console.log("File deleted successfully:", res.data);
+      const res = await axios.post("http://localhost:88/v1/dsc/remove", {
+        DSCID: user.id,
+      });
+      console.log("File deleted successfully: ", res.data);
     } catch (error) {
       console.error("Error deleting file:", error);
     }
@@ -483,7 +484,7 @@ const DSCList = () => {
                           display={"flex"}
                         >
                           <Link
-                            href={`/dashboard/auth/admin/itr-filing/dsc/edit/${user.id}`}
+                            href={`/auth/itr-filing/dsc?dscid=${user.id}`}
                             className="emailwrap"
                           >
                             {user.email}
@@ -500,7 +501,8 @@ const DSCList = () => {
                             gap={2}
                             flexDirection={"column"}
                           >
-                            <Text as={"b"}>MobileNumber:</Text>9876543210
+                            <Text as={"b"}>MobileNumber:</Text>
+                            {user.mobileNumber}
                           </Td>
                         </Tr>
                         <Tr>
@@ -579,13 +581,17 @@ const DSCList = () => {
                         width={"fit-content"}
                         _hover={{ color: "#2D50D6", textDecor: "underline" }}
                       >
-                        <Link href={`/dashboard/user/edit/${user.id}`}>
+                        <Link
+                          href={`/auth/itr-filing/dsc/edit-form?dscid=${encodeURIComponent(
+                            encrypt(user.id.toString())
+                          )}&Type=${encodeURIComponent(encrypt("5"))}`}
+                        >
                           {user.email}
                         </Link>
                       </Text>
                     </Td>
                     <Td border={"1px solid #e3e6f0"} p={3}>
-                      9876543210
+                      {user.mobileNumber}
                     </Td>
                     <Td p={3} border={"1px solid #e3e6f0"}>
                       {user.status}

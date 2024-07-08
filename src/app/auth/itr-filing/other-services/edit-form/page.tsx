@@ -19,6 +19,8 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import FileInput from "@/components/Form/FileUploadField";
+import { TitleList } from "@/component-contents/TitleFilterData";
+import { decrypt } from "@/utils/crypto";
 
 interface TodoItem {
   documentName: string;
@@ -45,29 +47,36 @@ const FileUploadForm = () => {
 
   const searchParams = useSearchParams();
 
-  const ID = searchParams.get("id");
+  const OSID = searchParams.get("osid");
+  const Type = searchParams.get("Type");
+
+  const decryptedId = decrypt(decodeURIComponent(Type as string));
+  const title = TitleList.find(
+    (title: { Type: any }) => title.Type === decryptedId
+  );
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:88/v1/otherservice/get otherservice document",
-          {
-            params: {
-              ID: ID,
-            },
-          }
-        );
-        setTodosList(response.data);
-      } catch (error) {
-        console.error("Failed to fetch user data:", error);
-      }
-    };
-    if (ID) {
+    if (OSID) {
+      const ID = decrypt(decodeURIComponent(OSID as string));
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(
+            "http://localhost:88/v1/otherservice/get otherservice document",
+            {
+              params: {
+                ID: ID,
+              },
+            }
+          );
+          setTodosList(response.data);
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+        }
+      };
       fetchUserData();
       setotherServiceId(ID);
     }
-  }, [ID]);
+  }, [OSID]);
 
   const initialValues = {
     documentName: "",
@@ -77,7 +86,7 @@ const FileUploadForm = () => {
   const financialYear = `FY${
     new Date().getFullYear() - 1
   }-${new Date().getFullYear()}`;
-  const fillingType = 17;
+  const fillingType = title?.Type;
   const userId = 1;
 
   const combinedTodos = [...todos, ...todosList];
@@ -109,48 +118,50 @@ const FileUploadForm = () => {
   console.log(otherServiceId);
 
   const handleFileUpload = () => {
-    const formData = new FormData();
-    todos.forEach((todo) => {
-      if (todo.file && todo.documentName) {
-        formData.append("files", todo.file);
-        formData.append("documentNames", todo.documentName);
-      }
-    });
-    formData.append("financialYear", financialYear);
-    formData.append("userId", userId.toString());
-    formData.append("otherServiceId", otherServiceId.toString());
-    formData.append("fillingType", fillingType.toString());
-    fetch("http://localhost:88/v1/otherservice/register", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to upload");
+    if (fillingType) {
+      const formData = new FormData();
+      todos.forEach((todo) => {
+        if (todo.file && todo.documentName) {
+          formData.append("files", todo.file);
+          formData.append("documentNames", todo.documentName);
         }
-        return response.json();
-      })
-      .then((data) => {
-        const newTodosList = data.map((item: any) => ({
-          id: item.id || "N/A",
-          osId: item.osId || "N/A",
-          documentName: item.documentName,
-          fileName: item.fileName,
-        }));
-        // Remove entries without id and osId from todosList
-        const filteredTodosList = newTodosList.filter(
-          (item: any) => item.id !== "N/A" && item.osId !== "N/A"
-        );
-        setTodosList(filteredTodosList);
-        setTodos([]); // Clear the todos state
-        const IDOS = filteredTodosList.map((item: any) => item.osId);
-        setotherServiceId(IDOS[0]);
-        console.log(filteredTodosList);
-        console.log(IDOS, "idos");
-      })
-      .catch((error) => {
-        console.error(error);
       });
+      formData.append("financialYear", financialYear);
+      formData.append("userId", userId.toString());
+      formData.append("otherServiceId", otherServiceId.toString());
+      formData.append("fillingType", fillingType);
+      fetch("http://localhost:88/v1/otherservice/register", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to upload");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const newTodosList = data.map((item: any) => ({
+            id: item.id || "N/A",
+            osId: item.osId || "N/A",
+            documentName: item.documentName,
+            fileName: item.fileName,
+          }));
+          // Remove entries without id and osId from todosList
+          const filteredTodosList = newTodosList.filter(
+            (item: any) => item.id !== "N/A" && item.osId !== "N/A"
+          );
+          setTodosList(filteredTodosList);
+          setTodos([]); // Clear the todos state
+          const IDOS = filteredTodosList.map((item: any) => item.osId);
+          setotherServiceId(IDOS[0]);
+          console.log(filteredTodosList);
+          console.log(IDOS, "idos");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   const handleFileDelete = async (todo: TodoItem) => {
@@ -176,12 +187,11 @@ const FileUploadForm = () => {
     }
   };
   console.log(todos);
-  
 
   return (
     <Box pt={24} px={{ base: "20px", md: "1.5rem" }} pb={"1.5rem"}>
       <Heading as={"h2"} py="10">
-        GST Registration
+        {title?.Title}
       </Heading>
       <Box
         borderRadius="10px"

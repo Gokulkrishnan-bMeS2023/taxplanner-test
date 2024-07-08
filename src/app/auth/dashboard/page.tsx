@@ -233,31 +233,31 @@ export default function Dashboard() {
             encryptId={"5"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Encrypted"
             encryptId={"6"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC Organization"
             encryptId={"7"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC DGFT"
             encryptId={"8"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC ICEGATE"
             encryptId={"9"}
           />
           <DashboardCard
-            href="#"
+            href="/auth/itr-filing/dsc/edit-form"
             ImageSrc={"/assets/other-services/usb-memory-stick.webp"}
             ButtonLabel="DSC NRI"
             encryptId={"10"}
